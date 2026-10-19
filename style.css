@@ -189,3 +189,6 @@ body.page-leaving{opacity:0}
 
 /* Subtle extra fade behind the third hero feature, without a visible panel */
 @media(min-width:851px){.hero .highlights>div:nth-child(3){position:relative;isolation:isolate}.hero .highlights>div:nth-child(3)::before{content:"";position:absolute;z-index:-1;inset:-16px -14px -14px -18px;background:radial-gradient(ellipse at 42% 55%,rgba(248,247,244,.67) 0%,rgba(248,247,244,.42) 55%,rgba(248,247,244,0) 100%);pointer-events:none}}
+
+/* Slightly tighter hero feature grouping; keep the third item off the photo */
+@media(min-width:851px){.hero .highlights{max-width:570px;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hero .highlights strong{font-size:.8rem}.hero .highlights small{font-size:.71rem}}
