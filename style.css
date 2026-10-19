@@ -95,3 +95,21 @@
 #om-oss .section-heading h2{font-size:clamp(2.4rem,3.45vw,3.8rem);line-height:1.1}
 #om-oss .section-heading p{max-width:610px;font-size:1.06rem;line-height:1.7;margin:0}
 @media(max-width:850px){#prosess.section,#om-oss.section{padding-top:50px;padding-bottom:54px}#prosess .steps{gap:12px}#prosess .steps article{min-height:0;padding:20px}#om-oss .section-heading{grid-template-columns:1fr;gap:20px}#om-oss .section-heading p{font-size:1rem}}
+
+/* Visual rhythm for the two editorial sections, without extra marketing claims */
+#prosess.section{padding-top:70px;padding-bottom:75px}
+#prosess .steps{gap:14px}
+#prosess .steps article{position:relative;overflow:hidden;min-height:244px;padding:28px 30px 30px;background:#faf9f7;border:1px solid #ded8d0;border-top:3px solid #917a64}
+#prosess .steps article::after{content:"";position:absolute;right:-38px;top:-48px;width:160px;height:160px;border:1px solid #d8d0c6;border-radius:50%;box-shadow:0 0 0 26px #e9e3da55,0 0 0 52px #e9e3da35;pointer-events:none}
+#prosess .steps b{position:relative;z-index:1;font-size:1.7rem;font-weight:600;letter-spacing:-.05em}
+#prosess .steps h3{position:relative;z-index:1;margin-top:25px;font-size:1.4rem}
+#prosess .steps p{position:relative;z-index:1;max-width:340px;font-size:.95rem}
+#om-oss.section{padding-top:0;padding-bottom:0}
+#om-oss .about-layout{display:grid;grid-template-columns:1fr .82fr;min-height:390px;align-items:stretch;gap:5vw}
+#om-oss .about-content{padding:64px 0 68px}
+#om-oss .section-heading{display:block;margin-top:25px}
+#om-oss .section-heading h2{margin-bottom:25px}
+#om-oss .section-heading p{max-width:610px}
+#om-oss .about-visual{min-height:390px;margin-right:-4.2vw;background:linear-gradient(135deg,#111b1d08,#111b1d35),url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85") center/cover no-repeat}
+@media(max-width:850px){#prosess .steps article{min-height:0;padding:24px}#prosess .steps h3{margin-top:12px}#om-oss .about-layout{grid-template-columns:1fr;gap:0}#om-oss .about-content{padding:50px 0 40px}#om-oss .section-heading{margin-top:15px}#om-oss .about-visual{min-height:280px;margin-left:-5vw;margin-right:-5vw}}
+@media(max-width:520px){#om-oss .about-visual{margin-left:-22px;margin-right:-22px;min-height:240px}}
