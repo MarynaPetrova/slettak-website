@@ -27,6 +27,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
  let sending=false;
  function show(message,type){status.textContent=message;status.dataset.state=type;}
  email.addEventListener('input',()=>{email.value=email.value.replace(/\s+/g,'');email.setCustomValidity('');if(status.dataset.state!=='success')show('','');});
+ form.removeAttribute('action');form.removeAttribute('method');
  form.addEventListener('submit',async event=>{
   event.preventDefault();if(sending)return;
   const m=text[language()];
