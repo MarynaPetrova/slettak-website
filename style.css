@@ -145,3 +145,15 @@
 body{transition:opacity .55s ease}
 body.page-leaving{opacity:0}
 @media(prefers-reduced-motion:reduce){body{transition:none}}
+
+/* In-page thank-you screen: no page reload or abrupt navigation */
+.thanks-overlay{position:fixed;inset:0;z-index:10000;background:#f8f7f5;display:grid;place-items:center;padding:32px 20px;overflow:auto;opacity:0;visibility:hidden;transition:opacity 1.05s ease,visibility 1.05s ease}
+.thanks-overlay.visible{opacity:1;visibility:visible}
+.thanks-overlay-card{max-width:720px;text-align:center;transform:translateY(24px);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity 1.2s ease}
+.thanks-overlay.visible .thanks-overlay-card{transform:translateY(0);opacity:1}
+.thanks-overlay-check{width:82px;height:82px;display:grid;place-items:center;border-radius:50%;margin:0 auto 28px;background:#e5eee5;color:#276d49;font-size:42px}
+.thanks-overlay-eyebrow{font-size:.9rem;letter-spacing:.18em;font-weight:700;color:#687270}
+.thanks-overlay h2{font-size:clamp(2.5rem,6vw,4.7rem);line-height:1.12;margin:26px auto 24px;max-width:650px;color:#111b1d}
+.thanks-overlay-detail{font-size:1.12rem;line-height:1.7;color:#687270;margin:0 auto 32px;max-width:640px}
+.thanks-overlay .btn{display:inline-block;background:#111b1d;color:white;padding:16px 24px;border-radius:4px;text-decoration:none}
+@media(prefers-reduced-motion:reduce){.thanks-overlay,.thanks-overlay-card{transition:none}}
