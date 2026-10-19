@@ -392,3 +392,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* v90: full brand mark in modal, proportionally reduced from header */
 .solution-dialog .solution-dialog-logo{width:clamp(190px,16vw,260px)!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:1628/315!important;object-fit:contain!important;color:#172322!important;grid-column:1!important;align-self:start!important;margin:0 0 12px!important}
 @media(max-width:600px){.solution-dialog .solution-dialog-logo{width:185px!important}}
+
+/* Keyboard focus and reduced-motion support */
+.solution-card:focus-visible,.solution-dialog-close:focus-visible,.lang:focus-visible,.btn:focus-visible{outline:3px solid #9b7756;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.solution-dialog-panel,.solution-dialog-front,.solution-dialog-back,.solution-dialog-perspective{animation:none!important;transition:none!important}}
