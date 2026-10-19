@@ -113,3 +113,8 @@
 #om-oss .about-visual{min-height:390px;margin-right:-4.2vw;background:linear-gradient(135deg,#111b1d08,#111b1d35),url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85") center/cover no-repeat}
 @media(max-width:850px){#prosess .steps article{min-height:0;padding:24px}#prosess .steps h3{margin-top:12px}#om-oss .about-layout{grid-template-columns:1fr;gap:0}#om-oss .about-content{padding:50px 0 40px}#om-oss .section-heading{margin-top:15px}#om-oss .about-visual{min-height:280px;margin-left:-5vw;margin-right:-5vw}}
 @media(max-width:520px){#om-oss .about-visual{margin-left:-22px;margin-right:-22px;min-height:240px}}
+
+/* Reduce empty space below the gallery disclaimer */
+#losninger.section{padding-bottom:34px}
+#losninger .disclaimer{margin-top:18px;margin-bottom:0}
+@media(max-width:680px){#losninger.section{padding-bottom:28px}}
