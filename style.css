@@ -302,5 +302,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 @media(max-width:850px){#losninger .solution-art{height:230px!important}}
 @media(max-width:520px){#losninger .solution-art{height:245px!important}}
 
-/* v82 — remove decorative arrows from solution cards */
-#losninger .solution-card::after{content:none!important;display:none!important}
+/* v83 — restore the card arrows */
+
+/* v83 — keep the round card arrows visible */
+#losninger .solution-card::after{content:'↗'!important;display:grid!important}
