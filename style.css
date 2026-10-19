@@ -276,3 +276,21 @@ h3{font-weight:700;letter-spacing:-.045em}
 .solution-dialog h2{font-family:"DM Sans",Arial,sans-serif;font-weight:700;letter-spacing:-.055em}
 .solution-dialog-intro,.solution-dialog-usage p,.solution-dialog-columns li{font-family:"Manrope",Arial,sans-serif;letter-spacing:-.018em}
 @media(max-width:600px){body{font-size:15px}.card-copy p{font-size:.9rem}}
+
+/* v80: Sita-inspired rounded cards, retaining every existing TakNova image */
+#losninger .solution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+#losninger .solution-card{position:relative;display:flex;flex-direction:column;min-width:0;padding:16px;background:#fff;border:1px solid #deddda;border-radius:28px;overflow:hidden;box-shadow:0 6px 18px rgba(36,32,28,.025);transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease,border-color .4s ease;cursor:pointer}
+#losninger .solution-card:hover{transform:translateY(-9px);box-shadow:0 20px 45px rgba(36,32,28,.11);border-color:#cbc8c3}
+#losninger .solution-art{height:auto;aspect-ratio:1.4/1;border-radius:20px;overflow:hidden;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .6s ease}
+#losninger .solution-card:hover .solution-art{transform:scale(1.025);filter:saturate(1.06)}
+#losninger .card-copy{display:flex;flex-direction:column;flex:1;padding:25px 10px 8px}
+#losninger .card-copy small{font-size:.61rem;letter-spacing:.12em;margin-bottom:17px;color:#89857f}
+#losninger .card-copy h3{font-family:"DM Sans",sans-serif;font-weight:700;font-size:clamp(1.25rem,1.6vw,1.7rem);line-height:1.17;letter-spacing:-.045em;margin:0 0 13px}
+#losninger .card-copy p{font-size:clamp(.9rem,1vw,1rem);line-height:1.58;color:#64625f;margin-bottom:25px;flex:1}
+#losninger .solution-card:after{content:"↗";display:grid;place-items:center;align-self:flex-end;width:48px;height:48px;position:relative;margin:0 8px 5px auto;border-radius:50%;background:#f0eeea;color:#222;font-size:24px;font-weight:400;transition:background .3s ease,color .3s ease,transform .4s ease}
+#losninger .solution-card:hover:after{background:#202020;color:#fff;transform:rotate(45deg)}
+#losninger .all-solutions{border-radius:999px;background:#1d1d1d;color:#fff;border-color:#1d1d1d;padding:15px 27px;font-weight:700;transition:transform .35s ease,background .35s ease}
+#losninger .all-solutions:hover{background:#383838;transform:translateY(-3px)}
+@media(max-width:850px){#losninger .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#losninger .solution-card{border-radius:22px;padding:12px}#losninger .solution-art{border-radius:15px}}
+@media(max-width:520px){#losninger .solution-grid{grid-template-columns:1fr}#losninger .solution-art{aspect-ratio:1.6/1}}
+@media(prefers-reduced-motion:reduce){#losninger .solution-card,#losninger .solution-art,#losninger .solution-card:after{transition:none!important}}
