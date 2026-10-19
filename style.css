@@ -54,3 +54,7 @@
 @media(min-width:1101px){#losninger .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}}
 @media(min-width:681px) and (max-width:1100px){#losninger .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
 @media(max-width:680px){#losninger .solution-grid{grid-template-columns:repeat(1,minmax(0,1fr));gap:16px}#losninger .solution-card .solution-art{aspect-ratio:1.7/1}}
+
+/* Six-column gallery matching original visual reference */
+@media(min-width:1101px){#losninger .solution-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}#losninger .solution-card .solution-art{aspect-ratio:0.72/1;height:auto}#losninger .solution-card .card-copy{padding:13px 12px 17px}#losninger .solution-card .card-copy h3{font-size:clamp(.88rem,1.03vw,1.08rem);line-height:1.25;letter-spacing:-.025em}#losninger .solution-card .card-copy p{font-size:clamp(.72rem,.78vw,.86rem);line-height:1.45}}
+@media(min-width:681px) and (max-width:1100px){#losninger .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
