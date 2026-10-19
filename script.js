@@ -45,8 +45,8 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
       event.preventDefault();status.textContent=m.consent;form.querySelector('[name="consent"]').focus();return;
     }
     status.textContent=m.sending;
-    button.disabled=true;
-    // Do not preventDefault: let the browser submit the real POST and show provider errors.
+    // Never disable the submitter during submission: some browsers cancel the POST.
+    // The browser submits the form to FormSubmit normally.
   });
   window.addEventListener('pageshow',()=>{button.disabled=false;button.removeAttribute('aria-busy');});
 })();
