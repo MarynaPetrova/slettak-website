@@ -26,3 +26,10 @@
 .art-gloss:after{content:"";position:absolute;left:7%;right:7%;top:42%;height:2px;background:#fff;transform:rotate(-8deg);box-shadow:0 0 15px 4px #fff9}
 @media(min-width:1101px){#losninger .solution-grid{grid-template-columns:repeat(5,minmax(0,1fr))}#losninger .solution-art{height:185px}#losninger .card-copy h3{font-size:1rem}}
 @media(min-width:681px) and (max-width:1100px){#losninger .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Satin finish: subdued, diffuse pearlescent sheen, not mirror gloss */
+.art-satin{position:relative;isolation:isolate;background:linear-gradient(160deg,#f7f4ef 0%,#e5e1dc 21%,#faf8f3 37%,#d4d0cb 57%,#f1ede7 73%,#c4bdb5 100%)!important;overflow:hidden}
+.art-satin:before{content:"";position:absolute;inset:0 0 35%;background:linear-gradient(130deg,#fffdf8 0%,#ebe7e0 39%,#d9d5d0 64%,#faf8f2 100%);clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+.art-satin:after{content:"";position:absolute;left:0;right:0;top:56%;height:28%;background:linear-gradient(180deg,#ffffff85,transparent);filter:blur(12px)}
+@media(min-width:1101px){#losninger .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#losninger .solution-art{height:210px}}
+@media(min-width:681px) and (max-width:1100px){#losninger .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
