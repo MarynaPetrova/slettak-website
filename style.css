@@ -237,3 +237,8 @@ h3{font-weight:650}
 .top .brand .brand-word{font-size:1.9rem}
 .top .brand small{font-size:.39rem;letter-spacing:.09em}
 }
+
+/* Wordmark refinement: light, clean geometric Sita-inspired lettering */
+.top .brand .brand-word{font-family:"DM Sans",Arial,sans-serif;font-weight:400;letter-spacing:-.075em;font-size:clamp(2.45rem,3.25vw,3.45rem);line-height:.9;font-synthesis:none}
+@media(min-width:851px) and (max-width:1100px){.top .brand .brand-word{font-size:2.35rem}}
+@media(max-width:850px){.top .brand .brand-word{font-size:2.15rem}}
