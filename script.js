@@ -12,41 +12,40 @@ const inputs=[...document.querySelectorAll('input[placeholder],textarea[placehol
 function setLanguage(lang){const idx=lang==='en'?0:1;document.documentElement.lang=lang==='no'?'nb':lang;original.forEach(({node,text,prefix,suffix})=>{node.textContent=prefix+(lang==='no'?text:translations[text][idx])+suffix});fixedNodes.forEach(({el,no,uk})=>{el.textContent=lang==='uk'?uk:lang==='no'?no:(translations[no]?.[0]||no)});inputs.forEach(({el,original})=>{el.placeholder=lang==='no'?original:(placeholders[original]?.[idx]||original)});imageLabels.forEach(({el,text})=>el.setAttribute('aria-label',lang==='no'?text:translations[text][idx]));document.querySelector('nav[aria-label]')?.setAttribute('aria-label',lang==='uk'?'Головне меню':lang==='en'?'Main navigation':'Hovedmeny');document.querySelector('.language-switch')?.setAttribute('aria-label',lang==='uk'?'Вибір мови':lang==='en'?'Choose language':'Velg språk');document.querySelectorAll('[data-lang]').forEach(b=>{const selected=b.dataset.lang===lang;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});document.title=lang==='en'?'TakNova | Modern stretch ceilings':lang==='uk'?'TakNova | Сучасні натяжні стелі':'TakNova | Moderne strekktak i Akershus';try{localStorage.setItem('taknova-language',lang)}catch(e){}}
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));let selected='no';try{selected=localStorage.getItem('taknova-language')||'no'}catch(e){}if(!['no','en','uk'].includes(selected))selected='no';setLanguage(selected);
 
-// FormSubmit requires activation by the recipient. Keep native POST navigation so
-// the provider can display activation/error pages instead of hiding failures.
+// Confirm delivery through FormSubmit AJAX before displaying success.
 (function(){
-  const form=document.getElementById('contactForm');
-  if(!form)return;
-  const status=document.getElementById('form-status');
-  const button=form.querySelector('button[type="submit"]');
-  const email=form.querySelector('#email');
-  const messages={
-    uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу, наприклад name@example.com.',consent:'Підтвердьте згоду на обробку даних.',sending:'Відкриваємо сервіс надсилання заявки…'},
-    en:{required:'Please complete the required fields.',email:'Enter a valid email, for example name@example.com.',consent:'Please accept the privacy terms.',sending:'Opening the submission service…'},
-    no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse, for eksempel name@example.com.',consent:'Godta personvernerklæringen først.',sending:'Åpner skjematjenesten…'}
-  };
-  const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
-  email.addEventListener('input',()=>{
-    email.value=email.value.replace(/\s+/g,'');
-    email.setCustomValidity('');
-    status.textContent='';
-  });
-  form.addEventListener('submit',event=>{
-    const m=messages[language()];
-    const required=['#name','#message'].map(selector=>form.querySelector(selector));
-    const empty=required.find(el=>!el.value.trim());
-    if(empty){event.preventDefault();status.textContent=m.required;empty.focus();return;}
-    const value=email.value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)){
-      event.preventDefault();status.textContent=m.email;email.focus();return;
-    }
-    email.value=value;
-    if(!form.querySelector('[name="consent"]').checked){
-      event.preventDefault();status.textContent=m.consent;form.querySelector('[name="consent"]').focus();return;
-    }
-    status.textContent=m.sending;
-    // Never disable the submitter during submission: some browsers cancel the POST.
-    // The browser submits the form to FormSubmit normally.
-  });
-  window.addEventListener('pageshow',()=>{button.disabled=false;button.removeAttribute('aria-busy');});
+ const form=document.getElementById('contactForm');if(!form)return;
+ const status=document.getElementById('form-status');
+ const button=form.querySelector('button[type="submit"]');
+ const email=form.querySelector('#email');
+ const text={
+  uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу електронної пошти.',consent:'Підтвердьте згоду на обробку даних.',sending:'Надсилаємо заявку…',success:'Дякуємо! Вашу заявку успішно надіслано. Ми зв’яжемося з вами найближчим часом.',error:'Не вдалося підтвердити надсилання. Перевірте з’єднання та спробуйте ще раз. Якщо проблема повториться, напишіть нам на електронну пошту.'},
+  en:{required:'Please complete the required fields.',email:'Enter a valid email address.',consent:'Please accept the privacy terms.',sending:'Sending your enquiry…',success:'Thank you! Your enquiry has been sent successfully. We will contact you soon.',error:'We could not confirm submission. Check your connection and try again, or contact us by email.'},
+  no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse.',consent:'Godta personvernerklæringen først.',sending:'Sender forespørselen…',success:'Takk! Forespørselen din er sendt. Vi tar kontakt så snart vi kan.',error:'Vi kunne ikke bekrefte innsendingen. Sjekk tilkoblingen og prøv igjen, eller kontakt oss på e-post.'}
+ };
+ const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
+ let sending=false;
+ function show(message,type){status.textContent=message;status.dataset.state=type;}
+ email.addEventListener('input',()=>{email.value=email.value.replace(/\s+/g,'');email.setCustomValidity('');if(status.dataset.state!=='success')show('','');});
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(sending)return;
+  const m=text[language()];
+  const empty=['#name','#message'].map(q=>form.querySelector(q)).find(el=>!el.value.trim());
+  if(empty){show(m.required,'error');empty.focus();return;}
+  const value=email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)){show(m.email,'error');email.focus();return;}
+  if(!form.querySelector('[name="consent"]').checked){show(m.consent,'error');form.querySelector('[name="consent"]').focus();return;}
+  email.value=value;
+  sending=true;button.disabled=true;button.setAttribute('aria-busy','true');show(m.sending,'sending');
+  try{
+   const data=new FormData(form);
+   data.delete('_next');
+   const response=await fetch('https://formsubmit.co/ajax/marina.bitkova@gmail.com',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const result=await response.json();
+   if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
+   form.reset();show(m.success,'success');
+  }catch(error){show(m.error,'error');}
+  finally{sending=false;button.disabled=false;button.removeAttribute('aria-busy');}
+ });
 })();
