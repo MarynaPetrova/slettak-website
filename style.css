@@ -162,3 +162,7 @@ body.page-leaving{opacity:0}
 
 /* Clear service icons instead of card-suit symbols */
 .hero .highlights .feature-icon{display:flex;align-items:center;justify-content:flex-start;height:40px;margin-bottom:6px;color:#917a64}.hero .highlights .feature-icon svg{display:block;width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* Give desktop navigation a deliberate full-width, legible layout */
+@media(min-width:851px){.top .nav{display:flex;flex-wrap:nowrap;align-items:center;gap:clamp(18px,2.2vw,38px);min-height:96px;padding-top:10px;padding-bottom:10px}.top .nav nav{display:flex;order:0;width:auto;flex:1;justify-content:space-evenly;gap:clamp(14px,1.8vw,32px);margin:0}.top .nav nav a{font-size:clamp(.95rem,1.15vw,1.12rem);font-weight:650;white-space:nowrap}.top .nav .nav-cta{display:inline-flex;white-space:nowrap;margin-left:0}.top .nav .brand{flex-shrink:0}.top .nav .language-switch{flex-shrink:0}}
+@media(min-width:851px) and (max-width:1150px){.top .nav{gap:12px}.top .nav nav{gap:10px}.top .nav nav a{font-size:.9rem}.top .nav .nav-cta{font-size:.72rem;padding:10px}}
