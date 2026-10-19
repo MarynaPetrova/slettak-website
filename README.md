@@ -1,4 +1,4 @@
-# Slettak
+# TakNova AS
 
 Statisk nettsted for GitHub Pages.
 
