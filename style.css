@@ -347,3 +347,17 @@ h3{font-weight:700;letter-spacing:-.045em}
 .solution-dialog .solution-dialog-intro{max-width:none!important}
 }
 @media(min-width:1500px){.solution-dialog .solution-dialog-perspective{width:95vw!important}}
+
+/* v87: balanced dialog proportions with practical decision guidance */
+@media(min-width:901px){
+.solution-dialog .solution-dialog-perspective{width:min(88vw,1530px)!important;height:min(86dvh,880px)!important}
+.solution-dialog .solution-dialog-scroll{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)!important;gap:0 clamp(24px,3vw,52px);padding:clamp(25px,2.6vw,42px) clamp(32px,3.2vw,56px)!important}
+.solution-dialog .solution-dialog-advice{grid-column:1 / -1;grid-row:auto;margin:4px 0 17px}
+.solution-dialog .solution-dialog-columns{margin:10px 0 16px}
+.solution-dialog .solution-dialog-usage{grid-row:1 / span 3}
+}
+.solution-dialog-advice{border-top:1px solid #ded8d0;padding-top:17px}
+.solution-dialog-advice h3{font-size:1.15rem;margin:0 0 12px;letter-spacing:-.03em}
+.solution-dialog-advice-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.solution-dialog-advice-items p{margin:0;padding:14px 17px;background:#f0ede8;border-radius:10px;font-size:.94rem;line-height:1.5;color:#414a49}
+@media(max-width:900px){.solution-dialog-advice-items{grid-template-columns:1fr;gap:9px}.solution-dialog-advice-items p{padding:13px 15px}}
