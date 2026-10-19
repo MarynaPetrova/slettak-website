@@ -27,7 +27,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   };
   const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
   email.addEventListener('input',()=>{
-    email.value=email.value.replace(/\\s+/g,'');
+    email.value=email.value.replace(/\s+/g,'');
     email.setCustomValidity('');
     status.textContent='';
   });
@@ -37,7 +37,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
     const empty=required.find(el=>!el.value.trim());
     if(empty){event.preventDefault();status.textContent=m.required;empty.focus();return;}
     const value=email.value.trim();
-    if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(value)){
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)){
       event.preventDefault();status.textContent=m.email;email.focus();return;
     }
     email.value=value;
