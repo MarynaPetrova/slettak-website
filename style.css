@@ -77,3 +77,6 @@
 #losninger .solution-card{position:relative;transform:translateY(0) scale(1)!important;transition:transform .24s ease,box-shadow .24s ease!important;transform-origin:center center;will-change:transform}
 @media(hover:hover) and (pointer:fine){#losninger .solution-card:hover{z-index:2;transform:translateY(-5px) scale(1.018)!important;box-shadow:0 16px 30px #202b2c1b!important}}
 @media(prefers-reduced-motion:reduce){#losninger .solution-card{transition:none!important}}
+
+/* Hide all nonfunctional decorative arrows on six solution cards */
+#losninger .solution-card .card-copy::after,#losninger .solution-card .card-copy::before,#losninger .solution-card .solution-art::after{content:none!important;display:none!important}
