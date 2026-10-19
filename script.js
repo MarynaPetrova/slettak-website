@@ -19,9 +19,9 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
  const button=form.querySelector('button[type="submit"]');
  const email=form.querySelector('#email');
  const text={
-  uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу електронної пошти.',consent:'Підтвердьте згоду на обробку даних.',sending:'Надсилаємо заявку…',success:'Дякуємо! Вашу заявку успішно надіслано. Ми зв’яжемося з вами найближчим часом.',error:'Не вдалося підтвердити надсилання. Перевірте з’єднання та спробуйте ще раз. Якщо проблема повториться, напишіть нам на електронну пошту.'},
-  en:{required:'Please complete the required fields.',email:'Enter a valid email address.',consent:'Please accept the privacy terms.',sending:'Sending your enquiry…',success:'Thank you! Your enquiry has been sent successfully. We will contact you soon.',error:'We could not confirm submission. Check your connection and try again, or contact us by email.'},
-  no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse.',consent:'Godta personvernerklæringen først.',sending:'Sender forespørselen…',success:'Takk! Forespørselen din er sendt. Vi tar kontakt så snart vi kan.',error:'Vi kunne ikke bekrefte innsendingen. Sjekk tilkoblingen og prøv igjen, eller kontakt oss på e-post.'}
+  uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу електронної пошти.',consent:'Підтвердьте згоду на обробку даних.',sending:'Заявку передаємо. Зачекайте на підтвердження надсилання…',slow:'Сервіс обробляє заявку довше, ніж зазвичай. Будь ласка, не натискайте кнопку повторно. Підтвердження з’явиться тут.',success:'Дякуємо! Вашу заявку успішно надіслано. Ми зв’яжемося з вами найближчим часом.',error:'Не вдалося підтвердити надсилання. Перевірте з’єднання та спробуйте ще раз. Якщо проблема повториться, напишіть нам на електронну пошту.'},
+  en:{required:'Please complete the required fields.',email:'Enter a valid email address.',consent:'Please accept the privacy terms.',sending:'Your enquiry is being submitted. Please wait for confirmation…',slow:'The service is taking longer than usual. Please do not submit again. Confirmation will appear here.',success:'Thank you! Your enquiry has been sent successfully. We will contact you soon.',error:'We could not confirm submission. Check your connection and try again, or contact us by email.'},
+  no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse.',consent:'Godta personvernerklæringen først.',sending:'Forespørselen sendes. Vent på bekreftelse…',slow:'Tjenesten bruker lengre tid enn vanlig. Ikke send på nytt. Bekreftelsen vises her.',success:'Takk! Forespørselen din er sendt. Vi tar kontakt så snart vi kan.',error:'Vi kunne ikke bekrefte innsendingen. Sjekk tilkoblingen og prøv igjen, eller kontakt oss på e-post.'}
  };
  const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
  let sending=false;
@@ -37,6 +37,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   if(!form.querySelector('[name="consent"]').checked){show(m.consent,'error');form.querySelector('[name="consent"]').focus();return;}
   email.value=value;
   sending=true;button.disabled=true;button.setAttribute('aria-busy','true');show(m.sending,'sending');
+  const slowNotice=setTimeout(()=>{if(sending)show(m.slow,'sending');},7000);
   try{
    const data=new FormData(form);
    data.delete('_next');
@@ -46,6 +47,6 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
    if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
    form.reset();show(m.success,'success');
   }catch(error){show(m.error,'error');}
-  finally{sending=false;button.disabled=false;button.removeAttribute('aria-busy');}
+  finally{clearTimeout(slowNotice);sending=false;button.disabled=false;button.removeAttribute('aria-busy');}
  });
 })();
