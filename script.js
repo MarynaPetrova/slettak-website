@@ -12,5 +12,41 @@ const inputs=[...document.querySelectorAll('input[placeholder],textarea[placehol
 function setLanguage(lang){const idx=lang==='en'?0:1;document.documentElement.lang=lang==='no'?'nb':lang;original.forEach(({node,text,prefix,suffix})=>{node.textContent=prefix+(lang==='no'?text:translations[text][idx])+suffix});fixedNodes.forEach(({el,no,uk})=>{el.textContent=lang==='uk'?uk:lang==='no'?no:(translations[no]?.[0]||no)});inputs.forEach(({el,original})=>{el.placeholder=lang==='no'?original:(placeholders[original]?.[idx]||original)});imageLabels.forEach(({el,text})=>el.setAttribute('aria-label',lang==='no'?text:translations[text][idx]));document.querySelector('nav[aria-label]')?.setAttribute('aria-label',lang==='uk'?'Головне меню':lang==='en'?'Main navigation':'Hovedmeny');document.querySelector('.language-switch')?.setAttribute('aria-label',lang==='uk'?'Вибір мови':lang==='en'?'Choose language':'Velg språk');document.querySelectorAll('[data-lang]').forEach(b=>{const selected=b.dataset.lang===lang;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});document.title=lang==='en'?'TakNova | Modern stretch ceilings':lang==='uk'?'TakNova | Сучасні натяжні стелі':'TakNova | Moderne strekktak i Akershus';try{localStorage.setItem('taknova-language',lang)}catch(e){}}
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));let selected='no';try{selected=localStorage.getItem('taknova-language')||'no'}catch(e){}if(!['no','en','uk'].includes(selected))selected='no';setLanguage(selected);
 
-// Explicit feedback and validation for the contact form. Native POST remains the delivery mechanism.
-(function(){const form=document.getElementById('contactForm');if(!form)return;const status=document.getElementById('form-status');const button=form.querySelector('button[type=submit]');form.addEventListener('submit',function(event){event.preventDefault();const lang=document.documentElement.lang;const required=[form.querySelector('#name'),form.querySelector('#email'),form.querySelector('#message')];const invalid=required.find(el=>!el.value.trim());if(invalid){status.textContent=lang==='uk'?'Заповніть обов’язкові поля.':lang==='en'?'Please complete the required fields.':'Fyll ut de obligatoriske feltene.';invalid.focus();return;}const email=form.querySelector('#email');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){status.textContent=lang==='uk'?'Вкажіть правильну електронну адресу.':lang==='en'?'Enter a valid email address.':'Oppgi en gyldig e-postadresse.';email.focus();return;}const consent=form.querySelector('input[name=consent]');if(!consent.checked){status.textContent=lang==='uk'?'Підтвердьте згоду на обробку даних.':lang==='en'?'Please accept the privacy terms.':'Godta personvernerklæringen først.';consent.focus();return;}status.textContent=lang==='uk'?'Переходимо до надсилання заявки…':lang==='en'?'Opening the form submission service…':'Sender deg videre til skjematjenesten…';status.textContent=lang==='uk'?'Надсилаємо заявку…':lang==='en'?'Submitting your enquiry…':'Sender forespørselen…';button.disabled=true;button.setAttribute('aria-busy','true');HTMLFormElement.prototype.submit.call(form);});})();
+// FormSubmit requires activation by the recipient. Keep native POST navigation so
+// the provider can display activation/error pages instead of hiding failures.
+(function(){
+  const form=document.getElementById('contactForm');
+  if(!form)return;
+  const status=document.getElementById('form-status');
+  const button=form.querySelector('button[type="submit"]');
+  const email=form.querySelector('#email');
+  const messages={
+    uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу, наприклад name@example.com.',consent:'Підтвердьте згоду на обробку даних.',sending:'Відкриваємо сервіс надсилання заявки…'},
+    en:{required:'Please complete the required fields.',email:'Enter a valid email, for example name@example.com.',consent:'Please accept the privacy terms.',sending:'Opening the submission service…'},
+    no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse, for eksempel name@example.com.',consent:'Godta personvernerklæringen først.',sending:'Åpner skjematjenesten…'}
+  };
+  const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
+  email.addEventListener('input',()=>{
+    email.value=email.value.replace(/\\s+/g,'');
+    email.setCustomValidity('');
+    status.textContent='';
+  });
+  form.addEventListener('submit',event=>{
+    const m=messages[language()];
+    const required=['#name','#message'].map(selector=>form.querySelector(selector));
+    const empty=required.find(el=>!el.value.trim());
+    if(empty){event.preventDefault();status.textContent=m.required;empty.focus();return;}
+    const value=email.value.trim();
+    if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(value)){
+      event.preventDefault();status.textContent=m.email;email.focus();return;
+    }
+    email.value=value;
+    if(!form.querySelector('[name="consent"]').checked){
+      event.preventDefault();status.textContent=m.consent;form.querySelector('[name="consent"]').focus();return;
+    }
+    status.textContent=m.sending;
+    button.disabled=true;
+    // Do not preventDefault: let the browser submit the real POST and show provider errors.
+  });
+  window.addEventListener('pageshow',()=>{button.disabled=false;button.removeAttribute('aria-busy');});
+})();
