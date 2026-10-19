@@ -37,16 +37,27 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   if(!form.querySelector('[name="consent"]').checked){show(m.consent,'error');form.querySelector('[name="consent"]').focus();return;}
   email.value=value;
   sending=true;button.disabled=true;button.setAttribute('aria-busy','true');show(m.sending,'sending');
-  const slowNotice=setTimeout(()=>{if(sending)show(m.slow,'sending');},7000);
+  // Queue the request for transmission even if the page is navigated away.
+  // This is an immediate acknowledgement of submission, not verified delivery.
+  const data=new FormData(form);
+  data.delete('_next');
+  const endpoint='https://formsubmit.co/ajax/marina.bitkova@gmail.com';
   try{
-   const data=new FormData(form);
-   data.delete('_next');
-   const response=await fetch('https://formsubmit.co/ajax/marina.bitkova@gmail.com',{method:'POST',body:data,headers:{'Accept':'application/json'},keepalive:true});
-   if(!response.ok)throw new Error('HTTP '+response.status);
-   const result=await response.json();
-   if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
-   form.reset();window.location.assign('takk.html');
-  }catch(error){show(m.error,'error');}
-  finally{clearTimeout(slowNotice);sending=false;button.disabled=false;button.removeAttribute('aria-busy');}
+    let queued=false;
+    if(navigator.sendBeacon){
+      queued=navigator.sendBeacon(endpoint,data);
+    }
+    if(!queued){
+      fetch(endpoint,{method:'POST',body:data,keepalive:true,headers:{Accept:'application/json'}}).catch(()=>{});
+      queued=true;
+    }
+    if(queued){
+      window.location.assign('takk.html');
+      return;
+    }
+  }catch(error){
+    show(m.error,'error');
+    sending=false;button.disabled=false;button.removeAttribute('aria-busy');
+  }
  });
 })();
