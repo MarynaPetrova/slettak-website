@@ -168,3 +168,7 @@ body.page-leaving{opacity:0}
 
 /* Keep the subtitle inside the visual width of the TakNova wordmark */
 .top .brand{display:inline-flex;flex-direction:column;align-items:stretch;width:max-content;max-width:100%}.top .brand small{font-size:clamp(.38rem,.48vw,.48rem);letter-spacing:.13em;white-space:nowrap;max-width:100%;text-align:center}
+
+/* Editorial header: compact navigation grouped next to the wordmark */
+@media(min-width:851px){.top .nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:clamp(24px,3vw,52px);min-height:86px}.top .nav nav{display:flex;flex:0 0 auto;order:0;width:auto;justify-content:flex-start;gap:clamp(20px,2vw,34px);margin:0}.top .nav nav a{font-size:clamp(.9rem,.98vw,1rem);font-weight:600;white-space:nowrap}.top .nav .language-switch{margin-left:auto}.top .nav .nav-cta{display:none}}
+@media(min-width:851px) and (max-width:1100px){.top .nav{gap:18px}.top .nav nav{gap:15px}.top .nav nav a{font-size:.86rem}}
