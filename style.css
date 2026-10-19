@@ -157,3 +157,6 @@ body.page-leaving{opacity:0}
 .thanks-overlay-detail{font-size:1.12rem;line-height:1.7;color:#687270;margin:0 auto 32px;max-width:640px}
 .thanks-overlay .btn{display:inline-block;background:#111b1d;color:white;padding:16px 24px;border-radius:4px;text-decoration:none}
 @media(prefers-reduced-motion:reduce){.thanks-overlay,.thanks-overlay-card{transition:none}}
+
+/* Balanced three-column hero features across all languages */
+@media(min-width:851px){.hero .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:900px;width:min(900px,calc(100vw - 100px));gap:32px;align-items:start}.hero .highlights>div{min-width:0}.hero .highlights strong{white-space:normal;font-size:clamp(.82rem,1.05vw,1rem);line-height:1.4;min-height:2.8em}.hero .highlights small{font-size:clamp(.74rem,.92vw,.9rem);line-height:1.5}.hero .highlights b{height:46px;display:flex;align-items:center;margin-bottom:7px}}
