@@ -253,3 +253,8 @@ h3{font-weight:650}
 .top .brand .brand-custom-logo{width:clamp(188px,18vw,260px);height:auto;aspect-ratio:1720/240;display:block;color:#1a1918}
 @media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
 @media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
+
+/* Reference-matched complete wordmark and subtitle in one scalable graphic */
+.top .brand .brand-custom-logo{width:clamp(190px,19vw,290px);height:auto;aspect-ratio:1628/315;display:block;color:#1c1c1c}
+@media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(170px,18vw,230px)}}
+@media(max-width:850px){.top .brand .brand-custom-logo{width:175px}}
