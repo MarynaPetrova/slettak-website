@@ -258,3 +258,21 @@ h3{font-weight:650}
 .top .brand .brand-custom-logo{width:clamp(190px,19vw,290px);height:auto;aspect-ratio:1628/315;display:block;color:#1c1c1c}
 @media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(170px,18vw,230px)}}
 @media(max-width:850px){.top .brand .brand-custom-logo{width:175px}}
+
+/* Editorial text system inspired by the Sita Dopamine collection page */
+body{font-family:"Manrope",Arial,sans-serif;font-size:16px;line-height:1.65;letter-spacing:-.018em}
+h1,h2,h3{font-family:"DM Sans",Arial,sans-serif;color:inherit;letter-spacing:-.055em;line-height:1.08}
+h1{font-weight:700;font-size:clamp(3.1rem,5.9vw,6.25rem)}
+h2{font-weight:700;font-size:clamp(2.45rem,4.6vw,5rem)}
+h3{font-weight:700;letter-spacing:-.045em}
+.hero .intro{font-family:"Manrope",Arial,sans-serif;font-size:clamp(1.05rem,1.32vw,1.3rem);line-height:1.65;letter-spacing:-.025em;max-width:560px}
+.section-heading p,.about-content p,.contact-section p{font-family:"Manrope",Arial,sans-serif;font-size:clamp(1rem,1.18vw,1.15rem);line-height:1.7;letter-spacing:-.02em}
+.section-heading h2{line-height:1.04}
+.card-copy h3{font-size:clamp(1.15rem,1.25vw,1.45rem);line-height:1.16;letter-spacing:-.045em}
+.card-copy p{font-size:.94rem;line-height:1.58;letter-spacing:-.018em}
+.steps h3{font-size:1.55rem}
+.steps p{font-size:1rem;line-height:1.65}
+.eyebrow{font-family:"Manrope",Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em}
+.solution-dialog h2{font-family:"DM Sans",Arial,sans-serif;font-weight:700;letter-spacing:-.055em}
+.solution-dialog-intro,.solution-dialog-usage p,.solution-dialog-columns li{font-family:"Manrope",Arial,sans-serif;letter-spacing:-.018em}
+@media(max-width:600px){body{font-size:15px}.card-copy p{font-size:.9rem}}
