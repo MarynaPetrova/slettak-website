@@ -200,3 +200,6 @@ body.page-leaving{opacity:0}
 .solution-dialog-panel{transition:transform 1.2s cubic-bezier(.22,.65,.25,1)}
 .solution-dialog-perspective{transition:transform .85s cubic-bezier(.22,.65,.25,1),opacity .65s ease}
 .solution-dialog-backdrop{transition:opacity .7s ease}
+
+/* Practical placement guidance inside enlarged solution cards */
+.solution-dialog-usage{margin-top:26px;padding:20px 24px;border-left:3px solid #947c66;background:#f0ece6;border-radius:0 8px 8px 0}.solution-dialog-usage h3{font-size:1.03rem;margin:0 0 10px;color:#172322}.solution-dialog-usage p{margin:0;font-size:.99rem;line-height:1.7;color:#46504f}
