@@ -19,3 +19,10 @@
 @media(min-width:681px){.hero:before{background:linear-gradient(90deg,#faf9f7 0%,#faf9f7f2 19%,#faf9f7db 31%,#faf9f744 48%,transparent 68%),url("hero.jpg") center center/cover no-repeat!important}}
 .art-matt{background-image:url("matte.jpg")!important;background-position:center center!important;background-size:cover!important}.art-lines{background-image:url("lines.jpg")!important;background-position:center center!important;background-size:cover!important}.art-hidden{background-image:url("hidden.jpg")!important;background-position:center center!important;background-size:cover!important}.art-spots{background-image:url("spots.jpg")!important;background-position:center center!important;background-size:cover!important}
 @media(max-width:680px){.hero:before{background:linear-gradient(180deg,#faf9f7 0%,#faf9f7ed 35%,#faf9f799 58%,transparent 87%),url("hero.jpg") center bottom/cover no-repeat!important}}
+
+/* Distinct finish samples: glossy reflective vs matte non-reflective */
+.art-gloss{background:linear-gradient(150deg,#e5e2de 0%,#b9c0c0 19%,#f9f9f8 23%,#a6adaf 33%,#e9edef 40%,#717b81 53%,#d9dee0 58%,#a6adb0 75%,#f5f6f5 100%)!important;position:relative;isolation:isolate}
+.art-gloss:before{content:"";position:absolute;inset:0 0 38%;background:linear-gradient(165deg,#fafbfc 0%,#d2d7d9 32%,#ffffffed 35%,#9ca8ad 57%,#f8fafa 60%,#a5aeb3 100%);clip-path:polygon(0 0,100% 0,100% 79%,0 100%);box-shadow:0 10px 20px #39464d44}
+.art-gloss:after{content:"";position:absolute;left:7%;right:7%;top:42%;height:2px;background:#fff;transform:rotate(-8deg);box-shadow:0 0 15px 4px #fff9}
+@media(min-width:1101px){#losninger .solution-grid{grid-template-columns:repeat(5,minmax(0,1fr))}#losninger .solution-art{height:185px}#losninger .card-copy h3{font-size:1rem}}
+@media(min-width:681px) and (max-width:1100px){#losninger .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
