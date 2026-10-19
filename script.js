@@ -41,7 +41,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   try{
    const data=new FormData(form);
    data.delete('_next');
-   const response=await fetch('https://formsubmit.co/ajax/marina.bitkova@gmail.com',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+   const response=await fetch('https://formsubmit.co/ajax/marina.bitkova@gmail.com',{method:'POST',body:data,headers:{'Accept':'application/json'},keepalive:true});
    if(!response.ok)throw new Error('HTTP '+response.status);
    const result=await response.json();
    if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
