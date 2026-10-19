@@ -384,3 +384,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 #prosess .steps p{position:relative;z-index:1;max-width:unset;font-size:clamp(.96rem,1.1vw,1.08rem);line-height:1.65;margin:0;color:#64625f}
 @media(max-width:850px){#prosess .steps{grid-template-columns:1fr;gap:16px}#prosess .steps article{min-height:230px;padding:28px;border-radius:22px}#prosess .steps h3{margin-top:25px}#prosess .steps article::after{font-size:12rem}}
 @media(prefers-reduced-motion:reduce){#prosess .steps article{transition:none!important}}
+
+/* v89 — modal uses exactly the same complete SVG brand artwork, only scaled down */
+.solution-dialog .solution-dialog-logo{display:block;grid-column:1;width:clamp(130px,11vw,185px);max-width:100%;height:auto;aspect-ratio:1628/315;color:#1c1c1c;overflow:visible;margin:0 0 8px;flex-shrink:0}
+@media(max-width:600px){.solution-dialog .solution-dialog-logo{width:140px;margin-bottom:12px}}
