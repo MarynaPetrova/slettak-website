@@ -388,3 +388,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* v89 — modal uses exactly the same complete SVG brand artwork, only scaled down */
 .solution-dialog .solution-dialog-logo{display:block;grid-column:1;width:clamp(130px,11vw,185px);max-width:100%;height:auto;aspect-ratio:1628/315;color:#1c1c1c;overflow:visible;margin:0 0 8px;flex-shrink:0}
 @media(max-width:600px){.solution-dialog .solution-dialog-logo{width:140px;margin-bottom:12px}}
+
+/* v90: full brand mark in modal, proportionally reduced from header */
+.solution-dialog .solution-dialog-logo{width:clamp(190px,16vw,260px)!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:1628/315!important;object-fit:contain!important;color:#172322!important;grid-column:1!important;align-self:start!important;margin:0 0 12px!important}
+@media(max-width:600px){.solution-dialog .solution-dialog-logo{width:185px!important}}
