@@ -71,3 +71,9 @@
 
 /* Extra crop for source-image divider strips on first and third photos */
 #losninger .solution-card:nth-child(1) .solution-art,#losninger .solution-card:nth-child(3) .solution-art{background-size:145% 116%!important;background-position:100% 50%!important}
+
+/* Gallery: subtle lift on hover, no misleading decorative arrows */
+#losninger .solution-card .card-copy:after{content:none!important;display:none!important}
+#losninger .solution-card{position:relative;transform:translateY(0) scale(1)!important;transition:transform .24s ease,box-shadow .24s ease!important;transform-origin:center center;will-change:transform}
+@media(hover:hover) and (pointer:fine){#losninger .solution-card:hover{z-index:2;transform:translateY(-5px) scale(1.018)!important;box-shadow:0 16px 30px #202b2c1b!important}}
+@media(prefers-reduced-motion:reduce){#losninger .solution-card{transition:none!important}}
