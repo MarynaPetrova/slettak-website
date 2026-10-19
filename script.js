@@ -52,7 +52,31 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
       queued=true;
     }
     if(queued){
-      setTimeout(()=>{document.body.classList.add('page-leaving');setTimeout(()=>window.location.assign('takk.html'),550);},5000);
+      setTimeout(()=>{
+        const lang=language();
+        const copy={
+          uk:['ЗАЯВКУ НАДІСЛАНО','Дякуємо за звернення!','Вашу заявку передано на обробку. Ми зв’яжемося з вами найближчим часом.','Повернутися на головну'],
+          en:['ENQUIRY SUBMITTED','Thank you for contacting us!','Your enquiry has been submitted for processing. We will contact you soon.','Back to homepage'],
+          no:['FORESPØRSEL SENDT','Takk for henvendelsen!','Forespørselen er sendt til behandling. Vi tar kontakt så snart vi kan.','Tilbake til forsiden']
+        }[lang];
+        const overlay=document.createElement('section');
+        overlay.className='thanks-overlay';
+        overlay.setAttribute('role','dialog');
+        overlay.setAttribute('aria-modal','true');
+        overlay.setAttribute('aria-label',copy[1]);
+        const card=document.createElement('div');
+        card.className='thanks-overlay-card';
+        const check=document.createElement('div');check.className='thanks-overlay-check';check.textContent='✓';
+        const eyebrow=document.createElement('p');eyebrow.className='thanks-overlay-eyebrow';eyebrow.textContent=copy[0];
+        const heading=document.createElement('h2');heading.textContent=copy[1];
+        const detail=document.createElement('p');detail.className='thanks-overlay-detail';detail.textContent=copy[2];
+        const back=document.createElement('a');back.href='#hjem';back.className='btn dark';back.textContent=copy[3]+' ↗';
+        back.addEventListener('click',()=>{overlay.classList.remove('visible');setTimeout(()=>overlay.remove(),850);});
+        card.append(check,eyebrow,heading,detail,back);overlay.append(card);document.body.append(overlay);
+        requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('visible')));
+        form.reset();
+        sending=false;button.disabled=false;button.removeAttribute('aria-busy');show('','');
+      },5000);
       return;
     }
   }catch(error){
