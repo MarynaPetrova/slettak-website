@@ -242,3 +242,9 @@ h3{font-weight:650}
 .top .brand .brand-word{font-family:"DM Sans",Arial,sans-serif;font-weight:400;letter-spacing:-.075em;font-size:clamp(2.45rem,3.25vw,3.45rem);line-height:.9;font-synthesis:none}
 @media(min-width:851px) and (max-width:1100px){.top .brand .brand-word{font-size:2.35rem}}
 @media(max-width:850px){.top .brand .brand-word{font-size:2.15rem}}
+
+/* Custom vector wordmark: rounded modular lettering inspired by supplied visual reference */
+.top .brand .brand-custom-logo{display:block;width:clamp(188px,18vw,260px);height:auto;overflow:visible;color:#181b1b;flex-shrink:0}
+.top .brand .brand-word.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
+@media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
