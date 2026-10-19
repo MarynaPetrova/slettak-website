@@ -157,3 +157,6 @@ body.page-leaving{opacity:0}
 .thanks-overlay-detail{font-size:1.12rem;line-height:1.7;color:#687270;margin:0 auto 32px;max-width:640px}
 .thanks-overlay .btn{display:inline-block;background:#111b1d;color:white;padding:16px 24px;border-radius:4px;text-decoration:none}
 @media(prefers-reduced-motion:reduce){.thanks-overlay,.thanks-overlay-card{transition:none}}
+
+/* Readability of the four hero benefits over the background photograph */
+@media(min-width:851px){.hero .highlights{position:relative;isolation:isolate;max-width:780px;padding:22px 26px 20px;margin-left:-26px;border-radius:12px;background:rgba(248,247,244,.94);box-shadow:0 10px 34px rgba(28,36,35,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.hero .highlights strong{color:#152023}.hero .highlights small{color:#394443}.hero .highlights b{color:#88735f}}
