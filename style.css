@@ -140,3 +140,8 @@
 /* Immediate visible form progress and delayed-provider explanation */
 #kontakt .form-status[data-state="sending"]{display:block;padding:16px 18px;background:#34433f;border-left:4px solid #c2a582;color:#fff6e8;border-radius:3px;font-weight:600}
 #kontakt button[aria-busy="true"]{cursor:progress;opacity:.8}
+
+/* Smooth transition after contact submission */
+body{transition:opacity .55s ease}
+body.page-leaving{opacity:0}
+@media(prefers-reduced-motion:reduce){body{transition:none}}
