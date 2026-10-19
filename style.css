@@ -248,3 +248,8 @@ h3{font-weight:650}
 .top .brand .brand-word.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
 @media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
+
+/* Vector traced from the approved TakNova visual prototype */
+.top .brand .brand-custom-logo{width:clamp(188px,18vw,260px);height:auto;aspect-ratio:1720/240;display:block;color:#1a1918}
+@media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
+@media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
