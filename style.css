@@ -68,3 +68,6 @@
 
 /* Correct source-image collage divider baked into left edge: crop from LEFT, not center */
 #losninger .solution-card .solution-art{background-size:125% 110%!important;background-position:100% 50%!important}
+
+/* Extra crop for source-image divider strips on first and third photos */
+#losninger .solution-card:nth-child(1) .solution-art,#losninger .solution-card:nth-child(3) .solution-art{background-size:145% 116%!important;background-position:100% 50%!important}
