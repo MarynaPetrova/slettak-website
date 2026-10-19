@@ -52,7 +52,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
       queued=true;
     }
     if(queued){
-      window.location.assign('takk.html');
+      setTimeout(()=>{document.body.classList.add('page-leaving');setTimeout(()=>window.location.assign('takk.html'),550);},5000);
       return;
     }
   }catch(error){
