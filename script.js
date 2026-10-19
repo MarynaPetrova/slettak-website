@@ -18,7 +18,8 @@ Object.assign(translations,{
 "Taket trenger ikke bare være hvitt og flatt. Det kan være diskret, speilblankt eller en del av belysningen. Finn uttrykket du liker.":["A ceiling can be more than white and flat. Keep it understated, make it glossy, or let it become part of your lighting. Find the look that feels right.","Стеля не обов’язково має бути просто білою та рівною. Вона може бути стриманою, дзеркальною або частиною освітлення. Знайдіть стиль, який вам до душі."],
 "Kanskje vet du akkurat hva du vil ha. Kanskje har du bare en idé. Begge deler er en fin start. Fortell oss litt om rommet, så tar vi en prat og avtaler gratis befaring.":["Maybe you know exactly what you want. Maybe you just have an idea. Both are a great start. Tell us about your room and we'll discuss the options and arrange a free visit.","Можливо, ви вже точно знаєте, чого хочете. А можливо, маєте лише ідею. І те, й інше — чудовий початок. Розкажіть про кімнату, і ми обговоримо варіанти та домовимося про безкоштовний огляд."],
 "Taket kan forandre":["A ceiling can transform","Стеля може змінити"],
-"hele rommet.":["the whole room.","усю кімнату."]
+"hele rommet.":["the whole room.","усю кімнату."],
+"Hopp til innhold":["Skip to content","Перейти до вмісту"]
 });
 
 const original=[];
