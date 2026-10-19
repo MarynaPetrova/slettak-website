@@ -65,3 +65,6 @@
 
 /* Remove thin white seams baked into left edges of gallery photos */
 #losninger .solution-card .solution-art{background-size:110% 110%!important;background-position:54% 50%!important}
+
+/* Correct source-image collage divider baked into left edge: crop from LEFT, not center */
+#losninger .solution-card .solution-art{background-size:125% 110%!important;background-position:100% 50%!important}
