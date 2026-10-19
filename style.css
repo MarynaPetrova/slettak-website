@@ -130,3 +130,9 @@
 #kontakt .contact-grid .form-status:empty{display:none}
 #kontakt .contact-grid .form-note{margin:2px 0 0}
 @media(max-width:850px){#kontakt .contact-grid{grid-template-columns:1fr;gap:28px}}
+
+/* Clear and accessible contact-form delivery feedback */
+#kontakt .form-status{margin:10px 0 4px;font-size:.94rem;line-height:1.6}
+#kontakt .form-status[data-state="success"]{padding:18px 20px;border:1px solid #a5c8b1;background:#24433b;color:#f0fff4;border-radius:4px;font-weight:600}
+#kontakt .form-status[data-state="error"]{color:#ffe2b7}
+#kontakt .form-status[data-state="sending"]{color:#f5e3bd}
