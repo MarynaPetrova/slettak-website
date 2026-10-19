@@ -45,7 +45,7 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
    if(!response.ok)throw new Error('HTTP '+response.status);
    const result=await response.json();
    if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
-   form.reset();show(m.success,'success');
+   form.reset();window.location.assign('takk.html');
   }catch(error){show(m.error,'error');}
   finally{clearTimeout(slowNotice);sending=false;button.disabled=false;button.removeAttribute('aria-busy');}
  });
