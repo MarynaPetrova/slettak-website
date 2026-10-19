@@ -396,3 +396,9 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* Keyboard focus and reduced-motion support */
 .solution-card:focus-visible,.solution-dialog-close:focus-visible,.lang:focus-visible,.btn:focus-visible{outline:3px solid #9b7756;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.solution-dialog-panel,.solution-dialog-front,.solution-dialog-back,.solution-dialog-perspective{animation:none!important;transition:none!important}}
+
+/* v93: keyboard-accessible skip link and readable focus for the form */
+.skip-link{position:fixed;top:12px;left:12px;z-index:99999;transform:translateY(-160%);padding:12px 20px;border-radius:10px;background:#1d2524;color:#fff;font-weight:700;transition:transform .2s}
+.skip-link:focus{transform:translateY(0)}
+#contactForm input:focus-visible,#contactForm textarea:focus-visible{outline:3px solid #9b7756;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
