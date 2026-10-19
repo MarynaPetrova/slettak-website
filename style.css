@@ -165,3 +165,6 @@ body.page-leaving{opacity:0}
 /* Compact, balanced desktop header */
 @media(min-width:851px){.top .nav{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(14px,2vw,30px);min-height:88px;padding-top:10px;padding-bottom:10px}.top .nav nav{display:flex;order:0;width:auto;flex:0 1 auto;justify-content:center;gap:clamp(20px,2.1vw,36px);margin:0 auto}.top .nav nav a{font-size:clamp(.86rem,1vw,1rem);font-weight:650;white-space:nowrap}.top .nav .brand{flex-shrink:0}.top .nav .language-switch{flex-shrink:0}.top .nav .nav-cta{display:none}}
 @media(min-width:851px) and (max-width:1100px){.top .nav{gap:12px}.top .nav nav{gap:14px}.top .nav nav a{font-size:.85rem}}
+
+/* Keep the subtitle inside the visual width of the TakNova wordmark */
+.top .brand{display:inline-flex;flex-direction:column;align-items:stretch;width:max-content;max-width:100%}.top .brand small{font-size:clamp(.38rem,.48vw,.48rem);letter-spacing:.13em;white-space:nowrap;max-width:100%;text-align:center}
