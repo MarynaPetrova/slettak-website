@@ -12,6 +12,15 @@ Object.assign(translations,{"Et nytt tak ":["A new ceiling ","Нова стел�
 const fixedTranslations=["Іноді саме стеля змінює все. Спокійна матова поверхня. Світло, яке підкреслює форму кімнати. Або глянець із характером. Разом знайдемо те, що пасує вашому дому.","Зображення показують приклади дизайну, а не реалізовані проєкти TakNova.","Завітаємо, подивимося на приміщення та вислухаємо ваші ідеї. Навіть ті, які ще тільки народжуються.","Матова чи глянцева? Зі світлом чи без? Знайдемо рішення разом. А перед початком робіт ви отримаєте зрозумілий кошторис.","Коли все погоджено, монтуємо стелю. І кімната відкривається по-новому.","Ми створили TakNova з простою думкою: стеля не лише завершує кімнату — вона може надавати їй характеру. Ми нова компанія в Акерсгусі. Любимо цікаві ідеї, чесні розмови й рішення для справжніх осель. Покажемо можливості, зробимо заміри та надамо кошторис, перш ніж ви вирішите.","Зображення показують приклади дизайну, а не реалізовані проєкти TakNova."];
 const editorialEnglish=["Sometimes the ceiling makes all the difference. A calm matte surface. Lighting that follows the room. Or a glossy finish with personality. We'll find what suits your home.","These images show design concepts, not completed TakNova projects.","We visit, look at your room and listen to your ideas. Even the ones you're still figuring out.","Matte or glossy? Lighting or no lighting? We'll work it out together. You'll receive a clear quote before deciding.","Once we've agreed on the plan, we install your ceiling. Then the room gets to show a new side.","We started TakNova with a simple idea: a ceiling doesn't just finish a room. It can give it character. We're a new company in Akershus, and we believe in good ideas, honest conversations and solutions for real homes. We'll show you the options, take measurements and provide a quote before you decide.","These images show design concepts, not completed TakNova projects."];
 const fixedNodes=[...document.querySelectorAll('[data-i18n-fixed]')].map(el=>({el,no:el.textContent,uk:fixedTranslations[Number(el.dataset.i18nFixed)]}));
+
+// v91: complete editorial copy translations before collecting text nodes
+Object.assign(translations,{
+"Taket trenger ikke bare være hvitt og flatt. Det kan være diskret, speilblankt eller en del av belysningen. Finn uttrykket du liker.":["A ceiling can be more than white and flat. Keep it understated, make it glossy, or let it become part of your lighting. Find the look that feels right.","Стеля не обов’язково має бути просто білою та рівною. Вона може бути стриманою, дзеркальною або частиною освітлення. Знайдіть стиль, який вам до душі."],
+"Kanskje vet du akkurat hva du vil ha. Kanskje har du bare en idé. Begge deler er en fin start. Fortell oss litt om rommet, så tar vi en prat og avtaler gratis befaring.":["Maybe you know exactly what you want. Maybe you just have an idea. Both are a great start. Tell us about your room and we'll discuss the options and arrange a free visit.","Можливо, ви вже точно знаєте, чого хочете. А можливо, маєте лише ідею. І те, й інше — чудовий початок. Розкажіть про кімнату, і ми обговоримо варіанти та домовимося про безкоштовний огляд."],
+"Taket kan forandre":["A ceiling can transform","Стеля може змінити"],
+"hele rommet.":["the whole room.","усю кімнату."]
+});
+
 const original=[];
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(node.parentElement.closest('script,style,.language-switch'))continue;const raw=node.textContent;const trimmed=raw.trim();if(trimmed&&translations[trimmed])original.push({node,text:trimmed,prefix:raw.match(/^\s*/)[0],suffix:raw.match(/\s*$/)[0]});}
 const placeholders={'Ditt navn':['Your name','Ваше ім’я'],'din@epost.no':['your@email.com','ваша@пошта.ua'],'F.eks. Asker':['e.g. Asker','Наприклад, Аскер'],'Hvilket rom, omtrent hvor stort, og hva ønsker du?':['Which room, approximate size and what would you like?','Яке приміщення, приблизна площа та ваші побажання?']};
@@ -45,50 +54,43 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   if(!form.querySelector('[name="consent"]').checked){show(m.consent,'error');form.querySelector('[name="consent"]').focus();return;}
   email.value=value;
   sending=true;button.disabled=true;button.setAttribute('aria-busy','true');show(m.sending,'sending');
-  // Queue the request for transmission even if the page is navigated away.
-  // This is an immediate acknowledgement of submission, not verified delivery.
   const data=new FormData(form);
   data.delete('_next');
   const endpoint='https://formsubmit.co/ajax/marina.bitkova@gmail.com';
   try{
-    let queued=false;
-    if(navigator.sendBeacon){
-      queued=navigator.sendBeacon(endpoint,data);
-    }
-    if(!queued){
-      fetch(endpoint,{method:'POST',body:data,keepalive:true,headers:{Accept:'application/json'}}).catch(()=>{});
-      queued=true;
-    }
-    if(queued){
-      setTimeout(()=>{
-        const lang=language();
-        const copy={
-          uk:['ЗАЯВКУ НАДІСЛАНО','Дякуємо за звернення!','Вашу заявку передано на обробку. Ми зв’яжемося з вами найближчим часом.','Повернутися на головну'],
-          en:['ENQUIRY SUBMITTED','Thank you for contacting us!','Your enquiry has been submitted for processing. We will contact you soon.','Back to homepage'],
-          no:['FORESPØRSEL SENDT','Takk for henvendelsen!','Forespørselen er sendt til behandling. Vi tar kontakt så snart vi kan.','Tilbake til forsiden']
-        }[lang];
-        const overlay=document.createElement('section');
-        overlay.className='thanks-overlay';
-        overlay.setAttribute('role','dialog');
-        overlay.setAttribute('aria-modal','true');
-        overlay.setAttribute('aria-label',copy[1]);
-        const card=document.createElement('div');
-        card.className='thanks-overlay-card';
-        const check=document.createElement('div');check.className='thanks-overlay-check';check.textContent='✓';
-        const eyebrow=document.createElement('p');eyebrow.className='thanks-overlay-eyebrow';eyebrow.textContent=copy[0];
-        const heading=document.createElement('h2');heading.textContent=copy[1];
-        const detail=document.createElement('p');detail.className='thanks-overlay-detail';detail.textContent=copy[2];
-        const back=document.createElement('a');back.href='#hjem';back.className='btn dark';back.textContent=copy[3]+' ↗';
-        back.addEventListener('click',()=>{overlay.classList.remove('visible');setTimeout(()=>overlay.remove(),850);});
-        card.append(check,eyebrow,heading,detail,back);overlay.append(card);document.body.append(overlay);
-        requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('visible')));
-        form.reset();
-        sending=false;button.disabled=false;button.removeAttribute('aria-busy');show('','');
-      },5000);
-      return;
-    }
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),20000);
+    let response;
+    try{
+      response=await fetch(endpoint,{method:'POST',body:data,headers:{Accept:'application/json'},signal:controller.signal});
+    }finally{clearTimeout(timeout);}
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const result=await response.json();
+    if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
+    const lang=language();
+    const copy={
+      uk:['ЗАЯВКУ НАДІСЛАНО','Дякуємо за звернення!','Сервіс підтвердив прийняття вашої заявки. Ми зв’яжемося з вами найближчим часом.','Повернутися на головну'],
+      en:['ENQUIRY SUBMITTED','Thank you for contacting us!','The service has confirmed receipt of your enquiry. We will contact you soon.','Back to homepage'],
+      no:['FORESPØRSEL SENDT','Takk for henvendelsen!','Tjenesten har bekreftet at forespørselen er mottatt. Vi tar kontakt så snart vi kan.','Tilbake til forsiden']
+    }[lang];
+    const overlay=document.createElement('section');
+    overlay.className='thanks-overlay';
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+    overlay.setAttribute('aria-label',copy[1]);
+    const card=document.createElement('div');card.className='thanks-overlay-card';
+    const check=document.createElement('div');check.className='thanks-overlay-check';check.textContent='✓';
+    const eyebrow=document.createElement('p');eyebrow.className='thanks-overlay-eyebrow';eyebrow.textContent=copy[0];
+    const heading=document.createElement('h2');heading.textContent=copy[1];
+    const detail=document.createElement('p');detail.className='thanks-overlay-detail';detail.textContent=copy[2];
+    const back=document.createElement('a');back.href='#hjem';back.className='btn dark';back.textContent=copy[3]+' ↗';
+    back.addEventListener('click',()=>{overlay.classList.remove('visible');setTimeout(()=>overlay.remove(),850);});
+    card.append(check,eyebrow,heading,detail,back);overlay.append(card);document.body.append(overlay);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('visible')));
+    form.reset();show('','');
   }catch(error){
     show(m.error,'error');
+  }finally{
     sending=false;button.disabled=false;button.removeAttribute('aria-busy');
   }
  });
