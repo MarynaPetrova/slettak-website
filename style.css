@@ -294,3 +294,10 @@ h3{font-weight:700;letter-spacing:-.045em}
 @media(max-width:850px){#losninger .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#losninger .solution-card{border-radius:22px;padding:12px}#losninger .solution-art{border-radius:15px}}
 @media(max-width:520px){#losninger .solution-grid{grid-template-columns:1fr}#losninger .solution-art{aspect-ratio:1.6/1}}
 @media(prefers-reduced-motion:reduce){#losninger .solution-card,#losninger .solution-art,#losninger .solution-card:after{transition:none!important}}
+
+/* v81 — original rectangular image treatment, no colour swatches */
+#losninger .solution-art{border-radius:0!important;aspect-ratio:auto!important;height:275px!important;transform:none!important}
+#losninger .solution-card:hover .solution-art{transform:none!important}
+#losninger .solution-card .color-swatches,#losninger .solution-card .swatches,#losninger .solution-card .color-options,#losninger .solution-card .colour-options,#losninger .solution-card .swatch{display:none!important}
+@media(max-width:850px){#losninger .solution-art{height:230px!important}}
+@media(max-width:520px){#losninger .solution-art{height:245px!important}}
