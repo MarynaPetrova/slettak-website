@@ -409,3 +409,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* v96 — ensure filtered cards truly disappear despite legacy grid overrides */
 #losninger .solution-card[hidden]{display:none!important}
 #losninger .solution-card[style*="display: none"]{display:none!important}
+
+/* v97: roomier solution details without changing typography or copy */
+@media(min-width:1000px){.solution-dialog-perspective{width:min(96vw,1500px)!important;max-width:1500px!important;height:min(96dvh,1000px)!important;max-height:96dvh!important}.solution-dialog-panel,.solution-dialog-back{height:100%!important}.solution-dialog-scroll{max-height:calc(96dvh - 28px)!important}}
+.solution-dialog-logo{height:auto!important;aspect-ratio:1628/220!important;max-height:75px!important;object-fit:contain!important;margin-bottom:14px!important}
