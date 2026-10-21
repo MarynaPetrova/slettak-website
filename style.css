@@ -426,3 +426,16 @@ h3{font-weight:700;letter-spacing:-.045em}
 .solution-dialog h2{margin:12px 0 10px!important}
 .solution-dialog-columns{margin:10px 0!important}
 }
+
+/* v100: full-viewport desktop detail panel, compact layout without forced inner scroll */
+@media(min-width:760px){
+.solution-dialog-perspective{width:calc(100vw - 16px)!important;max-width:1900px!important;height:calc(100dvh - 16px)!important;max-height:none!important}
+.solution-dialog-scroll{height:100%!important;max-height:none!important;overflow-y:auto!important;padding:12px clamp(18px,2vw,36px) 14px!important;column-gap:clamp(20px,2vw,42px)!important;align-content:start!important}
+.solution-dialog .solution-dialog-logo{width:185px!important;max-height:40px!important;margin-bottom:12px!important}
+.solution-dialog h2{margin:8px 0!important}
+.solution-dialog-columns{margin:8px 0!important;gap:12px!important}
+.solution-dialog-columns section{padding:12px!important}
+.solution-dialog-advice{padding-top:8px!important;margin-bottom:8px!important}
+.solution-dialog-advice-items{gap:8px!important}
+.solution-dialog-advice-items p{padding:9px 12px!important}
+}
