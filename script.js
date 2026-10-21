@@ -96,3 +96,28 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   }
  });
 })();
+
+
+// v94: filter solutions and guide the enquiry using existing inspiration images.
+(function(){
+ const cards=[...document.querySelectorAll('#losninger .solution-card')];
+ const filterButtons=[...document.querySelectorAll('.filter-chip')];
+ const labels={no:{all:'Alle løsninger',surface:'Overflater',lighting:'Belysning',ask:'Spør om denne løsningen ↗',finish:'Overflate',light:'Belysning',selected:'Valgt løsning'},en:{all:'All solutions',surface:'Finishes',lighting:'Lighting',ask:'Ask about this solution ↗',finish:'Finish',light:'Lighting',selected:'Selected solution'},uk:{all:'Усі рішення',surface:'Покриття',lighting:'Освітлення',ask:'Запитати про це рішення ↗',finish:'Покриття',light:'Освітлення',selected:'Обране рішення'}};
+ const terms={matt:{no:'Matt',en:'Matte',uk:'Матова'},gloss:{no:'Blank',en:'Glossy',uk:'Глянцева'},satin:{no:'Sateng',en:'Satin',uk:'Сатинова'},hidden:{no:'Skjult LED',en:'Hidden LED',uk:'Приховане LED'},lines:{no:'Lyslinjer',en:'Light lines',uk:'Світлові лінії'},spots:{no:'Spotter',en:'Spotlights',uk:'Точкові світильники'}};
+ const files={matt:'matte.jpg',gloss:'glossy.jpg',satin:'satin.jpg',hidden:'hidden-led.jpg',lines:'light-lines.jpg',spots:'spotlights.jpg'};
+ const chosen=document.getElementById('selectedSolution'),preview=document.querySelector('.config-image'),summary=document.querySelector('.config-selection');
+ function locale(){return document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no'}
+ function update(){
+  const lang=locale(),finish=document.querySelector('input[name="config-surface"]:checked').value,light=document.querySelector('input[name="config-light"]:checked').value;
+  summary.textContent=labels[lang].selected+': '+terms[finish][lang]+' · '+terms[light][lang];
+  preview.style.backgroundImage='url("'+files[finish]+'")';
+  chosen.value=terms[finish].no+' / '+terms[light].no;
+  document.querySelector('.config-cta').textContent=labels[lang].ask;
+  document.querySelector('.solution-dialog-cta').textContent=labels[lang].ask;
+  filterButtons.forEach(b=>b.textContent=labels[lang][b.dataset.filter]);
+ }
+ filterButtons.forEach(b=>b.addEventListener('click',()=>{filterButtons.forEach(x=>{const active=x===b;x.classList.toggle('is-active',active);x.setAttribute('aria-pressed',String(active))});cards.forEach((card,i)=>{card.hidden=b.dataset.filter!=='all'&&(b.dataset.filter==='surface'?i>2:i<3)})}));
+ document.querySelectorAll('input[name="config-surface"],input[name="config-light"]').forEach(el=>el.addEventListener('change',update));
+ document.querySelectorAll('.lang').forEach(el=>el.addEventListener('click',()=>requestAnimationFrame(update)));
+ update();
+})();
