@@ -51,33 +51,8 @@ const inputs=[...document.querySelectorAll('input[placeholder],textarea[placehol
 function setLanguage(lang){const idx=lang==='en'?0:1;document.documentElement.lang=lang==='no'?'nb':lang;original.forEach(({node,text,prefix,suffix})=>{node.textContent=prefix+(lang==='no'?text:translations[text][idx])+suffix});fixedNodes.forEach(({el,no,uk})=>{el.textContent=lang==='uk'?uk:lang==='no'?no:(editorialEnglish[Number(el.dataset.i18nFixed)]||translations[no]?.[0]||no)});inputs.forEach(({el,original})=>{el.placeholder=lang==='no'?original:(placeholders[original]?.[idx]||original)});imageLabels.forEach(({el,text})=>el.setAttribute('aria-label',lang==='no'?text:translations[text][idx]));document.querySelector('nav[aria-label]')?.setAttribute('aria-label',lang==='uk'?'Головне меню':lang==='en'?'Main navigation':'Hovedmeny');document.querySelector('.language-switch')?.setAttribute('aria-label',lang==='uk'?'Вибір мови':lang==='en'?'Choose language':'Velg språk');document.querySelectorAll('[data-lang]').forEach(b=>{const selected=b.dataset.lang===lang;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});document.title=lang==='en'?'TakNova | Modern stretch ceilings':lang==='uk'?'TakNova | Сучасні натяжні стелі':'TakNova | Moderne strekktak i Akershus';try{localStorage.setItem('taknova-language',lang)}catch(e){}}
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));let selected='no';try{selected=localStorage.getItem('taknova-language')||'no'}catch(e){}if(!['no','en','uk'].includes(selected))selected='no';setLanguage(selected);
 
-// Confirm delivery through FormSubmit AJAX before displaying success.
-(function(){
- const form=document.getElementById('contactForm');if(!form)return;
- const status=document.getElementById('form-status');
- const button=form.querySelector('button[type="submit"]');
- const email=form.querySelector('#email');
- const text={
-  uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу електронної пошти.',consent:'Підтвердьте згоду на обробку даних.',sending:'Заявку передаємо. Зачекайте на підтвердження надсилання…',slow:'Сервіс обробляє заявку довше, ніж зазвичай. Будь ласка, не натискайте кнопку повторно. Підтвердження з’явиться тут.',success:'Дякуємо! Вашу заявку успішно надіслано. Ми зв’яжемося з вами найближчим часом.',error:'Не вдалося підтвердити надсилання. Перевірте з’єднання та спробуйте ще раз. Якщо проблема повториться, напишіть нам на електронну пошту.'},
-  en:{required:'Please complete the required fields.',email:'Enter a valid email address.',consent:'Please accept the privacy terms.',sending:'Your enquiry is being submitted. Please wait for confirmation…',slow:'The service is taking longer than usual. Please do not submit again. Confirmation will appear here.',success:'Thank you! Your enquiry has been sent successfully. We will contact you soon.',error:'We could not confirm submission. Check your connection and try again, or contact us by email.'},
-  no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse.',consent:'Godta personvernerklæringen først.',sending:'Forespørselen sendes. Vent på bekreftelse…',slow:'Tjenesten bruker lengre tid enn vanlig. Ikke send på nytt. Bekreftelsen vises her.',success:'Takk! Forespørselen din er sendt. Vi tar kontakt så snart vi kan.',error:'Vi kunne ikke bekrefte innsendingen. Sjekk tilkoblingen og prøv igjen, eller kontakt oss på e-post.'}
- };
- const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
- let sending=false;
- function show(message,type){status.textContent=message;status.dataset.state=type;}
- email.addEventListener('input',()=>{email.value=email.value.replace(/\s+/g,'');email.setCustomValidity('');if(status.dataset.state!=='success')show('','');});
-
-// Use FormSubmit's native browser POST, avoiding blocked cross-origin AJAX.
-// Browser validation and FormSubmit's own confirmation page handle submission.
-form.addEventListener('submit',event=>{
- const consent=form.querySelector('[name="consent"]');
- if(!consent.checked){event.preventDefault();show(text[language()].consent,'error');consent.focus();return;}
- if(!form.checkValidity()){event.preventDefault();form.reportValidity();return;}
- button.disabled=true;button.setAttribute('aria-busy','true');
-});
-
-})();
-
+// Contact form uses native HTML POST to FormSubmit. Browser validates required fields.
+// Do not intercept submission or disable the submit button before navigation.
 
 // v96: dependable catalog filters and two-dimensional ceiling inspiration.
 (function(){
