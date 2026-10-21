@@ -106,21 +106,18 @@ form.addEventListener('submit',event=>{
  cards.forEach((card,i)=>{const visible=value==='all'||(value==='surface'?i<3:i>=3);card.hidden=!visible;card.style.display=visible?'':'none'});
  }
  function update(){
- const surface=document.querySelector('input[name="config-surface"]:checked')?.value||'matt';
- const light=document.querySelector('input[name="config-light"]:checked')?.value||'hidden';
- const ix=index(),language=lang();
- const surfaceName=terms[surface][ix],lightName=terms[light][ix];
- summary.textContent=labels[language].selected+': '+surfaceName+' · '+lightName;
- // Lighting selection takes precedence in the preview; surface is visible in the chosen description.
- preview.style.backgroundImage='url("'+images[light]+'")';
- preview.setAttribute('aria-label',surfaceName+' · '+lightName);
- selection.value=terms[surface][0]+' / '+terms[light][0];
+ const chosen=document.querySelector('input[name="config-choice"]:checked')?.value||'matt';
+ const ix=index(),language=lang(),name=terms[chosen][ix];
+ summary.textContent=labels[language].selected+': '+name;
+ preview.style.backgroundImage='url("'+images[chosen]+'")';
+ preview.setAttribute('aria-label',name);
+ selection.value=terms[chosen][0];
  document.querySelector('.config-cta').textContent=labels[language].ask;
  const modalCta=document.querySelector('.solution-dialog-cta');if(modalCta)modalCta.textContent=labels[language].ask;
  chips.forEach(chip=>chip.textContent=labels[language][chip.dataset.filter]);
  }
  chips.forEach(chip=>chip.addEventListener('click',()=>filter(chip.dataset.filter)));
- document.querySelectorAll('input[name="config-surface"],input[name="config-light"]').forEach(el=>el.addEventListener('change',update));
+ document.querySelectorAll('input[name="config-choice"]').forEach(el=>el.addEventListener('change',update));
  document.querySelectorAll('.lang').forEach(el=>el.addEventListener('click',()=>setTimeout(update,0)));
  document.querySelector('.config-cta')?.addEventListener('click',()=>{update();const message=form.querySelector('#message');if(!message.value.trim())message.placeholder=summary.textContent});
  filter('all');update();
