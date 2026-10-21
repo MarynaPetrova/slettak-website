@@ -22,6 +22,28 @@ Object.assign(translations,{
 "Hopp til innhold":["Skip to content","Перейти до вмісту"]
 });
 
+
+Object.assign(translations,{
+"Alle løsninger":["All solutions","Усі рішення"],"Overflater":["Finishes","Покриття"],"Belysning":["Lighting","Освітлення"],
+"FINN DIN STIL":["FIND YOUR STYLE","ЗНАЙДІТЬ СВІЙ СТИЛЬ"],
+"Hvordan skal taket ditt se ut?":["What should your ceiling look like?","Якою буде ваша стеля?"],
+"Velg en overflate og belysning du liker. Dette er inspirasjon, ikke en teknisk tegning eller et pristilbud.":["Choose a finish and lighting you like. This is inspiration, not a technical drawing or a quote.","Оберіть покриття й освітлення, які вам подобаються. Це приклад для натхнення, а не технічний проєкт чи кошторис."],
+"Overflate":["Finish","Покриття"],"Matt":["Matte","Матова"],"Blank":["Glossy","Глянцева"],"Sateng":["Satin","Сатинова"],
+"Skjult LED":["Hidden LED","Приховане LED"],"Lyslinjer":["Light lines","Світлові лінії"],"Spotter":["Spotlights","Точкові світильники"],
+"Spør om denne løsningen ↗":["Ask about this solution ↗","Запитати про це рішення ↗"],
+"Inspirasjonsbilde – viser ikke en automatisk simulering av valgene":["Inspiration image — not an automatic simulation of your selections","Зображення для натхнення — не автоматична візуалізація вашого вибору"],
+"SPØRSMÅL OG SVAR":["QUESTIONS & ANSWERS","ЗАПИТАННЯ ТА ВІДПОВІДІ"],
+"Lurer du på noe?":["Have a question?","Маєте запитання?"],
+"Hva skjer på en gratis befaring?":["What happens during a free visit?","Що відбувається під час безкоштовного огляду?"],
+"Vi ser på rommet, snakker om ønsker og muligheter, og tar nødvendige mål. Du får et tilbud før du bestemmer deg.":["We look at your room, discuss options and take the necessary measurements. You receive a quote before deciding.","Ми оглядаємо кімнату, обговорюємо побажання та робимо необхідні заміри. Ви отримаєте кошторис перед ухваленням рішення."],
+"Kan jeg kombinere strekktak og belysning?":["Can I combine stretch ceilings with lighting?","Чи можна поєднати натяжну стелю з освітленням?"],
+"Ja, det finnes flere mulige løsninger med lyslinjer, spotter og indirekte lys. Vi vurderer hva som passer rommet og de tekniske forutsetningene.":["Yes. Options include light lines, spotlights and indirect lighting. We assess what suits the room and its technical requirements.","Так. Є варіанти зі світловими лініями, точковими світильниками та прихованим освітленням. Ми оцінюємо особливості приміщення й технічні умови."],
+"Hvordan velger jeg mellom matt, blankt og sateng?":["How do I choose matte, glossy or satin?","Як обрати між матовою, глянцевою та сатиновою стелею?"],
+"Matt gir et rolig uttrykk, blankt gir tydeligere refleksjoner, og sateng har en myk glød. Vi anbefaler å se på materialprøver i riktig lys.":["Matte looks calm, glossy creates stronger reflections and satin has a soft glow. We recommend checking material samples in suitable lighting.","Матова поверхня створює спокійний вигляд, глянцева — виразні віддзеркалення, а сатинова — м’яке сяйво. Радимо подивитися на зразки за відповідного освітлення."],
+"Er bildene prosjekter TakNova har utført?":["Do the images show completed TakNova projects?","Чи зображено на фото виконані проєкти TakNova?"],
+"Nei. Bildene er konsept- og inspirasjonsbilder som viser mulige løsninger, ikke ferdige TakNova-prosjekter.":["No. They are concept and inspiration images, not completed TakNova projects.","Ні. Це концептуальні зображення для натхнення, а не реалізовані проєкти TakNova."]
+});
+
 const original=[];
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(node.parentElement.closest('script,style,.language-switch'))continue;const raw=node.textContent;const trimmed=raw.trim();if(trimmed&&translations[trimmed])original.push({node,text:trimmed,prefix:raw.match(/^\s*/)[0],suffix:raw.match(/\s*$/)[0]});}
 const placeholders={'Ditt navn':['Your name','Ваше ім’я'],'din@epost.no':['your@email.com','ваша@пошта.ua'],'F.eks. Asker':['e.g. Asker','Наприклад, Аскер'],'Hvilket rom, omtrent hvor stort, og hva ønsker du?':['Which room, approximate size and what would you like?','Яке приміщення, приблизна площа та ваші побажання?']};
@@ -113,11 +135,11 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
   preview.style.backgroundImage='url("'+files[finish]+'")';
   chosen.value=terms[finish].no+' / '+terms[light].no;
   document.querySelector('.config-cta').textContent=labels[lang].ask;
-  document.querySelector('.solution-dialog-cta').textContent=labels[lang].ask;
+  const modalCta=document.querySelector('.solution-dialog-cta');if(modalCta)modalCta.textContent=labels[lang].ask;
   filterButtons.forEach(b=>b.textContent=labels[lang][b.dataset.filter]);
  }
  filterButtons.forEach(b=>b.addEventListener('click',()=>{filterButtons.forEach(x=>{const active=x===b;x.classList.toggle('is-active',active);x.setAttribute('aria-pressed',String(active))});cards.forEach((card,i)=>{card.hidden=b.dataset.filter!=='all'&&(b.dataset.filter==='surface'?i>2:i<3)})}));
  document.querySelectorAll('input[name="config-surface"],input[name="config-light"]').forEach(el=>el.addEventListener('change',update));
  document.querySelectorAll('.lang').forEach(el=>el.addEventListener('click',()=>requestAnimationFrame(update)));
- update();
+ document.addEventListener('DOMContentLoaded',update,{once:true});
 })();
