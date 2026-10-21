@@ -449,3 +449,12 @@ h3{font-weight:700;letter-spacing:-.045em}
 .solution-dialog-back{position:relative}
 .solution-dialog-back::after{content:'↓';position:absolute;right:18px;bottom:14px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#272e2c;color:white;pointer-events:none;font-size:20px;box-shadow:0 2px 9px #0003}
 }
+
+/* v103: brand breathing room and permanently visible scrolling affordance */
+.solution-dialog .solution-dialog-logo{margin-bottom:38px!important}
+.solution-dialog-scroll{scrollbar-width:auto!important;scrollbar-color:#82654b #e8e2da!important}
+.solution-dialog-scroll::-webkit-scrollbar{width:12px!important;display:block!important}
+.solution-dialog-scroll::-webkit-scrollbar-track{background:#e8e2da!important}
+.solution-dialog-scroll::-webkit-scrollbar-thumb{background:#82654b!important;border-radius:9px;border:2px solid #e8e2da!important}
+@media(min-width:760px){.solution-dialog .solution-dialog-logo{margin-bottom:40px!important}}
+#backToTop{display:grid!important;place-items:center!important;opacity:1!important;visibility:visible!important}
