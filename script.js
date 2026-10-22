@@ -22,28 +22,6 @@ Object.assign(translations,{
 "Hopp til innhold":["Skip to content","Перейти до вмісту"]
 });
 
-
-Object.assign(translations,{
-"Alle løsninger":["All solutions","Усі рішення"],"Overflater":["Finishes","Покриття"],"Belysning":["Lighting","Освітлення"],
-"FINN DIN STIL":["FIND YOUR STYLE","ЗНАЙДІТЬ СВІЙ СТИЛЬ"],
-"Hvordan skal taket ditt se ut?":["What should your ceiling look like?","Якою буде ваша стеля?"],
-"Velg en overflate og belysning du liker. Dette er inspirasjon, ikke en teknisk tegning eller et pristilbud.":["Choose a finish and lighting you like. This is inspiration, not a technical drawing or a quote.","Оберіть покриття й освітлення, які вам подобаються. Це приклад для натхнення, а не технічний проєкт чи кошторис."],
-"Overflate":["Finish","Покриття"],"Matt":["Matte","Матова"],"Blank":["Glossy","Глянцева"],"Sateng":["Satin","Сатинова"],
-"Skjult LED":["Hidden LED","Приховане LED"],"Lyslinjer":["Light lines","Світлові лінії"],"Spotter":["Spotlights","Точкові світильники"],
-"Spør om denne løsningen ↗":["Ask about this solution ↗","Запитати про це рішення ↗"],
-"Inspirasjonsbilde – viser ikke en automatisk simulering av valgene":["Inspiration image — not an automatic simulation of your selections","Зображення для натхнення — не автоматична візуалізація вашого вибору"],
-"SPØRSMÅL OG SVAR":["QUESTIONS & ANSWERS","ЗАПИТАННЯ ТА ВІДПОВІДІ"],
-"Lurer du på noe?":["Have a question?","Маєте запитання?"],
-"Hva skjer på en gratis befaring?":["What happens during a free visit?","Що відбувається під час безкоштовного огляду?"],
-"Vi ser på rommet, snakker om ønsker og muligheter, og tar nødvendige mål. Du får et tilbud før du bestemmer deg.":["We look at your room, discuss options and take the necessary measurements. You receive a quote before deciding.","Ми оглядаємо кімнату, обговорюємо побажання та робимо необхідні заміри. Ви отримаєте кошторис перед ухваленням рішення."],
-"Kan jeg kombinere strekktak og belysning?":["Can I combine stretch ceilings with lighting?","Чи можна поєднати натяжну стелю з освітленням?"],
-"Ja, det finnes flere mulige løsninger med lyslinjer, spotter og indirekte lys. Vi vurderer hva som passer rommet og de tekniske forutsetningene.":["Yes. Options include light lines, spotlights and indirect lighting. We assess what suits the room and its technical requirements.","Так. Є варіанти зі світловими лініями, точковими світильниками та прихованим освітленням. Ми оцінюємо особливості приміщення й технічні умови."],
-"Hvordan velger jeg mellom matt, blankt og sateng?":["How do I choose matte, glossy or satin?","Як обрати між матовою, глянцевою та сатиновою стелею?"],
-"Matt gir et rolig uttrykk, blankt gir tydeligere refleksjoner, og sateng har en myk glød. Vi anbefaler å se på materialprøver i riktig lys.":["Matte looks calm, glossy creates stronger reflections and satin has a soft glow. We recommend checking material samples in suitable lighting.","Матова поверхня створює спокійний вигляд, глянцева — виразні віддзеркалення, а сатинова — м’яке сяйво. Радимо подивитися на зразки за відповідного освітлення."],
-"Er bildene prosjekter TakNova har utført?":["Do the images show completed TakNova projects?","Чи зображено на фото виконані проєкти TakNova?"],
-"Nei. Bildene er konsept- og inspirasjonsbilder som viser mulige løsninger, ikke ferdige TakNova-prosjekter.":["No. They are concept and inspiration images, not completed TakNova projects.","Ні. Це концептуальні зображення для натхнення, а не реалізовані проєкти TakNova."]
-});
-
 const original=[];
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(node.parentElement.closest('script,style,.language-switch'))continue;const raw=node.textContent;const trimmed=raw.trim();if(trimmed&&translations[trimmed])original.push({node,text:trimmed,prefix:raw.match(/^\s*/)[0],suffix:raw.match(/\s*$/)[0]});}
 const placeholders={'Ditt navn':['Your name','Ваше ім’я'],'din@epost.no':['your@email.com','ваша@пошта.ua'],'F.eks. Asker':['e.g. Asker','Наприклад, Аскер'],'Hvilket rom, omtrent hvor stort, og hva ønsker du?':['Which room, approximate size and what would you like?','Яке приміщення, приблизна площа та ваші побажання?']};
@@ -51,49 +29,70 @@ const inputs=[...document.querySelectorAll('input[placeholder],textarea[placehol
 function setLanguage(lang){const idx=lang==='en'?0:1;document.documentElement.lang=lang==='no'?'nb':lang;original.forEach(({node,text,prefix,suffix})=>{node.textContent=prefix+(lang==='no'?text:translations[text][idx])+suffix});fixedNodes.forEach(({el,no,uk})=>{el.textContent=lang==='uk'?uk:lang==='no'?no:(editorialEnglish[Number(el.dataset.i18nFixed)]||translations[no]?.[0]||no)});inputs.forEach(({el,original})=>{el.placeholder=lang==='no'?original:(placeholders[original]?.[idx]||original)});imageLabels.forEach(({el,text})=>el.setAttribute('aria-label',lang==='no'?text:translations[text][idx]));document.querySelector('nav[aria-label]')?.setAttribute('aria-label',lang==='uk'?'Головне меню':lang==='en'?'Main navigation':'Hovedmeny');document.querySelector('.language-switch')?.setAttribute('aria-label',lang==='uk'?'Вибір мови':lang==='en'?'Choose language':'Velg språk');document.querySelectorAll('[data-lang]').forEach(b=>{const selected=b.dataset.lang===lang;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});document.title=lang==='en'?'TakNova | Modern stretch ceilings':lang==='uk'?'TakNova | Сучасні натяжні стелі':'TakNova | Moderne strekktak i Akershus';try{localStorage.setItem('taknova-language',lang)}catch(e){}}
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));let selected='no';try{selected=localStorage.getItem('taknova-language')||'no'}catch(e){}if(!['no','en','uk'].includes(selected))selected='no';setLanguage(selected);
 
-// Contact form uses native HTML POST to FormSubmit. Browser validates required fields.
-// Do not intercept submission or disable the submit button before navigation.
-
-// v96: dependable catalog filters and two-dimensional ceiling inspiration.
+// Confirm delivery through FormSubmit AJAX before displaying success.
 (function(){
- const cards=Array.from(document.querySelectorAll('#losninger .solution-card'));
- const chips=Array.from(document.querySelectorAll('.filter-chip'));
- const selection=document.getElementById('selectedSolution');
- const preview=document.querySelector('.config-image');
- const summary=document.querySelector('.config-selection');
- const form=document.getElementById('contactForm');
- const labels={
- no:{all:'Alle løsninger',surface:'Overflater',lighting:'Belysning',ask:'Spør om denne løsningen ↗',selected:'Valgt løsning'},
- en:{all:'All solutions',surface:'Finishes',lighting:'Lighting',ask:'Ask about this solution ↗',selected:'Selected solution'},
- uk:{all:'Усі рішення',surface:'Покриття',lighting:'Освітлення',ask:'Запитати про це рішення ↗',selected:'Обране рішення'}
+ const form=document.getElementById('contactForm');if(!form)return;
+ const status=document.getElementById('form-status');
+ const button=form.querySelector('button[type="submit"]');
+ const email=form.querySelector('#email');
+ const text={
+  uk:{required:'Заповніть обов’язкові поля.',email:'Введіть правильну адресу електронної пошти.',consent:'Підтвердьте згоду на обробку даних.',sending:'Заявку передаємо. Зачекайте на підтвердження надсилання…',slow:'Сервіс обробляє заявку довше, ніж зазвичай. Будь ласка, не натискайте кнопку повторно. Підтвердження з’явиться тут.',success:'Дякуємо! Вашу заявку успішно надіслано. Ми зв’яжемося з вами найближчим часом.',error:'Не вдалося підтвердити надсилання. Перевірте з’єднання та спробуйте ще раз. Якщо проблема повториться, напишіть нам на електронну пошту.'},
+  en:{required:'Please complete the required fields.',email:'Enter a valid email address.',consent:'Please accept the privacy terms.',sending:'Your enquiry is being submitted. Please wait for confirmation…',slow:'The service is taking longer than usual. Please do not submit again. Confirmation will appear here.',success:'Thank you! Your enquiry has been sent successfully. We will contact you soon.',error:'We could not confirm submission. Check your connection and try again, or contact us by email.'},
+  no:{required:'Fyll ut de obligatoriske feltene.',email:'Oppgi en gyldig e-postadresse.',consent:'Godta personvernerklæringen først.',sending:'Forespørselen sendes. Vent på bekreftelse…',slow:'Tjenesten bruker lengre tid enn vanlig. Ikke send på nytt. Bekreftelsen vises her.',success:'Takk! Forespørselen din er sendt. Vi tar kontakt så snart vi kan.',error:'Vi kunne ikke bekrefte innsendingen. Sjekk tilkoblingen og prøv igjen, eller kontakt oss på e-post.'}
  };
- const terms={
- matt:['Matt','Matte','Матова'],gloss:['Blank','Glossy','Глянцева'],satin:['Sateng','Satin','Сатинова'],
- hidden:['Skjult LED','Hidden LED','Приховане LED'],lines:['Lyslinjer','Light lines','Світлові лінії'],spots:['Spotter','Spotlights','Точкові світильники']
- };
- const images={matt:'matte.jpg',gloss:'glossy.jpg',satin:'satin.jpg',hidden:'hidden-led.jpg',lines:'light-lines.jpg',spots:'spotlights.jpg'};
- let activeFilter='all';
- function lang(){return document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no'}
- function index(){return lang()==='no'?0:lang()==='en'?1:2}
- function filter(value){
- activeFilter=value;
- chips.forEach(chip=>{const on=chip.dataset.filter===value;chip.classList.toggle('is-active',on);chip.setAttribute('aria-pressed',String(on))});
- cards.forEach((card,i)=>{const visible=value==='all'||(value==='surface'?i<3:i>=3);card.hidden=!visible;card.style.display=visible?'':'none'});
- }
- function update(){
- const chosen=document.querySelector('input[name="config-choice"]:checked')?.value||'matt';
- const ix=index(),language=lang(),name=terms[chosen][ix];
- summary.textContent=labels[language].selected+': '+name;
- preview.style.backgroundImage='url("'+images[chosen]+'")';
- preview.setAttribute('aria-label',name);
- selection.value=terms[chosen][0];
- document.querySelector('.config-cta').textContent=labels[language].ask;
- const modalCta=document.querySelector('.solution-dialog-cta');if(modalCta)modalCta.textContent=labels[language].ask;
- chips.forEach(chip=>chip.textContent=labels[language][chip.dataset.filter]);
- }
- chips.forEach(chip=>chip.addEventListener('click',()=>filter(chip.dataset.filter)));
- document.querySelectorAll('input[name="config-choice"]').forEach(el=>el.addEventListener('change',update));
- document.querySelectorAll('.lang').forEach(el=>el.addEventListener('click',()=>setTimeout(update,0)));
- document.querySelector('.config-cta')?.addEventListener('click',()=>{update();const message=form.querySelector('#message');if(!message.value.trim())message.placeholder=summary.textContent});
- filter('all');update();
+ const language=()=>document.documentElement.lang==='uk'?'uk':document.documentElement.lang==='en'?'en':'no';
+ let sending=false;
+ function show(message,type){status.textContent=message;status.dataset.state=type;}
+ email.addEventListener('input',()=>{email.value=email.value.replace(/\s+/g,'');email.setCustomValidity('');if(status.dataset.state!=='success')show('','');});
+ form.removeAttribute('action');form.removeAttribute('method');
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(sending)return;
+  const m=text[language()];
+  const empty=['#name','#message'].map(q=>form.querySelector(q)).find(el=>!el.value.trim());
+  if(empty){show(m.required,'error');empty.focus();return;}
+  const value=email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)){show(m.email,'error');email.focus();return;}
+  if(!form.querySelector('[name="consent"]').checked){show(m.consent,'error');form.querySelector('[name="consent"]').focus();return;}
+  email.value=value;
+  sending=true;button.disabled=true;button.setAttribute('aria-busy','true');show(m.sending,'sending');
+  const data=new FormData(form);
+  data.delete('_next');
+  const endpoint='https://formsubmit.co/ajax/marina.bitkova@gmail.com';
+  try{
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),20000);
+    let response;
+    try{
+      response=await fetch(endpoint,{method:'POST',body:data,headers:{Accept:'application/json'},signal:controller.signal});
+    }finally{clearTimeout(timeout);}
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const result=await response.json();
+    if(result.success!==true&&result.success!=='true')throw new Error('Submission not confirmed');
+    const lang=language();
+    const copy={
+      uk:['ЗАЯВКУ НАДІСЛАНО','Дякуємо за звернення!','Сервіс підтвердив прийняття вашої заявки. Ми зв’яжемося з вами найближчим часом.','Повернутися на головну'],
+      en:['ENQUIRY SUBMITTED','Thank you for contacting us!','The service has confirmed receipt of your enquiry. We will contact you soon.','Back to homepage'],
+      no:['FORESPØRSEL SENDT','Takk for henvendelsen!','Tjenesten har bekreftet at forespørselen er mottatt. Vi tar kontakt så snart vi kan.','Tilbake til forsiden']
+    }[lang];
+    const overlay=document.createElement('section');
+    overlay.className='thanks-overlay';
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+    overlay.setAttribute('aria-label',copy[1]);
+    const card=document.createElement('div');card.className='thanks-overlay-card';
+    const check=document.createElement('div');check.className='thanks-overlay-check';check.textContent='✓';
+    const eyebrow=document.createElement('p');eyebrow.className='thanks-overlay-eyebrow';eyebrow.textContent=copy[0];
+    const heading=document.createElement('h2');heading.textContent=copy[1];
+    const detail=document.createElement('p');detail.className='thanks-overlay-detail';detail.textContent=copy[2];
+    const back=document.createElement('a');back.href='#hjem';back.className='btn dark';back.textContent=copy[3]+' ↗';
+    back.addEventListener('click',()=>{overlay.classList.remove('visible');setTimeout(()=>overlay.remove(),850);});
+    card.append(check,eyebrow,heading,detail,back);overlay.append(card);document.body.append(overlay);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('visible')));
+    form.reset();show('','');
+  }catch(error){
+    show(m.error,'error');
+  }finally{
+    sending=false;button.disabled=false;button.removeAttribute('aria-busy');
+  }
+ });
 })();
