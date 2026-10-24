@@ -2188,13 +2188,23 @@
       min-height: 0;
     }
   }
-  #losninger .solution-card .solution-art {
-    background-size: 125% 110%;
-    background-position: 100% 50%;
+  /* Desktop source-photo cropping only: percentage background sizes distorted mobile cards. */
+  @media(min-width:681px) {
+    #losninger .solution-card .solution-art {
+      background-size: 125% 110%;
+      background-position: 100% 50%;
+    }
+    #losninger .solution-card:nth-child(1) .solution-art,
+    #losninger .solution-card:nth-child(3) .solution-art {
+      background-size: 145% 116%;
+      background-position: 100% 50%;
+    }
   }
-  #losninger .solution-card:nth-child(1) .solution-art, #losninger .solution-card:nth-child(3) .solution-art {
-    background-size: 145% 116%;
-    background-position: 100% 50%;
+  @media(max-width:680px) {
+    #losninger .solution-card .solution-art {
+      background-size: cover;
+      background-position: center;
+    }
   }
   #losninger .solution-card {
     transform: translateY(0) scale(1);
