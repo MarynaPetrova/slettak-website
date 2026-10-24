@@ -2574,10 +2574,56 @@
   transform: none;
 }
 
-/* The explicit catalogue choice uses the existing button design. */
-.solution-dialog-choose { grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
-.selected-solution { margin: 0 0 18px; font-weight: 700; }
-.selected-solution[hidden] { display: none; }
+/* Keep the choice visible while only the descriptive content scrolls. */
+.solution-dialog .solution-dialog-back {
+  display: flex;
+  flex-direction: column;
+}
+.solution-dialog .solution-dialog-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  overscroll-behavior: contain;
+}
+.solution-dialog-actions {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px clamp(24px,3vw,54px);
+  border-top: 1px solid #96816d30;
+  background: #faf8f5;
+}
+.solution-dialog-actions .solution-dialog-choose {
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 24px;
+  border: 2px solid #96816d;
+  border-radius: 6px;
+  background: transparent;
+  color: #172224;
+  opacity: 1;
+  transition: background-color .28s ease, color .28s ease;
+}
+.solution-dialog-actions .solution-dialog-choose:is(:hover,:focus-visible) {
+  background: #96816d;
+  color: #fff;
+  opacity: 1;
+}
+.solution-dialog-choose:focus-visible {
+  outline: 3px solid #96816d;
+  outline-offset: 3px;
+}
+@media (max-width:600px) {
+  .solution-dialog-actions {
+    padding: 14px 24px max(14px,env(safe-area-inset-bottom));
+  }
+  .solution-dialog-actions .solution-dialog-choose {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .solution-dialog-actions .solution-dialog-choose { transition: none; }
+}
 #contactForm [type="submit"]:disabled { cursor: wait; }
 @media (prefers-reduced-motion: reduce) {
   #losninger .solution-card::after { transform: rotate(45deg); }

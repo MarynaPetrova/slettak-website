@@ -75,31 +75,36 @@ document.addEventListener('DOMContentLoaded',()=>{
   localizeFormLinks();
   const locale=document.documentElement.dataset.pageLang||'no';
   const copy={
-    no:{choose:'Velg denne løsningen',selected:'Valgt løsning: ',sending:'Sender forespørselen…'},
-    en:{choose:'Choose this solution',selected:'Selected solution: ',sending:'Sending your enquiry…'},
-    uk:{choose:'Обрати це рішення',selected:'Обране рішення: ',sending:'Надсилаємо заявку…'}
+    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…'},
+    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…'},
+    uk:{choose:'Обрати це рішення',desired:'Бажане рішення',placeholder:'Наприклад, матова стеля зі світловими лініями',sending:'Надсилаємо заявку…'}
   }[locale];
   const form=document.getElementById('contactForm');
   const dialog=document.querySelector('.solution-dialog');
   if(!form)return;
   const selection=document.createElement('input');
-  selection.type='hidden';selection.name='solution';form.append(selection);
-  const summary=document.createElement('p');
-  summary.className='selected-solution';summary.hidden=true;
-  form.insertBefore(summary,form.firstChild);
+  selection.type='text';selection.name='solution';selection.id='desired-solution';
+  selection.placeholder=copy.placeholder;selection.maxLength=300;
+  const label=document.createElement('label');
+  label.htmlFor=selection.id;label.textContent=copy.desired;
+  form.prepend(label,selection);
   if(dialog){
     const choose=document.createElement('button');
     choose.type='button';choose.className='btn primary solution-dialog-choose';
     choose.textContent=copy.choose;
-    dialog.querySelector('.solution-dialog-scroll').append(choose);
+    const actions=document.createElement('div');
+    actions.className='solution-dialog-actions';
+    actions.append(choose);
+    dialog.querySelector('.solution-dialog-back').append(actions);
     choose.addEventListener('click',()=>{
       const title=dialog.querySelector('#solution-dialog-title').textContent;
-      selection.value=title;
-      summary.textContent=copy.selected+title;summary.hidden=false;
+      const choices=selection.value.split(';').map(value=>value.trim()).filter(Boolean);
+      if(!choices.includes(title))choices.push(title);
+      selection.value=choices.join('; ');
       dialog.querySelector('.solution-dialog-close').click();
       setTimeout(()=>{
-        document.getElementById('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
-        form.querySelector('#message').focus({preventScroll:true});
+        selection.focus({preventScroll:true});
+        selection.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       },matchMedia('(prefers-reduced-motion: reduce)').matches?0:1250);
     });
   }
