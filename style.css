@@ -2515,54 +2515,18 @@
   :is(a.btn.primary, a.btn.hero-solutions-cta, #losninger a.btn.all-solutions, button.btn.light)::after { transition: none; }
 }
 
-/* Hero CTA hover pairing: solutions turns brown, inspection becomes outlined. */
-.hero .cta-row a.btn.hero-solutions-cta:is(:hover,:focus-visible) {
-  background-color: #96816d;
-  border-color: #96816d;
-  color: #fff;
-  opacity: 1;
-}
-.hero .cta-row a.btn.primary:is(:hover,:focus-visible) {
-  background-color: transparent;
-  border-color: #96816d;
+/* Unified hero buttons: identical resting and hovered appearances. */
+.hero .cta-row > a.btn:is(.primary,.hero-solutions-cta),
+.hero .cta-row > a.btn:is(.primary,.hero-solutions-cta):visited {
+  background: transparent;
+  border: 2px solid #96816d;
   color: #172224;
   opacity: 1;
+  transition: background-color .28s ease, border-color .28s ease, color .28s ease;
 }
-.hero .cta-row a.btn {
-  transition: background-color .28s ease, border-color .28s ease, color .28s ease, opacity .28s ease;
-}
-
-/* Linked hero CTA hover: hovering either button updates the pair together. */
-@media (hover: hover) {
-  .hero .cta-row:has(> a.hero-solutions-cta:hover) > a.hero-solutions-cta {
-    background-color: #96816d;
-    border-color: #96816d;
-    color: #fff;
-    opacity: 1;
-  }
-  .hero .cta-row:has(> a.hero-solutions-cta:hover) > a.btn.primary {
-    background-color: transparent;
-    border-color: #96816d;
-    color: #172224;
-    opacity: 1;
-  }
-}
-
-/* Default hero state: both buttons are transparent until one is hovered. */
-.hero .cta-row > a.btn.primary,
-.hero .cta-row > a.btn.hero-solutions-cta {
-  background-color: transparent;
-  color: #172224;
-  border-color: #172224;
+.hero .cta-row > a.btn:is(.primary,.hero-solutions-cta):is(:hover,:focus-visible) {
+  background: #96816d;
+  border-color: #96816d;
+  color: #fff;
   opacity: 1;
-}
-.hero .cta-row > a.btn.primary:is(:hover,:focus-visible) {
-  background-color: #96816d;
-  border-color: #96816d;
-  color: #fff;
-}
-.hero .cta-row > a.btn.hero-solutions-cta:is(:hover,:focus-visible) {
-  background-color: #96816d;
-  border-color: #96816d;
-  color: #fff;
 }
