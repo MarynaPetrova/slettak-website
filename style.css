@@ -385,12 +385,14 @@ h3{font-weight:700;letter-spacing:-.045em}
 @media(max-width:850px){#prosess .steps{grid-template-columns:1fr;gap:16px}#prosess .steps article{min-height:230px;padding:28px;border-radius:22px}#prosess .steps h3{margin-top:25px}#prosess .steps article::after{font-size:12rem}}
 @media(prefers-reduced-motion:reduce){#prosess .steps article{transition:none!important}}
 
-/* v89 — modal uses exactly the same complete SVG brand artwork, only scaled down */
-.solution-dialog .solution-dialog-logo{display:block;grid-column:1;width:clamp(130px,11vw,185px);max-width:100%;height:auto;aspect-ratio:1628/315;color:#1c1c1c;overflow:visible;margin:0 0 8px;flex-shrink:0}
-@media(max-width:600px){.solution-dialog .solution-dialog-logo{width:140px;margin-bottom:12px}}
-
-/* v90: full brand mark in modal, proportionally reduced from header */
-.solution-dialog .solution-dialog-logo{width:clamp(190px,16vw,260px)!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:1628/315!important;object-fit:contain!important;color:#172322!important;grid-column:1!important;align-self:start!important;margin:0 0 12px!important}
+/* Dialog brand: a single approved SVG size and responsive override. */
+.solution-dialog .solution-dialog-logo{
+  display:block;grid-column:1;align-self:start;flex-shrink:0;
+  width:clamp(190px,16vw,260px)!important;
+  max-width:100%;height:auto!important;min-height:0!important;max-height:none!important;
+  aspect-ratio:1628/315!important;object-fit:contain!important;
+  color:#172322!important;overflow:visible;margin:0 0 12px!important;
+}
 @media(max-width:600px){.solution-dialog .solution-dialog-logo{width:185px!important}}
 
 /* Keyboard focus and reduced-motion support */
