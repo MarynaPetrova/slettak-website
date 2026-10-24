@@ -2738,3 +2738,20 @@
   .solution-dialog .solution-dialog-columns li + li { margin-top: 4px; }
   .solution-dialog .solution-dialog-advice-items p { line-height: 1.45; }
 }
+
+/* Let the panel follow its content instead of reserving an empty lower area. */
+@media (min-width:701px) {
+  .solution-dialog .solution-dialog-perspective {
+    height: auto;
+    max-height: calc(100dvh - 48px);
+  }
+  .solution-dialog .solution-dialog-panel {
+    height: auto;
+  }
+  .solution-dialog .solution-dialog-back {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-height: calc(100dvh - 48px);
+  }
+}
