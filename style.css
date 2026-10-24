@@ -1169,7 +1169,7 @@
       flex-shrink: 0;
     }
   }
-  @media(min-width:851px) {
+  @media(min-width:681px) {
     .hero .highlights>div:nth-child(3) {
       position: relative;
       isolation: isolate;
@@ -1639,7 +1639,7 @@
     width: 48px;
     height: 48px;
     position: relative;
-    margin: 0 8px 5px auto;
+    margin: auto 8px 5px auto;
     border-radius: 50%;
     background: #f0eeea;
     color: #222;
@@ -1856,7 +1856,7 @@
     font-weight: 700;
     color: #927b65;
     letter-spacing: -.055em;
-    margin-bottom: auto;
+    margin-bottom: 0;
   }
   #prosess .steps h3 {
     position: relative;
@@ -2135,7 +2135,7 @@
       display: grid;
       grid-template-columns: repeat(6,minmax(0,1fr));
       gap: 8px;
-      align-items: start;
+      align-items: stretch;
     }
     #losninger .solution-card {
       min-width: 0;
