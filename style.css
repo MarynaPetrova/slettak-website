@@ -2548,3 +2548,14 @@
     transform: rotate(45deg);
   }
 }
+
+/* Content-sized desktop catalog dialog: avoid a large blank area below the details. */
+@media (min-width: 901px) {
+  .solution-dialog .solution-dialog-perspective {
+    height: min(790px, calc(100dvh - 48px));
+    max-height: calc(100dvh - 48px);
+  }
+  .solution-dialog .solution-dialog-scroll {
+    overflow-y: auto;
+  }
+}
