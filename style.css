@@ -473,23 +473,40 @@ h3{font-weight:700;letter-spacing:-.045em}
 :root{--taknova-font:"DM Sans",Arial,sans-serif}
 body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea,select,label,li,dt,dd,blockquote,figcaption){font-family:var(--taknova-font)!important}
 
-/* Symmetric three-column hero benefits: align icon, title and caption on shared rows. */
-@media(min-width:681px){
-.hero .highlights{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:16px!important}
-.hero .highlights>div{display:grid;grid-template-rows:48px minmax(2.8em,auto) auto;justify-items:start;text-align:left;align-content:start;min-width:0}
-.hero .highlights .feature-icon{height:40px!important;margin:0!important;justify-content:flex-start!important}
-.hero .highlights strong{display:block;min-height:0!important;align-self:start;text-align:left}
-.hero .highlights small{display:block;text-align:left;max-width:100%}
-}
-
-/* Keep the three hero benefits aligned while bringing the second and third closer. */
-@media(min-width:681px){
-.hero .highlights{max-width:510px!important;width:100%!important;column-gap:12px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
-}
-
-/* Keep benefit headings and captions close, without a reserved two-line title row. */
-@media(min-width:681px){
-.hero .highlights>div{grid-template-rows:48px auto auto!important;row-gap:3px!important}
-.hero .highlights strong{min-height:0!important;line-height:1.35!important}
-.hero .highlights small{margin-top:0!important}
+/* Hero benefits: one responsive layout, shared alignment and compact spacing. */
+@media (min-width: 681px) {
+  .hero .highlights {
+    width: 100% !important;
+    max-width: 510px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 16px 12px !important;
+  }
+  .hero .highlights > div {
+    display: grid;
+    grid-template-rows: 48px auto auto !important;
+    row-gap: 3px !important;
+    justify-items: start;
+    align-content: start;
+    min-width: 0;
+    text-align: left;
+  }
+  .hero .highlights .feature-icon {
+    height: 40px !important;
+    margin: 0 !important;
+    justify-content: flex-start !important;
+  }
+  .hero .highlights strong {
+    display: block;
+    min-height: 0 !important;
+    line-height: 1.35 !important;
+    align-self: start;
+    text-align: left;
+  }
+  .hero .highlights small {
+    display: block;
+    max-width: 100%;
+    margin-top: 0 !important;
+    text-align: left;
+  }
 }
