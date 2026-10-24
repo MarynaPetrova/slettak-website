@@ -2547,3 +2547,22 @@
     opacity: 1;
   }
 }
+
+/* Default hero state: both buttons are transparent until one is hovered. */
+.hero .cta-row > a.btn.primary,
+.hero .cta-row > a.btn.hero-solutions-cta {
+  background-color: transparent;
+  color: #172224;
+  border-color: #172224;
+  opacity: 1;
+}
+.hero .cta-row > a.btn.primary:is(:hover,:focus-visible) {
+  background-color: transparent;
+  border-color: #96816d;
+  color: #172224;
+}
+.hero .cta-row > a.btn.hero-solutions-cta:is(:hover,:focus-visible) {
+  background-color: #96816d;
+  border-color: #96816d;
+  color: #fff;
+}
