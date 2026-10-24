@@ -32,7 +32,7 @@ const languagePages={no:'index.html',en:'en.html',uk:'uk.html'};
 document.querySelectorAll('.language-switch [data-lang]').forEach(b=>b.addEventListener('click',()=>{
   const target=languagePages[b.dataset.lang];
   if(!target||b.dataset.lang===document.documentElement.dataset.pageLang)return;
-  window.location.assign(target+window.location.hash);
+  window.location.assign(target);
 }));
 const pageName=window.location.pathname.split('/').pop().toLowerCase();
 const selected=pageName==='en.html'?'en':pageName==='uk.html'?'uk':'no';
