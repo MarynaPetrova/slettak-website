@@ -2557,9 +2557,9 @@
   opacity: 1;
 }
 .hero .cta-row > a.btn.primary:is(:hover,:focus-visible) {
-  background-color: transparent;
+  background-color: #96816d;
   border-color: #96816d;
-  color: #172224;
+  color: #fff;
 }
 .hero .cta-row > a.btn.hero-solutions-cta:is(:hover,:focus-visible) {
   background-color: #96816d;
