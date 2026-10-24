@@ -162,30 +162,27 @@ body.page-leaving{opacity:0}
 
 /* Clear service icons instead of card-suit symbols */
 .hero .highlights .feature-icon{display:flex;align-items:center;justify-content:flex-start;height:40px;margin-bottom:6px;color:#917a64}.hero .highlights .feature-icon svg{display:block;width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-/* Compact, balanced desktop header */
-@media(min-width:851px){.top .nav{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(14px,2vw,30px);min-height:88px;padding-top:10px;padding-bottom:10px}.top .nav nav{display:flex;order:0;width:auto;flex:0 1 auto;justify-content:center;gap:clamp(20px,2.1vw,36px);margin:0 auto}.top .nav nav a{font-size:clamp(.86rem,1vw,1rem);font-weight:650;white-space:nowrap}.top .nav .brand{flex-shrink:0}.top .nav .language-switch{flex-shrink:0}.top .nav .nav-cta{display:none}}
-@media(min-width:851px) and (max-width:1100px){.top .nav{gap:12px}.top .nav nav{gap:14px}.top .nav nav a{font-size:.85rem}}
-
-/* Keep the subtitle inside the visual width of the TakNova wordmark */
-.top .brand{display:inline-flex;flex-direction:column;align-items:stretch;width:max-content;max-width:100%}.top .brand small{font-size:clamp(.38rem,.48vw,.48rem);letter-spacing:.13em;white-space:nowrap;max-width:100%;text-align:center}
-
-/* Editorial header: compact navigation grouped next to the wordmark */
-@media(min-width:851px){.top .nav{display:flex;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:clamp(24px,3vw,52px);min-height:86px}.top .nav nav{display:flex;flex:0 0 auto;order:0;width:auto;justify-content:flex-start;gap:clamp(20px,2vw,34px);margin:0}.top .nav nav a{font-size:clamp(.9rem,.98vw,1rem);font-weight:600;white-space:nowrap}.top .nav .language-switch{margin-left:auto}.top .nav .nav-cta{display:none}}
-@media(min-width:851px) and (max-width:1100px){.top .nav{gap:18px}.top .nav nav{gap:15px}.top .nav nav a{font-size:.86rem}}
-
-/* Correct wordmark structure and stable, centered desktop navigation */
+/* Header: single centered desktop grid and responsive wordmark. */
 .top .brand{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:max-content;max-width:none;flex:0 0 auto;text-decoration:none;white-space:nowrap;line-height:1}
 .top .brand .brand-word{display:block;color:#111b1d;font:700 2.45rem/.94 "DM Sans",sans-serif;letter-spacing:-.07em;white-space:nowrap}
-.top .brand .brand-word .brand-dot{display:inline;color:var(--warm)}
+.top .brand .brand-word .brand-dot{display:none!important}
 .top .brand small{display:block;align-self:center;margin-top:9px;font:700 .47rem/1.3 Manrope,Arial,sans-serif;letter-spacing:.12em;white-space:nowrap;text-align:center;max-width:none}
-@media(min-width:851px){.top .nav{display:grid;grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr);align-items:center;gap:24px;min-height:86px;flex-wrap:nowrap}.top .nav .brand{justify-self:start}.top .nav nav{display:flex;order:0;justify-self:center;justify-content:center;align-items:center;width:auto;flex:none;gap:clamp(17px,1.7vw,28px);margin:0}.top .nav nav a{font-size:clamp(.84rem,.88vw,.96rem);font-weight:600;white-space:nowrap}.top .nav .language-switch{justify-self:end;margin:0}.top .nav .nav-cta{display:none}}
-@media(min-width:851px) and (max-width:1100px){.top .nav{grid-template-columns:auto 1fr auto;gap:18px}.top .nav nav{gap:13px}.top .nav nav a{font-size:.82rem}.top .brand .brand-word{font-size:2rem}.top .brand small{font-size:.39rem;letter-spacing:.1em}}
+@media(min-width:851px){
+.top .nav{display:grid;grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr);align-items:center;gap:22px;min-height:86px;flex-wrap:nowrap;padding-top:10px;padding-bottom:10px}
+.top .nav .brand{justify-self:start;flex-shrink:0}
+.top .nav nav{display:flex;order:0;justify-self:center;justify-content:center;align-items:center;width:auto;flex:none;gap:clamp(22px,2vw,36px);margin:0}
+.top .nav nav a{font-size:clamp(1rem,1.13vw,1.17rem);font-weight:650;line-height:1.3;white-space:nowrap}
+.top .nav .language-switch{justify-self:end;margin:0;flex-shrink:0}
+.top .nav .nav-cta{display:none}
+}
+@media(min-width:851px) and (max-width:1100px){
+.top .nav{grid-template-columns:auto minmax(0,1fr) auto;gap:14px}
+.top .nav nav{gap:clamp(10px,1.2vw,18px)}
+.top .nav nav a{font-size:clamp(.85rem,1.05vw,1rem)}
+.top .brand .brand-word{font-size:2rem}
+.top .brand small{font-size:.39rem;letter-spacing:.1em}
+}
 @media(max-width:850px){.top .brand .brand-word{font-size:1.8rem}.top .brand small{font-size:.36rem;letter-spacing:.1em}}
-
-/* Header refinement: larger, centered navigation; wordmark without dot */
-.top .brand .brand-dot{display:none!important}
-@media(min-width:851px){.top .nav{display:grid;grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr);align-items:center;gap:22px}.top .nav nav{justify-self:center;gap:clamp(22px,2vw,36px);margin:0}.top .nav nav a{font-size:clamp(1rem,1.13vw,1.17rem);font-weight:650;line-height:1.3}.top .nav .language-switch{justify-self:end}}
-@media(min-width:851px) and (max-width:1100px){.top .nav{grid-template-columns:auto minmax(0,1fr) auto;gap:14px}.top .nav nav{gap:clamp(10px,1.2vw,18px)}.top .nav nav a{font-size:clamp(.85rem,1.05vw,1rem)}}
 
 /* Subtle extra fade behind the third hero feature, without a visible panel */
 @media(min-width:851px){.hero .highlights>div:nth-child(3){position:relative;isolation:isolate}.hero .highlights>div:nth-child(3)::before{content:"";position:absolute;z-index:-1;inset:-16px -14px -14px -18px;background:radial-gradient(ellipse at 42% 55%,rgba(248,247,244,.67) 0%,rgba(248,247,244,.42) 55%,rgba(248,247,244,0) 100%);pointer-events:none}}
