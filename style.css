@@ -277,8 +277,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* v85 — expansive, decision-friendly solution detail dialog */
 @media(min-width:901px){
 .solution-dialog{padding:clamp(12px,2vw,28px)}
-.solution-dialog-perspective{width:min(1460px,calc(100vw - 48px));height:min(930px,calc(100dvh - 32px))}
-.solution-dialog-scroll{padding:clamp(28px,3.4vw,56px) clamp(34px,4.2vw,76px);display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);column-gap:clamp(30px,4vw,76px);align-content:start}
+.solution-dialog-scroll{display:grid;align-content:start}
 .solution-dialog-kicker,.solution-dialog h2,.solution-dialog-intro,.solution-dialog-note{grid-column:1}
 .solution-dialog-kicker{margin:0}
 .solution-dialog h2{font-size:clamp(2.4rem,3.5vw,4rem);margin:15px 0 18px}
