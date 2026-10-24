@@ -342,15 +342,13 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* v86 — genuinely wide detail modal, overriding earlier max-width rules */
 @media(min-width:901px){
-.solution-dialog .solution-dialog-perspective{width:94vw!important;max-width:none!important;height:calc(100dvh - 36px)!important;max-height:none!important}
+.solution-dialog .solution-dialog-perspective{max-width:none!important;max-height:none!important}
 .solution-dialog .solution-dialog-scroll{padding:clamp(28px,3vw,50px) clamp(40px,4vw,76px)!important;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;column-gap:clamp(32px,4vw,90px)}
 .solution-dialog .solution-dialog-intro{max-width:none!important}
 }
-@media(min-width:1500px){.solution-dialog .solution-dialog-perspective{width:95vw!important}}
 
 /* v87: balanced dialog proportions with practical decision guidance */
 @media(min-width:901px){
-.solution-dialog .solution-dialog-perspective{width:min(88vw,1530px)!important;height:min(86dvh,880px)!important}
 .solution-dialog .solution-dialog-scroll{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)!important;gap:0 clamp(24px,3vw,52px);padding:clamp(25px,2.6vw,42px) clamp(32px,3.2vw,56px)!important}
 .solution-dialog .solution-dialog-advice{grid-column:1 / -1;grid-row:auto;margin:4px 0 17px}
 .solution-dialog .solution-dialog-columns{margin:10px 0 16px}
@@ -364,7 +362,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* v87 — balanced detail window and legible inspection CTA */
 @media(min-width:901px){
-.solution-dialog .solution-dialog-perspective{width:min(88vw,1500px)!important;height:min(78dvh,760px)!important;max-height:calc(100dvh - 36px)!important}
+.solution-dialog .solution-dialog-perspective{max-height:calc(100dvh - 36px)!important}
 .solution-dialog .solution-dialog-scroll{padding:clamp(25px,2.6vw,43px) clamp(32px,3.5vw,60px)!important}
 .solution-dialog h2{font-size:clamp(2.2rem,3.1vw,3.5rem)!important;margin:12px 0 16px!important}
 .solution-dialog .solution-dialog-columns{margin:10px 0 15px!important}
