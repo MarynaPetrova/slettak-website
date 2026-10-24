@@ -2494,7 +2494,7 @@
 }
 
 /* CTA icons use the EXACT arrow path and stroke as the back-to-top control. */
-:is(a.btn.primary, #losninger a.btn.all-solutions, button.btn.light)::after {
+:is(a.btn.primary, a.btn.hero-solutions-cta, #losninger a.btn.all-solutions, button.btn.light)::after {
   content: "";
   display: inline-block;
   flex: 0 0 19px;
@@ -2508,9 +2508,9 @@
   transform: rotate(45deg);
   transition: transform .28s ease;
 }
-:is(a.btn.primary, #losninger a.btn.all-solutions, button.btn.light):is(:hover,:focus-visible)::after {
+:is(a.btn.primary, a.btn.hero-solutions-cta, #losninger a.btn.all-solutions, button.btn.light):is(:hover,:focus-visible)::after {
   transform: rotate(90deg);
 }
 @media (prefers-reduced-motion: reduce) {
-  :is(a.btn.primary, #losninger a.btn.all-solutions, button.btn.light)::after { transition: none; }
+  :is(a.btn.primary, a.btn.hero-solutions-cta, #losninger a.btn.all-solutions, button.btn.light)::after { transition: none; }
 }
