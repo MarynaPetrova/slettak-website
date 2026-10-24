@@ -2531,3 +2531,19 @@
 .hero .cta-row a.btn {
   transition: background-color .28s ease, border-color .28s ease, color .28s ease, opacity .28s ease;
 }
+
+/* Linked hero CTA hover: hovering either button updates the pair together. */
+@media (hover: hover) {
+  .hero .cta-row:has(> a.hero-solutions-cta:hover) > a.hero-solutions-cta {
+    background-color: #96816d;
+    border-color: #96816d;
+    color: #fff;
+    opacity: 1;
+  }
+  .hero .cta-row:has(> a.hero-solutions-cta:hover) > a.btn.primary {
+    background-color: transparent;
+    border-color: #96816d;
+    color: #172224;
+    opacity: 1;
+  }
+}
