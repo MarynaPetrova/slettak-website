@@ -466,3 +466,6 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* Comfortable separation between contact introduction and contact details. */
 #kontakt .contact-details{margin-top:30px!important}
+
+/* Match hero supporting copy typography to the solutions introduction. */
+.hero .intro{font-family:"Manrope",Arial,sans-serif!important;font-size:clamp(1rem,1.18vw,1.15rem)!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.02em!important;color:var(--muted)!important;text-align:left!important}
