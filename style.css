@@ -2198,12 +2198,12 @@
   /* Desktop source-photo cropping only: percentage background sizes distorted mobile cards. */
   @media(min-width:681px) {
     #losninger .solution-card .solution-art {
-      background-size: 125% 110%;
+      background-size: cover;
       background-position: 100% 50%;
     }
     #losninger .solution-card:nth-child(1) .solution-art,
     #losninger .solution-card:nth-child(3) .solution-art {
-      background-size: 145% 116%;
+      background-size: cover;
       background-position: 100% 50%;
     }
   }
@@ -2257,7 +2257,7 @@
     content: "";
     display: grid;
     background-color: #172224;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 23px 23px;
@@ -2541,11 +2541,11 @@
 /* Catalog card arrows: rotate 45 degrees when the card is hovered or keyboard-focused. */
 @media (prefers-reduced-motion: no-preference) {
   #losninger .solution-card::after {
-    transform: rotate(0deg);
+    transform: rotate(45deg);
     transition: transform .32s ease, background-color .32s ease;
   }
   #losninger .solution-card:is(:hover,:focus-visible,:focus-within)::after {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
   }
 }
 
@@ -2572,4 +2572,13 @@
   color: #fff;
   opacity: 1;
   transform: none;
+}
+
+/* The explicit catalogue choice uses the existing button design. */
+.solution-dialog-choose { grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
+.selected-solution { margin: 0 0 18px; font-weight: 700; }
+.selected-solution[hidden] { display: none; }
+#contactForm [type="submit"]:disabled { cursor: wait; }
+@media (prefers-reduced-motion: reduce) {
+  #losninger .solution-card::after { transform: rotate(45deg); }
 }

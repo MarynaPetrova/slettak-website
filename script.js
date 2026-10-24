@@ -27,7 +27,7 @@ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n
 const placeholders={'Ditt navn':['Your name','Ваше ім’я'],'din@epost.no':['your@email.com','ваша@пошта.ua'],'F.eks. Asker':['e.g. Asker','Наприклад, Аскер'],'Hvilket rom, omtrent hvor stort, og hva ønsker du?':['Which room, approximate size and what would you like?','Яке приміщення, приблизна площа та ваші побажання?']};
 const inputs=[...document.querySelectorAll('input[placeholder],textarea[placeholder]')].map(el=>({el,original:el.placeholder}));const imageLabels=[...document.querySelectorAll('[aria-label]')].filter(el=>translations[el.getAttribute('aria-label')]).map(el=>({el,text:el.getAttribute('aria-label')}));
 function setLanguage(lang){const idx=lang==='en'?0:1;document.documentElement.lang=lang==='no'?'nb':lang;original.forEach(({node,text,prefix,suffix})=>{node.textContent=prefix+(lang==='no'?text:translations[text][idx])+suffix});fixedNodes.forEach(({el,no,uk})=>{el.textContent=lang==='uk'?uk:lang==='no'?no:(editorialEnglish[Number(el.dataset.i18nFixed)]||translations[no]?.[0]||no)});inputs.forEach(({el,original})=>{el.placeholder=lang==='no'?original:(placeholders[original]?.[idx]||original)});imageLabels.forEach(({el,text})=>el.setAttribute('aria-label',lang==='no'?text:translations[text][idx]));document.querySelector('nav[aria-label]')?.setAttribute('aria-label',lang==='uk'?'Головне меню':lang==='en'?'Main navigation':'Hovedmeny');document.querySelector('.language-switch')?.setAttribute('aria-label',lang==='uk'?'Вибір мови':lang==='en'?'Choose language':'Velg språk');document.querySelectorAll('[data-lang]').forEach(b=>{const selected=b.dataset.lang===lang;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});document.title=lang==='en'?'TakNova | Modern stretch ceilings':lang==='uk'?'TakNova | Сучасні натяжні стелі':'TakNova | Moderne strekktak i Akershus';const descriptions={no:'TakNova – moderne strekktak i Akershus. Utforsk matte, blanke og satengtak med integrert belysning. Bestill gratis befaring.',en:'TakNova – modern stretch ceilings in Akershus. Explore matte, glossy and satin finishes with integrated lighting. Book a free site visit.',uk:'TakNova — сучасні натяжні стелі в Акерсгусі. Матові, глянцеві й сатинові стелі з інтегрованим освітленням. Замовте безкоштовний огляд.'};document.querySelector('meta[name="description"]')?.setAttribute('content',descriptions[lang]);document.querySelector('meta[property="og:description"]')?.setAttribute('content',descriptions[lang]);document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);document.querySelector('meta[property="og:locale"]')?.setAttribute('content',lang==='uk'?'uk_UA':lang==='en'?'en_US':'nb_NO');document.dispatchEvent(new CustomEvent('taknova:language',{detail:lang}));try{localStorage.setItem('taknova-language',lang)}catch(e){}}
-// Each language has a dedicated URL; keep the current section when switching.
+// Each language has a dedicated URL and opens at the top.
 const languagePages={no:'index.html',en:'en.html',uk:'uk.html'};
 document.querySelectorAll('.language-switch [data-lang]').forEach(b=>b.addEventListener('click',()=>{
   const target=languagePages[b.dataset.lang];
@@ -56,3 +56,66 @@ function updateSupportingLabels(){
 }
 document.addEventListener('taknova:language',updateSupportingLabels);
 document.addEventListener('DOMContentLoaded',updateSupportingLabels);
+
+
+// Keep supporting pages tied to the source language, including direct visits.
+function localizeFormLinks(){
+  const lang=document.documentElement.dataset.pageLang||'no';
+  document.querySelectorAll('a[href^="personvern.html"]').forEach(link=>{
+    link.href='personvern.html?lang='+lang;
+  });
+  const form=document.getElementById('contactForm');
+  if(!form)return;
+  form.elements._next.value=new URL('takk.html?lang='+lang,location.href).href;
+  form.elements._subject.value={no:'Ny forespørsel om befaring | TakNova',en:'New site visit enquiry | TakNova',uk:'Нова заявка на огляд | TakNova'}[lang];
+  form.elements.consent.value={no:'Ja',en:'Yes',uk:'Так'}[lang];
+}
+localizeFormLinks();
+document.addEventListener('DOMContentLoaded',()=>{
+  localizeFormLinks();
+  const locale=document.documentElement.dataset.pageLang||'no';
+  const copy={
+    no:{choose:'Velg denne løsningen',selected:'Valgt løsning: ',sending:'Sender forespørselen…'},
+    en:{choose:'Choose this solution',selected:'Selected solution: ',sending:'Sending your enquiry…'},
+    uk:{choose:'Обрати це рішення',selected:'Обране рішення: ',sending:'Надсилаємо заявку…'}
+  }[locale];
+  const form=document.getElementById('contactForm');
+  const dialog=document.querySelector('.solution-dialog');
+  if(!form)return;
+  const selection=document.createElement('input');
+  selection.type='hidden';selection.name='solution';form.append(selection);
+  const summary=document.createElement('p');
+  summary.className='selected-solution';summary.hidden=true;
+  form.insertBefore(summary,form.firstChild);
+  if(dialog){
+    const choose=document.createElement('button');
+    choose.type='button';choose.className='btn primary solution-dialog-choose';
+    choose.textContent=copy.choose;
+    dialog.querySelector('.solution-dialog-scroll').append(choose);
+    choose.addEventListener('click',()=>{
+      const title=dialog.querySelector('#solution-dialog-title').textContent;
+      selection.value=title;
+      summary.textContent=copy.selected+title;summary.hidden=false;
+      dialog.querySelector('.solution-dialog-close').click();
+      setTimeout(()=>{
+        document.getElementById('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+        form.querySelector('#message').focus({preventScroll:true});
+      },matchMedia('(prefers-reduced-motion: reduce)').matches?0:1250);
+    });
+  }
+  // Keep the native POST and redirect; reject repeated activation while it is pending.
+  let submitting=false;
+  const submit=form.querySelector('[type="submit"]');
+  const status=document.getElementById('form-status');
+  const resting=submit.textContent;
+  form.addEventListener('submit',event=>{
+    if(submitting){event.preventDefault();return;}
+    submitting=true;
+    submit.disabled=true;submit.setAttribute('aria-busy','true');
+    submit.textContent=copy.sending;status.textContent=copy.sending;
+  });
+  window.addEventListener('pageshow',()=>{
+    submitting=false;submit.disabled=false;submit.removeAttribute('aria-busy');
+    submit.textContent=resting;status.textContent='';
+  });
+});
