@@ -2628,3 +2628,9 @@
 @media (prefers-reduced-motion: reduce) {
   #losninger .solution-card::after { transform: rotate(45deg); }
 }
+
+/* The modal starts with its title; the site header keeps its logo. */
+@media (min-width:901px) {
+  .solution-dialog .solution-dialog-usage { grid-row: 1 / span 2; margin-top: 0; }
+  .solution-dialog h2 { margin-top: 0; }
+}
