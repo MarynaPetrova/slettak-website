@@ -476,8 +476,8 @@ body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea
 /* Symmetric three-column hero benefits: align icon, title and caption on shared rows. */
 @media(min-width:681px){
 .hero .highlights{grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:16px!important}
-.hero .highlights>div{display:grid;grid-template-rows:48px minmax(2.8em,auto) auto;justify-items:center;text-align:center;align-content:start;min-width:0}
-.hero .highlights .feature-icon{height:40px!important;margin:0!important;justify-content:center!important}
-.hero .highlights strong{display:block;min-height:0!important;align-self:start;text-align:center}
-.hero .highlights small{display:block;text-align:center;max-width:100%}
+.hero .highlights>div{display:grid;grid-template-rows:48px minmax(2.8em,auto) auto;justify-items:start;text-align:left;align-content:start;min-width:0}
+.hero .highlights .feature-icon{height:40px!important;margin:0!important;justify-content:flex-start!important}
+.hero .highlights strong{display:block;min-height:0!important;align-self:start;text-align:left}
+.hero .highlights small{display:block;text-align:left;max-width:100%}
 }
