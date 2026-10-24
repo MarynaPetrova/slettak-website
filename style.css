@@ -2530,3 +2530,14 @@
   color: #fff;
   opacity: 1;
 }
+
+/* Catalog card arrows: rotate 45 degrees when the card is hovered or keyboard-focused. */
+@media (prefers-reduced-motion: no-preference) {
+  #losninger .solution-card::after {
+    transform: rotate(0deg);
+    transition: transform .32s ease, background-color .32s ease;
+  }
+  #losninger .solution-card:is(:hover,:focus-visible,:focus-within)::after {
+    transform: rotate(45deg);
+  }
+}
