@@ -235,26 +235,13 @@ h3{font-weight:650}
 .top .brand small{font-size:.39rem;letter-spacing:.09em}
 }
 
-/* Wordmark refinement: light, clean geometric Sita-inspired lettering */
+/* Approved vector wordmark and accessible text fallback. */
 .top .brand .brand-word{font-family:"DM Sans",Arial,sans-serif;font-weight:400;letter-spacing:-.075em;font-size:clamp(2.45rem,3.25vw,3.45rem);line-height:.9;font-synthesis:none}
-@media(min-width:851px) and (max-width:1100px){.top .brand .brand-word{font-size:2.35rem}}
-@media(max-width:850px){.top .brand .brand-word{font-size:2.15rem}}
-
-/* Custom vector wordmark: rounded modular lettering inspired by supplied visual reference */
-.top .brand .brand-custom-logo{display:block;width:clamp(188px,18vw,260px);height:auto;overflow:visible;color:#181b1b;flex-shrink:0}
+.top .brand .brand-custom-logo{display:block;width:clamp(190px,19vw,290px);height:auto;aspect-ratio:1628/315;overflow:visible;color:#1c1c1c;flex-shrink:0}
 .top .brand .brand-word.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-@media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
-@media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
-
-/* Vector traced from the approved TakNova visual prototype */
-.top .brand .brand-custom-logo{width:clamp(188px,18vw,260px);height:auto;aspect-ratio:1720/240;display:block;color:#1a1918}
-@media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(160px,18vw,210px)}}
-@media(max-width:850px){.top .brand .brand-custom-logo{width:165px}}
-
-/* Reference-matched complete wordmark and subtitle in one scalable graphic */
-.top .brand .brand-custom-logo{width:clamp(190px,19vw,290px);height:auto;aspect-ratio:1628/315;display:block;color:#1c1c1c}
+@media(min-width:851px) and (max-width:1100px){.top .brand .brand-word{font-size:2.35rem}}
 @media(max-width:1100px){.top .brand .brand-custom-logo{width:clamp(170px,18vw,230px)}}
-@media(max-width:850px){.top .brand .brand-custom-logo{width:175px}}
+@media(max-width:850px){.top .brand .brand-word{font-size:2.15rem}.top .brand .brand-custom-logo{width:175px}}
 
 /* Editorial text system inspired by the Sita Dopamine collection page */
 body{font-family:"Manrope",Arial,sans-serif;font-size:16px;line-height:1.65;letter-spacing:-.018em}
