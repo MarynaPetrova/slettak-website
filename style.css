@@ -433,3 +433,6 @@ h3{font-weight:700;letter-spacing:-.045em}
 #losninger .section-heading p{grid-column:1!important;grid-row:2!important;max-width:780px!important;margin:0!important;text-align:left!important;text-wrap:pretty!important;line-height:1.65!important}
 #losninger .section-heading .all-solutions{grid-column:2!important;grid-row:2!important;justify-self:end!important;align-self:end!important;white-space:nowrap!important;margin:0!important}
 @media(max-width:800px){#losninger .section-heading{grid-template-columns:minmax(0,1fr)!important;gap:18px!important;margin-bottom:28px!important}#losninger .section-heading h2,#losninger .section-heading p,#losninger .section-heading .all-solutions{grid-column:1!important;grid-row:auto!important}#losninger .section-heading .all-solutions{justify-self:start!important;white-space:normal!important}}
+
+/* Match solutions headline typography to the process section headline. */
+#losninger .section-heading h2{font-family:inherit!important;font-size:clamp(2.6rem,5.1vw,5.3rem)!important;font-weight:800!important;line-height:1.08!important;letter-spacing:-.055em!important;text-transform:none!important;max-width:none!important}
