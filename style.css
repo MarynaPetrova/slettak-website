@@ -2726,3 +2726,15 @@
   .solution-dialog .solution-dialog-scroll { padding-top: 28px; }
   .solution-dialog h2 { padding-right: 40px; }
 }
+
+/* Tablet spacing keeps the full content readable without oversized gaps. */
+@media (min-width:701px) and (max-width:900px) {
+  .solution-dialog .solution-dialog-scroll { gap: 8px 18px; padding: 20px 24px 10px; }
+  .solution-dialog .solution-dialog-intro,
+  .solution-dialog .solution-dialog-usage p { line-height: 1.5; }
+  .solution-dialog .solution-dialog-usage { padding: 14px 16px; }
+  .solution-dialog .solution-dialog-columns section { padding: 14px 16px; }
+  .solution-dialog .solution-dialog-columns li { line-height: 1.45; }
+  .solution-dialog .solution-dialog-columns li + li { margin-top: 4px; }
+  .solution-dialog .solution-dialog-advice-items p { line-height: 1.45; }
+}
