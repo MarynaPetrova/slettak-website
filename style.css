@@ -435,42 +435,40 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 
 
-/* Shared heading style: identical typography in Ideas and Process. */
-#prosess h2, #losninger .section-heading h2{font-family:"DM Sans",Arial,sans-serif!important;font-size:clamp(2.45rem,4.6vw,5rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.045em!important;font-style:normal!important;text-transform:none!important;text-align:left!important}
-#losninger .section-heading h2{max-width:none!important}
-
-/* The Ideas headline is now a direct section heading, like the Process headline. */
-#losninger>.ideas-main-heading{font-family:"DM Sans",Arial,sans-serif!important;font-size:clamp(2.45rem,4.6vw,5rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.045em!important;margin:0 0 34px!important;max-width:none!important}
+/* Design tokens and consistent type hierarchy. Keep the approved DM Sans look. */
+:root{
+  --taknova-font:"DM Sans",Arial,sans-serif;
+  --taknova-heading-size:clamp(3.65rem,4.45vw,5.05rem);
+  --taknova-heading-mobile:clamp(2.65rem,10vw,4rem);
+}
+body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea,select,label,li,dt,dd,blockquote,figcaption){font-family:var(--taknova-font)!important}
+#losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{
+  font-family:var(--taknova-font)!important;
+  font-size:var(--taknova-heading-size)!important;
+  font-weight:700!important;
+  line-height:1.1!important;
+  letter-spacing:-.045em!important;
+  font-style:normal!important;
+  text-transform:none!important;
+  text-align:left!important;
+}
+#losninger h2.ideas-main-heading{margin:0 0 34px!important;max-width:none!important}
 #losninger>.section-heading{margin-top:0!important;grid-template-columns:minmax(0,1fr) auto!important}
 #losninger>.section-heading p{grid-column:1!important;grid-row:1!important}
 #losninger>.section-heading .all-solutions{grid-column:2!important;grid-row:1!important}
-@media(max-width:800px){#losninger>.section-heading{grid-template-columns:minmax(0,1fr)!important}#losninger>.section-heading .all-solutions{grid-column:1!important;grid-row:2!important}}
-
-/* About heading: match typography of the other main section headings. */
-#om-oss .section-heading h2{font-family:"DM Sans",Arial,sans-serif!important;font-size:clamp(2.45rem,4.6vw,5rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.045em!important;font-style:normal!important;text-transform:none!important}
-
-/* Single typography definition for all section headings beneath the hero. */
-#losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-family:"DM Sans",Arial,sans-serif!important;font-size:clamp(2.45rem,4.6vw,5rem)!important;font-weight:700!important;line-height:1.1!important;letter-spacing:-.045em!important;font-style:normal!important;text-transform:none!important;text-align:left!important}
-
-/* All section eyebrow labels, including About TakNova, share one style. */
-#losninger>.eyebrow,#prosess .eyebrow,#om-oss .eyebrow,#kontakt .eyebrow{font-family:"Manrope",Arial,sans-serif!important;font-size:.72rem!important;font-weight:700!important;letter-spacing:.15em!important;line-height:1.65!important;color:var(--warm)!important;text-transform:uppercase!important;margin-bottom:20px!important}
-
-/* Main section headings match the hero headline's responsive font size. */
-#losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(3.65rem,4.45vw,5.05rem)!important}
-@media(max-width:800px){#losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(2.65rem,10vw,4rem)!important}}
-
-/* Comfortable separation between contact introduction and contact details. */
+#losninger>.eyebrow,#prosess .eyebrow,#om-oss .eyebrow,#kontakt .eyebrow{
+  font-family:var(--taknova-font)!important;
+  font-size:.72rem!important;font-weight:700!important;letter-spacing:.15em!important;
+  line-height:1.65!important;color:var(--warm)!important;text-transform:uppercase!important;margin-bottom:20px!important;
+}
 #kontakt .contact-details{margin-top:30px!important}
-
-/* Match hero supporting copy typography to the solutions introduction. */
-.hero .intro{font-family:"Manrope",Arial,sans-serif!important;font-size:clamp(1rem,1.18vw,1.15rem)!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.02em!important;color:var(--muted)!important;text-align:left!important}
-
-/* Hero feature captions: compact, consistent with the card-copy visual language. */
-.hero .highlights small{font-family:"Manrope",Arial,sans-serif!important;font-size:clamp(.78rem,.85vw,.88rem)!important;font-weight:400!important;line-height:1.5!important;letter-spacing:-.018em!important;color:#64625f!important}
-
-/* Unified TakNova typeface: DM Sans for headings and all interface/body copy. */
-:root{--taknova-font:"DM Sans",Arial,sans-serif}
-body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea,select,label,li,dt,dd,blockquote,figcaption){font-family:var(--taknova-font)!important}
+.hero .intro{font-family:var(--taknova-font)!important;font-size:clamp(1rem,1.18vw,1.15rem)!important;font-weight:400!important;line-height:1.65!important;letter-spacing:-.02em!important;color:var(--muted)!important;text-align:left!important}
+.hero .highlights small{font-family:var(--taknova-font)!important;font-size:clamp(.78rem,.85vw,.88rem)!important;font-weight:400!important;line-height:1.5!important;letter-spacing:-.018em!important;color:#64625f!important}
+@media(max-width:800px){
+  #losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:var(--taknova-heading-mobile)!important}
+  #losninger>.section-heading{grid-template-columns:minmax(0,1fr)!important}
+  #losninger>.section-heading .all-solutions{grid-column:1!important;grid-row:2!important}
+}
 
 /* Hero benefits: one responsive layout, shared alignment and compact spacing. */
 @media (min-width: 681px) {
