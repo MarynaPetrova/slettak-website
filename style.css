@@ -468,3 +468,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* Hero feature captions: compact, consistent with the card-copy visual language. */
 .hero .highlights small{font-family:"Manrope",Arial,sans-serif!important;font-size:clamp(.78rem,.85vw,.88rem)!important;font-weight:400!important;line-height:1.5!important;letter-spacing:-.018em!important;color:#64625f!important}
+
+/* Unified TakNova typeface: DM Sans for headings and all interface/body copy. */
+:root{--taknova-font:"DM Sans",Arial,sans-serif}
+body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea,select,label,li,dt,dd,blockquote,figcaption){font-family:var(--taknova-font)!important}
