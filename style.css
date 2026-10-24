@@ -481,3 +481,8 @@ body,body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,button,input,textarea
 .hero .highlights strong{display:block;min-height:0!important;align-self:start;text-align:left}
 .hero .highlights small{display:block;text-align:left;max-width:100%}
 }
+
+/* Keep the three hero benefits aligned while bringing the second and third closer. */
+@media(min-width:681px){
+.hero .highlights{max-width:510px!important;width:100%!important;column-gap:12px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
