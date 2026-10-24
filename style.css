@@ -405,3 +405,6 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* Accessible back-to-top control */
 .back-to-top{position:fixed;right:24px;bottom:24px;z-index:100;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#172224;color:#fff;text-decoration:none;font:700 27px/1 Arial,sans-serif;box-shadow:0 6px 22px #0003;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .2s,transform .2s,visibility .2s}.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top:hover{background:#96816d}.back-to-top:focus-visible{outline:3px solid #96816d;outline-offset:3px}@media(max-width:600px){.back-to-top{right:16px;bottom:18px;width:48px;height:48px}}
+
+/* Center arrow precisely inside floating back-to-top circle */
+.back-to-top{display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;text-align:center!important;line-height:1!important;font-family:Arial,sans-serif!important}
