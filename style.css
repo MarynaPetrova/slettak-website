@@ -472,3 +472,6 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* Hero feature descriptions use the same text treatment as solution-card descriptions. */
 .hero .highlights small{font-family:"Manrope",Arial,sans-serif!important;font-size:clamp(.9rem,1vw,1rem)!important;font-weight:400!important;line-height:1.58!important;letter-spacing:-.018em!important;color:#64625f!important}
+
+/* Keep the short hero feature captions understated, not larger than card copy. */
+.hero .highlights small{font-size:clamp(.78rem,.85vw,.88rem)!important;line-height:1.5!important}
