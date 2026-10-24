@@ -421,3 +421,8 @@ h3{font-weight:700;letter-spacing:-.045em}
 .solution-dialog .solution-dialog-logo{margin-bottom:18px!important}
 }
 @media(max-width:900px){.solution-dialog .solution-dialog-perspective{max-height:calc(100dvh - 20px)!important}.solution-dialog .solution-dialog-scroll{overflow-y:auto!important;scrollbar-width:thin!important;scrollbar-color:#96816d #eeeae3!important}}
+
+/* Keep right-side usage panel clear of close control; slightly narrower and taller. */
+@media(min-width:901px){
+.solution-dialog .solution-dialog-usage{width:calc(100% - 64px)!important;max-width:490px!important;min-height:185px!important;justify-self:start!important;box-sizing:border-box!important;padding:30px 23px!important;margin-top:26px!important}
+}
