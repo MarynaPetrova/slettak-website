@@ -455,3 +455,7 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* All section eyebrow labels, including About TakNova, share one style. */
 #losninger>.eyebrow,#prosess .eyebrow,#om-oss .eyebrow,#kontakt .eyebrow{font-family:"Manrope",Arial,sans-serif!important;font-size:.72rem!important;font-weight:700!important;letter-spacing:.15em!important;line-height:1.65!important;color:var(--warm)!important;text-transform:uppercase!important;margin-bottom:20px!important}
+
+/* Main section headlines match the hero headline's responsive font size. */
+#losninger>.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(3.65rem,4.45vw,5.05rem)!important}
+@media(max-width:800px){#losninger>.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(2.65rem,10vw,4rem)!important}}
