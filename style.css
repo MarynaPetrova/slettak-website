@@ -2514,3 +2514,20 @@
 @media (prefers-reduced-motion: reduce) {
   :is(a.btn.primary, a.btn.hero-solutions-cta, #losninger a.btn.all-solutions, button.btn.light)::after { transition: none; }
 }
+
+/* Hero CTA hover pairing: solutions turns brown, inspection becomes outlined. */
+.hero .cta-row a.btn.hero-solutions-cta:is(:hover,:focus-visible) {
+  background-color: #96816d;
+  border-color: #96816d;
+  color: #fff;
+  opacity: 1;
+}
+.hero .cta-row a.btn.primary:is(:hover,:focus-visible) {
+  background-color: transparent;
+  border-color: #96816d;
+  color: #172224;
+  opacity: 1;
+}
+.hero .cta-row a.btn {
+  transition: background-color .28s ease, border-color .28s ease, color .28s ease, opacity .28s ease;
+}
