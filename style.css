@@ -411,3 +411,13 @@ h3{font-weight:700;letter-spacing:-.045em}
 
 /* Use geometric SVG instead of off-center typographic arrow glyph */
 .back-to-top svg{display:block!important;position:static!important;flex:none!important;width:24px!important;height:24px!important;margin:0!important;padding:0!important;transform:none!important;vertical-align:middle!important}
+
+/* 2026-10-24: expand all solution detail dialogs on desktop, retaining mobile scrolling. */
+@media(min-width:901px){
+.solution-dialog .solution-dialog-perspective{width:calc(100vw - 32px)!important;max-width:none!important;height:calc(100dvh - 24px)!important;max-height:none!important}
+.solution-dialog .solution-dialog-scroll{padding:24px clamp(26px,3vw,54px) 20px!important;column-gap:clamp(24px,2.8vw,48px)!important;row-gap:8px!important}
+.solution-dialog .solution-dialog-columns{margin:6px 0 9px!important}
+.solution-dialog .solution-dialog-advice{margin:3px 0 8px!important;padding-top:10px!important}
+.solution-dialog .solution-dialog-logo{margin-bottom:18px!important}
+}
+@media(max-width:900px){.solution-dialog .solution-dialog-perspective{max-height:calc(100dvh - 20px)!important}.solution-dialog .solution-dialog-scroll{overflow-y:auto!important;scrollbar-width:thin!important;scrollbar-color:#96816d #eeeae3!important}}
