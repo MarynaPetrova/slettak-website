@@ -841,7 +841,7 @@ body {
 }
 @media(max-width:680px) {
   .hero:before {
-    background: linear-gradient(180deg,#faf9f7 0%,#faf9f7ed 35%,#faf9f799 58%,transparent 87%),url("hero.jpg") center bottom/cover no-repeat!important;
+    background: linear-gradient(180deg,#faf9f7 0%,#faf9f7ed 35%,#faf9f7e6 78%,#faf9f799 100%),url("hero.jpg") center bottom/cover no-repeat!important;
   }
 }
 .art-gloss {
