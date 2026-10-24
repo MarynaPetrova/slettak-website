@@ -1941,7 +1941,7 @@
     width: 52px;
     height: 52px;
     padding: 0;
-    border-radius: 50%;
+    border-radius: 15px;
     background: #172224;
     color: #fff;
     text-decoration: none;
@@ -1974,8 +1974,15 @@
     height: 24px;
     margin: 0;
     padding: 0;
-    transform: none;
+    transform: translateY(0);
+    transition: transform .25s ease;
     vertical-align: middle;
+  }
+  .back-to-top:is(:hover,:focus-visible) svg {
+    transform: translateY(-4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top svg { transition: none; }
   }
   @media(max-width:600px) {
     .back-to-top {
