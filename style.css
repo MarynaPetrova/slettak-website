@@ -463,3 +463,6 @@ h3{font-weight:700;letter-spacing:-.045em}
 /* Main section headings match the hero headline's responsive font size. */
 #losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(3.65rem,4.45vw,5.05rem)!important}
 @media(max-width:800px){#losninger h2.ideas-main-heading,#prosess h2,#om-oss .section-heading h2,#kontakt h2{font-size:clamp(2.65rem,10vw,4rem)!important}}
+
+/* Comfortable separation between contact introduction and contact details. */
+#kontakt .contact-details{margin-top:30px!important}
