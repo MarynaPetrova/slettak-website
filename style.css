@@ -2760,4 +2760,7 @@
 .hero .cta-row > a.btn.primary,
 .hero .cta-row > a.btn.primary:visited {background:#96816d;border-color:#96816d;color:#fff;}
 
+.header-phone{display:none;}
+@media(max-width:768px){.top .nav .header-phone{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;border:1px solid #96816d;border-radius:12px;color:#172224}.header-phone svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.header-phone:hover{background:#96816d;color:#fff}}
+
 .language-switch a.lang{text-decoration:none;}
