@@ -2756,4 +2756,8 @@
   }
 }
 
+/* Main hero CTA uses the existing primary CTA colour. */
+.hero .cta-row > a.btn.primary,
+.hero .cta-row > a.btn.primary:visited {background:#96816d;border-color:#96816d;color:#fff;}
+
 .language-switch a.lang{text-decoration:none;}
