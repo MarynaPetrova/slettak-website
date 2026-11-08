@@ -2811,15 +2811,46 @@
   gap: 1rem;
 }
 .ceiling-guide-questions details {
+  box-sizing: border-box;
   min-width: 0;
-  align-self: stretch;
-  justify-self: stretch;
-  padding: 1rem 1.25rem;
+  block-size: 15rem;
   border: 1px solid #ded6ca;
   border-radius: 1rem;
+  overflow: auto;
 }
-.ceiling-guide-questions summary { cursor: pointer; font-size: 1.0625rem; font-weight: 650; padding-block: .35rem; }
-.ceiling-guide-questions p { margin: .65rem 0 0; }
+.ceiling-guide-questions summary {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  font-weight: 650;
+  line-height: 1.2;
+}
+.ceiling-guide-questions details:not([open]) summary {
+  min-block-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.ceiling-guide-questions details:not([open]) summary::after {
+  content: "+";
+  flex: none;
+  color: #927b65;
+}
+.ceiling-guide-questions details[open] summary {
+  padding-bottom: .35rem;
+  font-size: 1.0625rem;
+}
+.ceiling-guide-questions details p {
+  margin: 0;
+  padding: .25rem 1.25rem 1.25rem;
+}
+.ceiling-guide-questions summary:focus-visible {
+  outline: 2px solid #927b65;
+  outline-offset: -4px;
+  border-radius: .85rem;
+}
 .ceiling-guide-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
 .ceiling-guide-links a { text-underline-offset: .2em; font-weight: 650; }
 @media (max-width: 768px) {
