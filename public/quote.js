@@ -18,15 +18,6 @@ buttons.forEach(button => button.addEventListener('click', () => {
   }
 }));
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      gallery.classList.add('tak-entered');
-      observer.disconnect();
-    }
-  }, {threshold: .25});
-  observer.observe(gallery);
-}
 
 const quote = document.querySelector('.tak-quote');
 const length = quote.querySelector('[name="ceiling_length_m"]');
