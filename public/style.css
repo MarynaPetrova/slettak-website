@@ -2877,4 +2877,5 @@
 #om-oss p:not(.eyebrow),
 #kontakt .contact-grid p:not(.eyebrow, .consent, .form-status) {
   font-size: var(--taknova-body-size);
+  color: var(--muted);
 }
