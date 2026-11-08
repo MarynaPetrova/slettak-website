@@ -2863,3 +2863,15 @@
 #prosess .steps { align-items: stretch; }
 #losninger .solution-card { align-self: stretch; }
 #losninger .solution-card .card-copy { flex: 1 0 auto; }
+
+/* Shared reading size for body copy and footer text. */
+.footer,
+.ceiling-guide-intro p:not(.eyebrow),
+.ceiling-guide-questions details p,
+#losninger .section-heading p,
+#losninger .solution-card .card-copy p,
+#prosess .steps p,
+#om-oss p:not(.eyebrow),
+#kontakt .contact-grid p:not(.eyebrow, .consent, .form-status) {
+  font-size: 1rem;
+}
