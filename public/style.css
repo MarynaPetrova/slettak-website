@@ -2785,3 +2785,41 @@
 @media(max-width:380px){.top .brand .brand-custom-logo{width:136px}}
 @media(max-width:360px){.top .brand .brand-custom-logo{width:118px}}
 #kontakt .contact-grid p.consent{font-size:.79rem;line-height:1.5;margin:8px 0}
+
+/* Stretch ceiling guide */
+.ceiling-guide { display: grid; gap: clamp(1.25rem, 3vw, 2.5rem); }
+.ceiling-guide-intro { max-width: 48rem; }
+.ceiling-guide-intro h2 { margin-block: .35em; }
+.ceiling-guide-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #262523;
+  aspect-ratio: 16 / 8;
+}
+.ceiling-guide-media img, .ceiling-guide-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+}
+.ceiling-guide-questions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+.ceiling-guide-questions details {
+  padding: 1rem 1.25rem;
+  border: 1px solid #ded6ca;
+  border-radius: 1rem;
+}
+.ceiling-guide-questions summary { cursor: pointer; font-weight: 650; padding-block: .35rem; }
+.ceiling-guide-questions p { margin: .65rem 0 0; }
+.ceiling-guide-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.ceiling-guide-links a { text-underline-offset: .2em; font-weight: 650; }
+@media (max-width: 768px) {
+  .ceiling-guide-media { aspect-ratio: 4 / 3; }
+  .ceiling-guide-questions { grid-template-columns: minmax(0, 1fr); }
+}
