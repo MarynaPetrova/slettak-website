@@ -39,3 +39,16 @@
 @keyframes tak-return { from { opacity: 0; z-index: 1; } to { opacity: 1; z-index: 1; } }
 
 .ceiling-guide-media.tak-gallery img { aspect-ratio: 16 / 9; object-position: center; }
+
+#ceiling-light .ceiling-guide-intro { max-width: none; }
+#ceiling-light .ceiling-guide-intro h2 { margin: 0 0 .75rem; }
+#ceiling-light .ceiling-guide-intro p { max-width: 76ch; margin: 0; }
+#ceiling-light .ceiling-guide-intro p + p { margin-top: .6rem; }
+#ceiling-light .tak-gallery figcaption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem 1.5rem;
+  padding: 1rem clamp(1rem, 3vw, 1.5rem);
+}
+#ceiling-light .tak-gallery-buttons { margin-top: 0; }
