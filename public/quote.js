@@ -33,30 +33,27 @@ const length = quote.querySelector('[name="ceiling_length_m"]');
 const width = quote.querySelector('[name="ceiling_width_m"]');
 const area = quote.querySelector('[name="ceiling_area_m2"]');
 const output = quote.querySelector('output');
-const outlets = quote.querySelector('[name="ceiling_outlets"]');
+const finish = quote.querySelector('[name="ceiling_finish"]');
 const price = quote.querySelector('[data-price]');
 const submittedPrice = quote.querySelector('[name="ceiling_estimate_nok_incl_vat"]');
 const money = new Intl.NumberFormat(document.documentElement.lang, {
   style: 'currency', currency: 'NOK', maximumFractionDigits: 0
 });
 const formatter = new Intl.NumberFormat(document.documentElement.lang, {maximumFractionDigits: 2});
-function estimatePrice(squareMeters, outletCount) {
-  const ceiling = squareMeters * 1176;
-  const lighting = outletCount * 335;
-  const smallRoomSurcharge = squareMeters < 5 ? 448 : 0;
-  return Math.round((ceiling + lighting + smallRoomSurcharge) * 1.25);
-}
+// Indicative consumer rates in NOK per square metre, including VAT.
+const rates = {matte: 850, satin: 950, glossy: 1050};
 function updateArea() {
   const result = length.valueAsNumber * width.valueAsNumber;
   const valid = length.validity.valid && width.validity.valid && Number.isFinite(result) && result > 0;
   area.value = valid ? result.toFixed(2) : '';
   output.textContent = valid ? formatter.format(Number(area.value)) + ' m²' : '—';
-  const total = valid && outlets.validity.valid ? estimatePrice(result, outlets.value === '' ? 0 : outlets.valueAsNumber) : null;
+  const rate = rates[finish.value];
+  const total = valid && rate ? Math.round(result * rate) : null;
   price.textContent = total === null ? '—' : money.format(total);
   submittedPrice.value = total === null ? '' : String(total);
 }
 length.addEventListener('input', updateArea);
 width.addEventListener('input', updateArea);
-outlets.addEventListener('input', updateArea);
+finish.addEventListener('change', updateArea);
 window.addEventListener('pageshow', updateArea);
 updateArea();
