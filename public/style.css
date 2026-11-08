@@ -2807,10 +2807,13 @@
 .ceiling-guide-questions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
+  align-items: stretch;
   gap: 1rem;
 }
 .ceiling-guide-questions details {
+  min-width: 0;
+  align-self: stretch;
+  justify-self: stretch;
   padding: 1rem 1.25rem;
   border: 1px solid #ded6ca;
   border-radius: 1rem;
