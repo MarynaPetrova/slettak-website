@@ -71,13 +71,21 @@
 #ceiling-light .tak-gallery img { pointer-events: none; }
 
 @media (max-width: 680px) {
-  .hero .hero-layout { min-height: 0; }
+  .hero .hero-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .hero .hero-content { display: contents; }
+  .hero .highlights { order: 2; }
   .hero .hero-visual:has(.tak-hero-scenes) {
     position: relative;
     z-index: 0;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 10;
+    order: 1;
     margin-top: 1.5rem;
     border-radius: 1rem;
     animation: none;
