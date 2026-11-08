@@ -76,3 +76,6 @@
   #ceiling-light { grid-template-columns: minmax(0, 1fr); }
   #ceiling-light .ceiling-guide-intro h2 { max-width: none; }
 }
+
+#ceiling-light .tak-gallery figcaption { position: relative; z-index: 1; }
+#ceiling-light .tak-gallery img { pointer-events: none; }
