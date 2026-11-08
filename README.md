@@ -21,4 +21,4 @@ Før flytting: erstatt `https://marynapetrova.github.io/slettak-website` med den
 
 ## Kontaktskjema og ressurser
 
-Kontaktskjemaet bruker FormSubmit. Behold språkparameteren i bekreftelseslenken. Løsningsbildene er inspirasjonsbilder. DM Sans lagres lokalt med SIL Open Font License i `public/fonts/OFL.txt`. Bildet i «Om oss» lastes fortsatt fra Unsplash.
+Kontaktskjemaet bruker FormSubmit. Behold språkparameteren i bekreftelseslenken. Løsningsbildene er inspirasjonsbilder. DM Sans lagres lokalt med SIL Open Font License i `public/fonts/OFL.txt`. Bildet i «Om oss» (`about.jpg`) er fra Unsplash og lagres lokalt.
