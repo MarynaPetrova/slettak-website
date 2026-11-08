@@ -53,6 +53,10 @@ updateArea();
 
 (() => {
   const header = document.querySelector('.top');
+  let frame;
+  const cancelScroll = () => cancelAnimationFrame(frame);
+  window.addEventListener('touchstart', cancelScroll, {passive: true});
+  window.addEventListener('wheel', cancelScroll, {passive: true});
   header?.addEventListener('click', event => {
     if (!matchMedia('(max-width: 850px)').matches || event.defaultPrevented ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -62,9 +66,24 @@ updateArea();
     const section = document.getElementById(hash.slice(1));
     if (!section) return;
     event.preventDefault();
-    if (location.hash !== hash) history.pushState(null, '', hash);
+    cancelScroll();
+    if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
     const top = hash === '#hjem' ? 0 :
       window.scrollY + section.getBoundingClientRect().top - header.getBoundingClientRect().height - 12;
-    window.scrollTo({top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    const destination = Math.max(0, Math.min(top, document.documentElement.scrollHeight - innerHeight));
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo({top: destination, behavior: 'instant'});
+      return;
+    }
+    const start = window.scrollY;
+    const duration = Math.min(1100, 600 + Math.abs(destination - start) / 6);
+    const started = performance.now();
+    function move(now) {
+      const progress = Math.min(1, (now - started) / duration);
+      const eased = progress * progress * (3 - 2 * progress);
+      window.scrollTo({top: start + (destination - start) * eased, behavior: 'instant'});
+      if (progress < 1) frame = requestAnimationFrame(move);
+    }
+    frame = requestAnimationFrame(move);
   });
 })();
