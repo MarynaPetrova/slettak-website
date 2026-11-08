@@ -2807,7 +2807,7 @@
 .ceiling-guide-questions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: stretch;
+  align-items: start;
   gap: 1rem;
 }
 .ceiling-guide-questions details {
@@ -2815,7 +2815,7 @@
   border: 1px solid #ded6ca;
   border-radius: 1rem;
 }
-.ceiling-guide-questions summary { cursor: pointer; font-weight: 650; padding-block: .35rem; }
+.ceiling-guide-questions summary { cursor: pointer; font-size: 1.0625rem; font-weight: 650; padding-block: .35rem; }
 .ceiling-guide-questions p { margin: .65rem 0 0; }
 .ceiling-guide-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
 .ceiling-guide-links a { text-underline-offset: .2em; font-weight: 650; }
