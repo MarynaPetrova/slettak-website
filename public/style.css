@@ -2807,7 +2807,7 @@
 .ceiling-guide-questions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
+  align-items: stretch;
   gap: 1rem;
 }
 .ceiling-guide-questions details {
@@ -2823,3 +2823,9 @@
   .ceiling-guide-media { aspect-ratio: 4 / 3; }
   .ceiling-guide-questions { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Keep the card surfaces level within each responsive row. */
+#losninger .solution-grid,
+#prosess .steps { align-items: stretch; }
+#losninger .solution-card { align-self: stretch; }
+#losninger .solution-card .card-copy { flex: 1 0 auto; }
