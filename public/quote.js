@@ -18,19 +18,45 @@ buttons.forEach(button => button.addEventListener('click', () => {
   next.src = button.dataset.src;
 }));
 
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      gallery.classList.add('tak-entered');
+      observer.disconnect();
+    }
+  }, {threshold: .25});
+  observer.observe(gallery);
+}
+
 const quote = document.querySelector('.tak-quote');
 const length = quote.querySelector('[name="ceiling_length_m"]');
 const width = quote.querySelector('[name="ceiling_width_m"]');
 const area = quote.querySelector('[name="ceiling_area_m2"]');
 const output = quote.querySelector('output');
+const outlets = quote.querySelector('[name="ceiling_outlets"]');
+const price = quote.querySelector('[data-price]');
+const submittedPrice = quote.querySelector('[name="ceiling_estimate_nok_incl_vat"]');
+const money = new Intl.NumberFormat(document.documentElement.lang, {
+  style: 'currency', currency: 'NOK', maximumFractionDigits: 0
+});
 const formatter = new Intl.NumberFormat(document.documentElement.lang, {maximumFractionDigits: 2});
+function estimatePrice(squareMeters, outletCount) {
+  const ceiling = squareMeters * 1176;
+  const lighting = outletCount * 335;
+  const smallRoomSurcharge = squareMeters < 5 ? 448 : 0;
+  return Math.round((ceiling + lighting + smallRoomSurcharge) * 1.25);
+}
 function updateArea() {
   const result = length.valueAsNumber * width.valueAsNumber;
   const valid = length.validity.valid && width.validity.valid && Number.isFinite(result) && result > 0;
   area.value = valid ? result.toFixed(2) : '';
   output.textContent = valid ? formatter.format(Number(area.value)) + ' m²' : '—';
+  const total = valid && outlets.validity.valid ? estimatePrice(result, outlets.value === '' ? 0 : outlets.valueAsNumber) : null;
+  price.textContent = total === null ? '—' : money.format(total);
+  submittedPrice.value = total === null ? '' : String(total);
 }
 length.addEventListener('input', updateArea);
 width.addEventListener('input', updateArea);
+outlets.addEventListener('input', updateArea);
 window.addEventListener('pageshow', updateArea);
 updateArea();
