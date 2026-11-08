@@ -1,4 +1,5 @@
 const gallery = document.querySelector('.tak-gallery');
+const finishCopy = document.querySelector('.tak-finish-copy');
 const image = gallery.querySelector('img');
 const buttons = gallery.querySelectorAll('button[data-src]');
 let requestedButton = buttons[0];
@@ -9,10 +10,11 @@ buttons.forEach(button => button.addEventListener('click', () => {
     if (requestedButton !== button) return;
     image.src = next.src;
     image.alt = button.textContent;
+    finishCopy.textContent = button.dataset.description;
     buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       image.getAnimations().forEach(animation => animation.cancel());
-      image.animate([{opacity: .55}, {opacity: 1}], {duration: 420, easing: 'ease-out'});
+      image.animate([{opacity: .3, transform: 'translateX(5%) scale(1.06)'}, {opacity: 1, transform: 'translateX(0) scale(1)'}], {duration: 640, easing: 'cubic-bezier(.2,.75,.25,1)'});
     }
   };
   next.src = button.dataset.src;

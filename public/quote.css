@@ -52,3 +52,27 @@
   padding: 1rem clamp(1rem, 3vw, 1.5rem);
 }
 #ceiling-light .tak-gallery-buttons { margin-top: 0; }
+
+#ceiling-light {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+#ceiling-light .ceiling-guide-intro .eyebrow { margin-bottom: .65rem; }
+#ceiling-light .ceiling-guide-intro h2 { max-width: 18ch; text-wrap: balance; }
+#ceiling-light .tak-finish-copy { font-size: 1.125rem; font-weight: 650; }
+#ceiling-light .tak-gallery { box-shadow: 0 16px 42px #28221b19; }
+#ceiling-light .tak-gallery img { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  #ceiling-light .tak-gallery.tak-entered img {
+    animation: tak-light-reveal 1s cubic-bezier(.2,.75,.25,1) both;
+  }
+}
+@keyframes tak-light-reveal {
+  from { opacity: .35; transform: translateX(8%) scale(1.07); clip-path: inset(0 0 0 14%); }
+  to { opacity: 1; transform: translateX(0) scale(1); clip-path: inset(0); }
+}
+@media (max-width: 800px) {
+  #ceiling-light { grid-template-columns: minmax(0, 1fr); }
+  #ceiling-light .ceiling-guide-intro h2 { max-width: none; }
+}
