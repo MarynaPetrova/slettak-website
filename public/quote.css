@@ -69,3 +69,22 @@
 
 #ceiling-light .tak-gallery figcaption { position: relative; z-index: 1; }
 #ceiling-light .tak-gallery img { pointer-events: none; }
+
+@media (max-width: 680px) {
+  .hero .hero-layout { min-height: 0; }
+  .hero .hero-visual:has(.tak-hero-scenes) {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+    animation: none;
+  }
+  .hero .tak-hero-scenes img { animation: none; }
+  #ceiling-light .tak-gallery { display: flex; flex-direction: column; }
+  #ceiling-light .tak-gallery figcaption { order: -1; }
+  .footer { flex-wrap: wrap; gap: .5rem 1rem; }
+  .footer > span { flex-basis: 100%; }
+}

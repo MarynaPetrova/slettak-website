@@ -50,3 +50,21 @@ window.addEventListener('pageshow', updateArea);
 updateArea();
 
 })();
+
+(() => {
+  const header = document.querySelector('.top');
+  header?.addEventListener('click', event => {
+    if (!matchMedia('(max-width: 850px)').matches || event.defaultPrevented ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('nav a[href^="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href');
+    const section = document.getElementById(hash.slice(1));
+    if (!section) return;
+    event.preventDefault();
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    const top = hash === '#hjem' ? 0 :
+      window.scrollY + section.getBoundingClientRect().top - header.getBoundingClientRect().height - 12;
+    window.scrollTo({top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  });
+})();
