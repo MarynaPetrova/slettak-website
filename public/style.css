@@ -2879,3 +2879,6 @@
   font-size: var(--taknova-body-size);
   color: var(--muted);
 }
+
+#strekktak .ceiling-guide-intro,
+#strekktak .ceiling-guide-intro p { max-width: none; }
