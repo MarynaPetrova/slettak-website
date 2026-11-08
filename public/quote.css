@@ -1,0 +1,14 @@
+.tak-gallery figcaption { padding: .9rem 1rem; }
+.tak-gallery img { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; }
+.tak-gallery-buttons { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .6rem; }
+.tak-gallery-buttons button { font: inherit; cursor: pointer; border: 1px solid currentColor; border-radius: 999px; padding: .45rem .85rem; min-height: 44px; background: #fff; color: #24352e; }
+.tak-gallery-buttons button[aria-pressed="true"] { background: #24352e; color: #fff; }
+.tak-quote h3 { margin: 0 0 .45rem; }
+.tak-quote fieldset { min-width: 0; padding: .85rem; border: 1px solid currentColor; border-radius: .75rem; margin: 1rem 0; }
+.tak-quote legend { padding: 0 .35rem; font-weight: 700; }
+.tak-quote-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+.tak-quote-grid label { display: grid; gap: .3rem; }
+.tak-quote-grid select { width: 100%; min-width: 0; min-height: 44px; font: inherit; padding: .45rem; border-radius: .45rem; color: #24352e; background: #fff; }
+.tak-quote output { font-weight: 700; }
+#contactForm { scroll-margin-top: 6rem; }
+@media (max-width: 440px) { .tak-quote-grid { grid-template-columns: 1fr; } }
