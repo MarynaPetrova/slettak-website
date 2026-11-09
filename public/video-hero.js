@@ -112,8 +112,8 @@
 
     if (!video.firstElementChild) {
       const files = matchMedia('(max-width: 768px)').matches
-        ? [['hero-villa-mobile-sound.mp4', 'video/mp4']]
-        : [['hero-villa-sound.webm', 'video/webm'], ['hero-villa-sound.mp4', 'video/mp4']];
+        ? [['hero-villa2-mobile-sound.mp4', 'video/mp4']]
+        : [['hero-villa2-sound.webm', 'video/webm'], ['hero-villa2-sound.mp4', 'video/mp4']];
 
       for (const [file, type] of files) {
         const source = document.createElement('source');

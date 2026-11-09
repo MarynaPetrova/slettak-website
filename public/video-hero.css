@@ -12,7 +12,7 @@
   height: 100svh;
   min-height: 560px;
   padding: var(--header-offset) var(--page-gutter) max(12vh, 76px);
-  background: #30241d url("assets/video/hero-villa-poster.jpg") center top / cover no-repeat;
+  background: #30241d url("assets/video/hero-villa2-poster.jpg") center top / cover no-repeat;
   color: #fff;
   text-align: center;
 }
