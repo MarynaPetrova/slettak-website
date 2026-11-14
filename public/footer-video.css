@@ -23,3 +23,11 @@
 .site-footer .footer a{color:rgba(247,245,241,.6)}
 @media (max-width:820px){.trust-strip ul{grid-template-columns:1fr 1fr}.site-footer-grid{grid-template-columns:1fr 1fr;gap:32px;padding-top:44px}.site-footer-about{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.footer-video video{display:none}}
+
+/* Trust strip: one even, centred row on the dark brand colour. */
+.trust-strip{background:#111b1d;border:0}
+.trust-strip ul{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0;padding-top:20px;padding-bottom:20px}
+.trust-strip li{padding:4px 30px;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.4;color:#f1ede6;text-align:center;white-space:nowrap}
+.trust-strip li::before{display:none}
+.trust-strip li+li{border-left:1px solid rgba(241,237,230,.28)}
+@media (max-width:1240px){.trust-strip ul{display:grid;grid-template-columns:1fr 1fr;gap:14px 0;padding-top:18px;padding-bottom:18px}.trust-strip li{white-space:normal;padding:2px 14px;font-size:.74rem;letter-spacing:.07em}.trust-strip li+li{border-left:0}.trust-strip li:nth-child(even){border-left:1px solid rgba(241,237,230,.28)}}
