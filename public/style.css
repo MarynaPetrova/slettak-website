@@ -2882,3 +2882,36 @@
 
 #strekktak .ceiling-guide-intro,
 #strekktak .ceiling-guide-intro p { max-width: none; }
+
+/* Desktop header: phone number and a visible call to action. */
+.header-phone-number { display: none; }
+@media (min-width: 1200px) {
+  .top .nav {
+    grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+    gap: clamp(14px, 1.4vw, 26px);
+  }
+  .top .nav .header-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #172224;
+    font-family: var(--taknova-font);
+    font-weight: 650;
+    font-size: clamp(.95rem, 1.05vw, 1.07rem);
+    letter-spacing: -.02em;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .top .nav .header-phone svg {
+    width: 18px; height: 18px; fill: none; stroke: currentColor;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .top .nav .header-phone:hover { color: #947c66; }
+  .top .nav .nav-cta {
+    display: inline-flex;
+    white-space: nowrap;
+  }
+}
+@media (min-width: 1400px) {
+  .header-phone-number { display: inline; }
+}
