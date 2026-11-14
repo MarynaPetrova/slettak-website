@@ -3,3 +3,4 @@ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').match
 var loaded=false;function load(){if(loaded)return;loaded=true;v.src=v.getAttribute('data-src');v.load();}
 if(!('IntersectionObserver' in window)){load();v.play().catch(function(){});return;}
 new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){load();v.play().catch(function(){});}else if(loaded){v.pause();}});},{rootMargin:'300px'}).observe(s);})();
+(function(){document.querySelectorAll('.ceiling-guide-questions details').forEach(function(d){d.addEventListener('click',function(e){if(!d.open||e.target.closest('summary'))return;if(window.getSelection&&String(window.getSelection()).length)return;d.open=false;});});})();

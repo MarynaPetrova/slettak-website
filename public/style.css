@@ -2915,3 +2915,24 @@
 @media (min-width: 1400px) {
   .header-phone-number { display: inline; }
 }
+
+/* FAQ cards: larger reading text when open, whole card toggles. */
+.ceiling-guide-questions details { cursor: pointer; display: flex; flex-direction: column; }
+.ceiling-guide-questions details[open] { background: #fbf9f6; }
+.ceiling-guide-questions details[open] summary {
+  padding: 1.4rem 1.5rem .5rem;
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+}
+.ceiling-guide-questions details[open] p {
+  padding: .25rem 1.5rem 1.5rem;
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  line-height: 1.5;
+  color: #2b2622;
+}
+.ceiling-guide-questions details { block-size: 17rem; }
+.ceiling-guide-questions summary { list-style: none; }
+.ceiling-guide-questions summary::-webkit-details-marker { display: none; }
+.ceiling-guide-questions details[open] summary { display: flex; justify-content: space-between; gap: .75rem; }
+.ceiling-guide-questions details[open] summary::after { content: "−"; flex: none; color: #927b65; }
+.ceiling-guide-questions details[open] p { font-size: clamp(1.15rem, 1.55vw, 1.4rem); }
+@media (max-width: 768px) { .ceiling-guide-questions details { block-size: auto; min-block-size: 9rem; } }
