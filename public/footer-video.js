@@ -1,4 +1,4 @@
-(function(){var s=document.querySelector('.footer-video');if(!s)return;var v=s.querySelector('video');if(!v)return;
+(function(){var s=document.querySelector('.footer-video');if(!s)return;var v=s.querySelector('video');if(!v||!v.getAttribute('data-src'))return;
 if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches){s.style.backgroundImage='url('+v.getAttribute('poster')+')';return;}
 var loaded=false;function load(){if(loaded)return;loaded=true;v.src=v.getAttribute('data-src');v.load();}
 if(!('IntersectionObserver' in window)){load();v.play().catch(function(){});return;}

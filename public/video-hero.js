@@ -54,6 +54,7 @@
   const supportsVolume = video.volume === 0.35;
   video.volume = 0;
   sound.hidden = !supportsVolume && !(window.AudioContext || window.webkitAudioContext);
+  sound.hidden = true; // hero-norge has no audio track
 
   sound.addEventListener('click', () => {
     reveal();
@@ -112,8 +113,8 @@
 
     if (!video.firstElementChild) {
       const files = matchMedia('(max-width: 768px)').matches
-        ? [['hero-villa2-mobile-sound.mp4', 'video/mp4']]
-        : [['hero-villa2-sound.webm', 'video/webm'], ['hero-villa2-sound.mp4', 'video/mp4']];
+        ? [['hero-norge-mobile.mp4', 'video/mp4']]
+        : [['hero-norge.mp4', 'video/mp4']];
 
       for (const [file, type] of files) {
         const source = document.createElement('source');
