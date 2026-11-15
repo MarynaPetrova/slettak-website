@@ -93,3 +93,6 @@ html body main .eyebrow { text-transform: uppercase; letter-spacing: .15em; }
 /* Compact rhythm: every section label sits one --section-space below what is above it
    (content or a colour edge). White sections that follow each other share one gap. */
 html body #strekktak.section, html body #ceiling-light.section { padding-bottom: 0; }
+
+/* The About photo starts slightly zoomed for the reveal; keep it inside the page so phones do not scroll sideways. */
+html body #om-oss { overflow: hidden; }
