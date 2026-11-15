@@ -102,3 +102,15 @@ html body .tak-estimate small.tak-min-note:not([hidden]) { display: block; margi
 
 /* Process step 03: payment terms as a second, slightly separated paragraph. */
 html body #prosess .steps p.pay-terms { margin-top: 10px; }
+
+/* Header menu: same font size, weight and spacing as the body text, so it reads as one family. */
+html body .top nav a { font-size: 1rem; font-weight: 500; letter-spacing: -.02em; }
+html body .top .nav-cta { font-size: .95rem; }
+html body .top .language-switch :is(a, button) { font-size: .8rem; }
+@media (min-width: 851px) { html body .top nav { gap: clamp(14px, 1.6vw, 26px); } }
+/* Phones: one row of menu items that scrolls sideways if it does not fit, instead of a broken second row. */
+@media (max-width: 600px) {
+  html body .top nav { flex-wrap: nowrap; justify-content: flex-start; gap: 18px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
+  html body .top nav::-webkit-scrollbar { display: none; }
+  html body .top nav a { font-size: .9375rem; white-space: nowrap; flex: none; }
+}
