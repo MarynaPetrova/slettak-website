@@ -32,14 +32,20 @@ const money = new Intl.NumberFormat(document.documentElement.lang, {
 });
 const formatter = new Intl.NumberFormat(document.documentElement.lang, {maximumFractionDigits: 2});
 // Indicative consumer rates in NOK per square metre, including VAT.
-const rates = {matte: 900, glossy: 1000, satin: 1100};
+// Labell's price list: matte and satin film cost the same, glossy costs more.
+const rates = {matte: 900, satin: 900, glossy: 1000};
+// Minimum order: 12 m² (about EUR 1 000 at the matte price).
+const minArea = 12;
+const minNote = quote.querySelector('[data-min-note]');
 function updateArea() {
   const result = length.valueAsNumber * width.valueAsNumber;
   const valid = length.validity.valid && width.validity.valid && Number.isFinite(result) && result > 0;
   area.value = valid ? result.toFixed(2) : '';
   output.textContent = valid ? formatter.format(Number(area.value)) + ' m²' : '—';
   const rate = rates[finish.value];
-  const total = valid && rate ? Math.round(result * rate) : null;
+  const billed = valid ? Math.max(result, minArea) : 0;
+  const total = valid && rate ? Math.round(billed * rate) : null;
+  if (minNote) minNote.hidden = !(total !== null && result < minArea);
   price.textContent = total === null ? '—' : money.format(total);
   submittedPrice.value = total === null ? '' : String(total);
 }

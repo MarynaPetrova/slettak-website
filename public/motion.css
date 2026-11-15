@@ -96,3 +96,6 @@ html body #strekktak.section, html body #ceiling-light.section { padding-bottom:
 
 /* The About photo starts slightly zoomed for the reveal; keep it inside the page so phones do not scroll sideways. */
 html body #om-oss { overflow: hidden; }
+
+/* Calculator: note that appears when the room is smaller than the minimum order. */
+html body .tak-estimate small.tak-min-note:not([hidden]) { display: block; margin: 4px 0 6px; font-weight: 600; }
