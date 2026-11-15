@@ -46,3 +46,22 @@ document.addEventListener('DOMContentLoaded',()=>{
     submit.textContent=resting;status.textContent='';
   });
 });
+
+/* FAQ cards: every card gets the height of the longest open answer, so open cards are equal and have no empty space. */
+(function(){
+  const box=document.querySelector('.ceiling-guide-questions');
+  if(!box) return;
+  const cards=[...box.querySelectorAll('details')];
+  const fit=()=>{
+    box.style.removeProperty('--faq-h');
+    if(window.innerWidth<1100) return;
+    const was=cards.map(d=>d.open);
+    cards.forEach(d=>{d.open=true;d.style.blockSize='auto';});
+    const h=Math.max(...cards.map(d=>d.getBoundingClientRect().height));
+    cards.forEach((d,i)=>{d.open=was[i];d.style.blockSize='';});
+    box.style.setProperty('--faq-h',Math.ceil(h)+2+'px');
+  };
+  fit();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(fit,150);});
+})();

@@ -2936,3 +2936,11 @@
 .ceiling-guide-questions { --faq-h: 19.5rem; }
 @media (max-width: 1279px) { .ceiling-guide-questions { --faq-h: 23rem; } }
 @media (max-width: 1099px) { .ceiling-guide-questions details { block-size: auto; min-block-size: 9rem; } }
+
+/* FAQ cards: one shared height, set by script.js to fit the longest open answer. */
+.ceiling-guide-questions details { overflow: hidden; }
+@media (max-width: 1099px) { .ceiling-guide-questions details { block-size: auto; min-block-size: 0; } }
+
+/* Idea cards: photo corners follow the card (28px card radius minus 16px padding). */
+#losninger .solution-card .solution-art,
+#losninger .solution-card .solution-art::before { border-radius: 12px; overflow: hidden; }
