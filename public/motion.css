@@ -31,3 +31,31 @@
     }
   }
 }
+
+/* Same spacing between all content sections, same size for all section headings. */
+:root { --section-space: clamp(64px, 7vw, 96px); }
+html body :is(#strekktak, #ceiling-light, #losninger, #prosess, #kontakt).section {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+html body :is(#strekktak, #ceiling-light) .ceiling-guide-intro h2,
+html body #losninger h2.ideas-main-heading,
+html body #prosess h2,
+html body #om-oss .section-heading h2,
+html body #kontakt h2 {
+  font-size: var(--taknova-heading-size);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.045em;
+}
+@media (max-width: 800px) {
+  html body :is(#strekktak, #ceiling-light) .ceiling-guide-intro h2,
+  html body #losninger h2.ideas-main-heading,
+  html body #prosess h2,
+  html body #om-oss .section-heading h2,
+  html body #kontakt h2 { font-size: var(--taknova-heading-mobile); }
+}
+@media (min-width: 801px) { html body #ceiling-light { align-items: start; } }
+
+/* Hero contact buttons: the label is lighter, so the number and address stand out. */
+.video-hero-actions .cta-label { font-weight: 400; opacity: .8; margin-right: .15em; }
