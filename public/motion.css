@@ -59,3 +59,12 @@ html body #kontakt h2 {
 
 /* Hero contact buttons: the label is lighter, so the number and address stand out. */
 .video-hero-actions .cta-label { font-weight: 400; opacity: .8; margin-right: .15em; }
+
+/* Footer: one text colour and one text size for all ordinary footer text. */
+html body .site-footer { --footer-text: #ece8e1; }
+html body .site-footer-about p,
+html body .site-footer-col a,
+html body .site-footer-col span,
+html body .site-footer .footer,
+html body .site-footer .footer a { color: var(--footer-text); }
+html body .site-footer-col a.site-footer-phone { font-size: 1rem; font-weight: 400; letter-spacing: 0; padding-top: 5px; }
