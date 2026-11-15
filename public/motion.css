@@ -75,3 +75,15 @@ html body #kontakt.contact-section :is(p:not(.eyebrow), label, legend, .form-not
 /* Dark sections: headings pure white, ordinary text a softer white (set above). */
 html body #kontakt.contact-section :is(h2, h3, legend, h4) { color: #fff; }
 html body #kontakt.contact-section .tak-quote-from { margin: 12px 0 0; font-weight: 600; color: #fff; }
+
+/* All descriptive text under section headings: one style (regular weight, same size and spacing). */
+html body #strekktak .ceiling-guide-intro p:not(.eyebrow),
+html body #ceiling-light .ceiling-guide-intro .tak-finish-copy,
+html body #losninger .section-heading p,
+html body #om-oss p:not(.eyebrow),
+html body #kontakt.contact-section .contact-grid > div > p:not(.eyebrow) {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -.02em;
+}
