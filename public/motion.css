@@ -99,3 +99,6 @@ html body #om-oss { overflow: hidden; }
 
 /* Calculator: note that appears when the room is smaller than the minimum order. */
 html body .tak-estimate small.tak-min-note:not([hidden]) { display: block; margin: 4px 0 6px; font-weight: 600; }
+
+/* Process step 03: payment terms as a second, slightly separated paragraph. */
+html body #prosess .steps p.pay-terms { margin-top: 10px; }
