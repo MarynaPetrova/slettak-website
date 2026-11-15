@@ -31,7 +31,10 @@
 .trust-strip li::before{display:none}
 .trust-strip li+li{border-left:1px solid rgba(241,237,230,.28)}
 @media (max-width:1240px){.trust-strip ul{display:grid;grid-template-columns:1fr 1fr;gap:14px 0;padding-top:18px;padding-bottom:18px}.trust-strip li{white-space:normal;padding:2px 14px;font-size:.74rem;letter-spacing:.07em}.trust-strip li+li{border-left:0}.trust-strip li:nth-child(even){border-left:1px solid rgba(241,237,230,.28)}}
-.site-footer-col a.site-footer-social{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:9px 16px 9px 12px;border:1px solid rgba(247,245,241,.35);border-radius:999px;font-weight:600}
-.site-footer-col a.site-footer-social svg{width:20px;height:20px;fill:currentColor}
-.site-footer-col a.site-footer-social:hover{text-decoration:none;background:#f7f5f1;color:#141a1b}
 .site-footer-col a.site-footer-phone{white-space:nowrap}@media (max-width:480px){.site-footer-col a.site-footer-phone{font-size:1.25rem}}
+
+/* Facebook sits in the bottom bar, beside Personvern. */
+.site-footer .footer-links{display:inline-flex;align-items:center;gap:28px}
+.site-footer .footer a.footer-social{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.site-footer .footer a.footer-social svg{width:16px;height:16px;fill:currentColor}
+.site-footer .footer a.footer-social:hover{color:#f7f5f1}
