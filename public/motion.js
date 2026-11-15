@@ -12,7 +12,7 @@
     'main section:not(.video-hero):not(.trust-strip) h2',
     '.section-heading', '.ceiling-guide-intro > p:not(.eyebrow)',
     '.solution-card', '#prosess .steps article',
-    '.ceiling-guide-questions details', '#om-oss .about-visual',
+    '.ceiling-guide-questions details', '#om-oss .about-visual', '#ceiling-light .tak-gallery',
     '.contact-grid > div', '#contactForm', '.footer-video-copy'
   ].join(',');
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
