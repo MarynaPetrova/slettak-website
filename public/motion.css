@@ -61,7 +61,7 @@ html body #kontakt h2 {
 .video-hero-actions .cta-label { font-weight: 400; opacity: .8; margin-right: .15em; }
 
 /* Footer: one text colour and one text size for all ordinary footer text. */
-html body .site-footer { --footer-text: #ece8e1; }
+html body .site-footer { --footer-text: #c9c6bf; }
 html body .site-footer-about p,
 html body .site-footer-col a,
 html body .site-footer-col span,
@@ -70,4 +70,8 @@ html body .site-footer .footer a { color: var(--footer-text); }
 html body .site-footer-col a.site-footer-phone { font-size: 1rem; font-weight: 400; letter-spacing: 0; padding-top: 5px; }
 
 /* Contact section: same soft white as the footer for all ordinary text on the dark background. */
-html body #kontakt.contact-section :is(p:not(.eyebrow), label, legend, .form-note, a:not(.btn)) { color: #ece8e1; }
+html body #kontakt.contact-section :is(p:not(.eyebrow), label, legend, .form-note, a:not(.btn)) { color: #c9c6bf; }
+
+/* Dark sections: headings pure white, ordinary text a softer white (set above). */
+html body #kontakt.contact-section :is(h2, h3, legend, h4) { color: #fff; }
+html body #kontakt.contact-section .tak-quote-from { margin: 12px 0 0; font-weight: 600; color: #fff; }

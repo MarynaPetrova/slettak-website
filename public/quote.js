@@ -32,7 +32,7 @@ const money = new Intl.NumberFormat(document.documentElement.lang, {
 });
 const formatter = new Intl.NumberFormat(document.documentElement.lang, {maximumFractionDigits: 2});
 // Indicative consumer rates in NOK per square metre, including VAT.
-const rates = {matte: 850, satin: 950, glossy: 1050};
+const rates = {matte: 900, glossy: 1000, satin: 1100};
 function updateArea() {
   const result = length.valueAsNumber * width.valueAsNumber;
   const valid = length.validity.valid && width.validity.valid && Number.isFinite(result) && result > 0;
