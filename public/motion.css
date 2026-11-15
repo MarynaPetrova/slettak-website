@@ -108,9 +108,12 @@ html body .top nav a { font-size: 1rem; font-weight: 500; letter-spacing: -.02em
 html body .top .nav-cta { font-size: .95rem; }
 html body .top .language-switch :is(a, button) { font-size: .8rem; }
 @media (min-width: 851px) { html body .top nav { gap: clamp(14px, 1.6vw, 26px); } }
-/* Phones: one row of menu items that scrolls sideways if it does not fit, instead of a broken second row. */
+/* Phones: all menu items in one row; the text shrinks with the screen width instead of scrolling. */
 @media (max-width: 600px) {
-  html body .top nav { flex-wrap: nowrap; justify-content: flex-start; gap: 18px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-right: 24px; -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
-  html body .top nav::-webkit-scrollbar { display: none; }
-  html body .top nav a { font-size: .9375rem; white-space: nowrap; flex: none; }
+  html body .top nav { flex-wrap: nowrap; justify-content: space-between; gap: 6px; }
+  html body .top nav a { font-size: clamp(10px, 3.2vw, 15px); white-space: nowrap; flex: none; letter-spacing: -.01em; }
 }
+@media (max-width: 340px) { html body .top nav { gap: 3px; } html body .top nav a { font-size: 9.8px; } }
+/* Footer bottom row may wrap on narrow phones (Facebook · Instagram · Personvern). */
+html body .site-footer .footer { flex-wrap: wrap; row-gap: 10px; }
+html body .site-footer .footer-links { flex-wrap: wrap; row-gap: 8px; }
