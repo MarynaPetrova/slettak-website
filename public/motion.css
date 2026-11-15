@@ -87,3 +87,8 @@ html body #kontakt.contact-section .contact-grid > div > p:not(.eyebrow) {
   line-height: 1.7;
   letter-spacing: -.02em;
 }
+
+/* All small labels above headings in capitals, same as «VÅRE LØSNINGER». */
+html body main .eyebrow { text-transform: uppercase; letter-spacing: .15em; }
+/* First section after the dark strip: same 2× space as between the other sections. */
+html body #strekktak.section { padding-top: calc(var(--section-space) * 2); }
