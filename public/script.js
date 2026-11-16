@@ -2,9 +2,9 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.addEventListener('DOMContentLoaded',()=>{
   const locale=document.documentElement.dataset.pageLang||'no';
   const copy={
-    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…'},
-    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…'},
-    uk:{choose:'Обрати це рішення',desired:'Бажане рішення',placeholder:'Наприклад, матова стеля зі світловими лініями',sending:'Надсилаємо заявку…'}
+    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…',slow:'Det tar lengre tid enn vanlig. Du kan også ringe 968 05 961 eller skrive til taknova.norge@gmail.com.'},
+    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…',slow:'This is taking longer than usual. You can also call +47 968 05 961 or email taknova.norge@gmail.com.'},
+    uk:{choose:'Обрати це рішення',desired:'Бажане рішення',placeholder:'Наприклад, матова стеля зі світловими лініями',sending:'Надсилаємо заявку…',slow:'Це триває довше, ніж зазвичай. Можна також подзвонити +47 968 05 961 або написати на taknova.norge@gmail.com.'}
   }[locale];
   const form=document.getElementById('contactForm');
   const dialog=document.querySelector('.solution-dialog');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   }
   // Keep the native POST and redirect; reject repeated activation while it is pending.
-  let submitting=false;
+  let submitting=false,slowTimer;
   const submit=form.querySelector('[type="submit"]');
   const status=document.getElementById('form-status');
   const resting=submit.textContent;
@@ -40,9 +40,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     submitting=true;
     submit.disabled=true;submit.setAttribute('aria-busy','true');
     submit.textContent=copy.sending;status.textContent=copy.sending;
+    slowTimer=setTimeout(()=>{status.textContent=copy.slow;},15000);
   });
   window.addEventListener('pageshow',()=>{
-    submitting=false;submit.disabled=false;submit.removeAttribute('aria-busy');
+    clearTimeout(slowTimer);submitting=false;submit.disabled=false;submit.removeAttribute('aria-busy');
     submit.textContent=resting;status.textContent='';
   });
 });
