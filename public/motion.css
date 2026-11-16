@@ -136,3 +136,6 @@ html body #losninger a.btn.secondary.all-solutions:is(:link,:visited,:hover,:foc
   html body #contactForm button.btn.light,
   html body #losninger a.btn.secondary.all-solutions:is(:link,:visited,:hover,:focus-visible) { font-size: .9rem; }
 }
+@media (max-width: 600px) {
+  html body .footer-video .btn.primary { font-size: .9rem; }
+}

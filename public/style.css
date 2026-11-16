@@ -2947,3 +2947,13 @@
 /* Idea cards: photo corners follow the card (28px card radius minus 16px padding). */
 #losninger .solution-card .solution-art,
 #losninger .solution-card .solution-art::before { border-radius: 12px; overflow: hidden; }
+
+/* One text style for all buttons: same font, weight and spacing; action buttons share one size. */
+html body :is(a.btn, button.btn, .btn), html body a.btn:is(:link, :visited) {
+  font-family: var(--taknova-font, "DM Sans", Arial, sans-serif);
+  font-size: .95rem; font-weight: 600; letter-spacing: -.01em;
+}
+html body .lang { font-family: var(--taknova-font, "DM Sans", Arial, sans-serif); font-weight: 600; letter-spacing: -.01em; }
+@media (max-width: 600px) {
+  html body :is(a.btn, button.btn, .btn), html body a.btn:is(:link, :visited) { font-size: .9rem; }
+}
