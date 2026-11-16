@@ -2,22 +2,13 @@
 
 Statisk nettsted med norsk, engelsk og ukrainsk innhold i HTML. Alle publiserte filer ligger i `public/`. README.md og SKILL.md skal ikke publiseres.
 
-## GitHub Pages
+## Publisering
 
-Nåværende adresse: https://marynapetrova.github.io/slettak-website/
+Adresse: https://taknova.com. En server henter `main` hvert 5. minutt og publiserer `public/`, så en endring i `main` er ute på nettstedet etter noen minutter. Interne lenker begynner med `/` (for eksempel `/en`, `/personvern?lang=en`), og fullstendige adresser med `https://taknova.com`.
 
-Velg Settings → Pages → Build and deployment → Source → GitHub Actions. Arbeidsflyten `.github/workflows/pages.yml` publiserer bare `public/` fra `main`.
+Språksidene kan åpnes med `/en` og `/uk`. De tidligere `.html`-adressene beholdes.
 
-Språksidene kan åpnes med `/en` og `/uk`. GitHub Pages legger til avsluttende skråstrek for mapper. De tidligere `.html`-adressene beholdes.
-
-## Cloudflare Pages
-
-- Production branch: `main`
-- Framework preset: None
-- Build command: la feltet stå tomt
-- Build output directory: `public`
-
-Før flytting: erstatt `https://marynapetrova.github.io/slettak-website` med den nye HTTPS-adressen i canonical, hreflang, Open Graph, JSON-LD, `_next`, robots.txt og sitemap.xml. Bytt også `/slettak-website/` i interne lenker til `/`. Gjør endringen i både `.html`-sidene og `index.html`-filene i rutemappene. Kjør språk-, lenke- og skjematestene på den nye adressen.
+GitHub Pages (https://marynapetrova.github.io/slettak-website/) sender nå bare besøkende videre til samme side på taknova.com (`.github/workflows/pages.yml`).
 
 ## Kontaktskjema og ressurser
 
