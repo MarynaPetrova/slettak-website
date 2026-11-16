@@ -1,7 +1,10 @@
-name: Publish public to GitHub Pages
+name: Redirect GitHub Pages to taknova.com
+# Nettstedet ligger på https://taknova.com. GitHub Pages viser bare en side som
+# sender gamle adresser (/slettak-website/...) videre til samme side der.
 on:
   push:
     branches: [main]
+    paths: [.github/workflows/pages.yml]
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,11 +20,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Build redirect page
+        run: |
+          mkdir redirect
+          cat > redirect/index.html <<'EOF'
+          <!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>taknova</title><link rel="canonical" href="https://taknova.com/"><meta http-equiv="refresh" content="0; url=https://taknova.com/"><script>location.replace("https://taknova.com" + location.pathname.replace(/^\/slettak-website/, "") + location.search + location.hash);</script></head><body><a href="https://taknova.com/">taknova.com</a></body></html>
+          EOF
+          cp redirect/index.html redirect/404.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: redirect
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
