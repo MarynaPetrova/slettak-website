@@ -2,8 +2,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.addEventListener('DOMContentLoaded',()=>{
   const locale=document.documentElement.dataset.pageLang||'no';
   const copy={
-    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…',slow:'Det tar lengre tid enn vanlig. Du kan også ringe 968 05 961 eller skrive til taknova.norge@gmail.com.'},
-    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…',slow:'This is taking longer than usual. You can also call +47 968 05 961 or email taknova.norge@gmail.com.'}
+    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…',min:'Skriv minst 20 tegn, for eksempel hvilket rom og omtrent hvor stort.',slow:'Det tar lengre tid enn vanlig. Du kan også ringe 968 05 961 eller skrive til taknova.norge@gmail.com.'},
+    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…',min:'Please write at least 20 characters, for example which room and roughly how big.',slow:'This is taking longer than usual. You can also call +47 968 05 961 or email taknova.norge@gmail.com.'}
   }[locale];
   const form=document.getElementById('contactForm');
   const dialog=document.querySelector('.solution-dialog');
@@ -28,6 +28,19 @@ document.addEventListener('DOMContentLoaded',()=>{
         selection.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
       },matchMedia('(prefers-reduced-motion: reduce)').matches?0:1250);
     });
+  }
+  const msg=form.querySelector('#message'),hint=document.getElementById('project-description-hint');
+  if(msg&&hint){
+    const MIN=20,restHint=hint.textContent;let touched=false;
+    const check=()=>{
+      const n=msg.value.trim().length,short=n<MIN;
+      msg.setCustomValidity(short?copy.min:'');
+      if(touched)hint.textContent=short?copy.min+' ('+n+'/'+MIN+')':restHint;
+      hint.classList.toggle('is-short',touched&&short);
+    };
+    msg.addEventListener('input',()=>{touched=true;check();});
+    msg.addEventListener('invalid',()=>{touched=true;check();});
+    check();
   }
   // Keep the native POST and redirect; reject repeated activation while it is pending.
   let submitting=false,slowTimer;

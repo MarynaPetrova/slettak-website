@@ -497,6 +497,9 @@
       padding: 8px;
     }
   }
+  #project-description-hint.is-short {
+    color: #f5e3bd;
+  }
   .form-status {
     min-height: 1.6em;
     margin: 4px 0;
