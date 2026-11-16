@@ -122,7 +122,7 @@ html body .site-footer .footer-links { flex-wrap: wrap; row-gap: 8px; }
 html body .footer-video .btn.primary,
 html body .top .nav-cta {
   font-size: .95rem; font-weight: 600; letter-spacing: -.01em;
-  padding: 0 24px; min-height: 50px; border-radius: 12px;
+  padding: 0 24px; min-height: 50px; border-radius: var(--r);
   align-items: center; justify-content: center; gap: 8px; line-height: 1;
 }
 html body .footer-video .btn.primary { display: inline-flex; }
@@ -138,4 +138,13 @@ html body #losninger a.btn.secondary.all-solutions:is(:link,:visited,:hover,:foc
 }
 @media (max-width: 600px) {
   html body .footer-video .btn.primary { font-size: .9rem; }
+}
+
+/* Contact form: one corner radius for cards, fields and the button; select arrow with room on the right. */
+html body #kontakt :is(input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select, textarea, button.btn, fieldset, .tak-estimate) { border-radius: var(--r); }
+html body #kontakt select {
+  -webkit-appearance: none; appearance: none;
+  padding: 12px 44px 12px 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23172224' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; background-size: 12px 8px;
 }

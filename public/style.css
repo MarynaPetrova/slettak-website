@@ -1,3 +1,4 @@
+:root { --r: 12px; }
 
 /* DM Sans, SIL Open Font License; served locally. */
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/dm-sans-400.woff2") format("woff2");}
@@ -289,7 +290,7 @@
     background: #364141;
     color: white;
     border: 1px solid #75807d;
-    border-radius: 2px;
+    border-radius: var(--r);
     font: inherit;
   }
   .contact-grid input::placeholder, .contact-grid textarea::placeholder {
@@ -413,7 +414,7 @@
   .language-switch {
     border: 1px solid #d5d0c9;
     padding: 3px;
-    border-radius: 4px;
+    border-radius: var(--r);
     flex-shrink: 0;
   }
   .lang {
@@ -422,7 +423,7 @@
     color: #5f6866;
     font: 700 .72rem var(--taknova-font);
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: var(--r);
   }
   .lang.active {
     background: #96816d;
@@ -653,7 +654,7 @@
     max-width: 900px;
   }
   .btn {
-    border-radius: 4px;
+    border-radius: var(--r);
   }
   .btn:focus-visible, .lang:focus-visible, a:focus-visible {
     outline: 3px solid #a88a68;
@@ -1075,7 +1076,7 @@
     border: 1px solid #a5c8b1;
     background: #24433b;
     color: #f0fff4;
-    border-radius: 4px;
+    border-radius: var(--r);
     font-weight: 600;
   }
   #kontakt .form-status[data-state="error"] {
@@ -1087,7 +1088,7 @@
     background: #34433f;
     border-left: 4px solid #c2a582;
     color: #fff6e8;
-    border-radius: 3px;
+    border-radius: var(--r);
     font-weight: 600;
   }
   #kontakt button[aria-busy="true"] {
@@ -1250,7 +1251,7 @@
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
-    border-radius: 14px;
+    border-radius: var(--r);
     overflow: hidden;
   }
   .solution-dialog-front {
@@ -1305,7 +1306,7 @@
     padding: 24px;
     background: #fff;
     border: 1px solid #e9e4dd;
-    border-radius: 8px;
+    border-radius: var(--r);
   }
   .solution-dialog-columns h3 {
     font-size: 1.1rem;
@@ -1361,7 +1362,7 @@
     padding: 20px 24px;
     border-left: 3px solid #947c66;
     background: #f0ece6;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--r) var(--r) 0;
   }
   .solution-dialog-usage h3 {
     font-size: 1.03rem;
@@ -1596,7 +1597,7 @@
     padding: 16px;
     background: #fff;
     border: 1px solid #deddda;
-    border-radius: 28px;
+    border-radius: var(--r);
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(36,32,28,.025);
     cursor: pointer;
@@ -1660,7 +1661,7 @@
     transform: rotate(45deg);
   }
   #losninger .all-solutions {
-    border-radius: 999px;
+    border-radius: var(--r);
     background: #1d1d1d;
     color: #fff;
     border-color: #1d1d1d;
@@ -1677,7 +1678,7 @@
       grid-template-columns: repeat(2,minmax(0,1fr));
     }
     #losninger .solution-card {
-      border-radius: 22px;
+      border-radius: var(--r);
       padding: 12px;
     }
   }
@@ -1802,7 +1803,7 @@
     margin: 0;
     padding: 14px 17px;
     background: #f0ede8;
-    border-radius: 10px;
+    border-radius: var(--r);
     font-size: .94rem;
     line-height: 1.5;
     color: #414a49;
@@ -1831,7 +1832,7 @@
     padding: 36px 32px 38px;
     background: #fff;
     border: 1px solid #deddda;
-    border-radius: 28px;
+    border-radius: var(--r);
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(36,32,28,.025);
     transition: transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease,border-color .4s ease;
@@ -1891,7 +1892,7 @@
     #prosess .steps article {
       min-height: 230px;
       padding: 28px;
-      border-radius: 22px;
+      border-radius: var(--r);
     }
     #prosess .steps h3 {
       margin-top: 25px;
@@ -1919,7 +1920,7 @@
     z-index: 99999;
     transform: translateY(-160%);
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: var(--r);
     background: #1d2524;
     color: #fff;
     font-weight: 700;
@@ -1948,7 +1949,7 @@
     width: 52px;
     height: 52px;
     padding: 0;
-    border-radius: 15px;
+    border-radius: var(--r);
     background: #172224;
     color: #fff;
     text-decoration: none;
@@ -2605,7 +2606,7 @@
   margin: 0;
   padding: 12px 24px;
   border: 2px solid #96816d;
-  border-radius: 6px;
+  border-radius: var(--r);
   background: transparent;
   color: #172224;
   opacity: 1;
@@ -2768,7 +2769,7 @@
 .hero .cta-row > a.btn.primary:visited {background:#96816d;border-color:#96816d;color:#fff;}
 
 .header-phone{display:none;}
-@media(max-width:768px){.top .nav .header-phone{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;border:1px solid #96816d;border-radius:12px;color:#172224}.header-phone svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.header-phone:hover{background:#96816d;color:#fff}}
+@media(max-width:768px){.top .nav .header-phone{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;border:1px solid #96816d;border-radius:var(--r);color:#172224}.header-phone svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.header-phone:hover{background:#96816d;color:#fff}}
 
 @media(min-width:1024px){#losninger .solution-card .card-copy p,.hero .highlights strong,.hero .highlights small{font-size:max(14px, .875rem);}}
 
@@ -2796,7 +2797,7 @@
 .ceiling-guide-media {
   margin: 0;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: var(--r);
   background: #262523;
   aspect-ratio: 16 / 8;
 }
@@ -2818,7 +2819,7 @@
   min-width: 0;
   block-size: 15rem;
   border: 1px solid #ded6ca;
-  border-radius: 1rem;
+  border-radius: var(--r);
   overflow: auto;
 }
 .ceiling-guide-questions summary {
@@ -2852,7 +2853,7 @@
 .ceiling-guide-questions summary:focus-visible {
   outline: 2px solid #927b65;
   outline-offset: -4px;
-  border-radius: .85rem;
+  border-radius: var(--r);
 }
 .ceiling-guide-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
 .ceiling-guide-links a { text-underline-offset: .2em; font-weight: 650; }
@@ -2946,7 +2947,7 @@
 
 /* Idea cards: photo corners follow the card (28px card radius minus 16px padding). */
 #losninger .solution-card .solution-art,
-#losninger .solution-card .solution-art::before { border-radius: 12px; overflow: hidden; }
+#losninger .solution-card .solution-art::before { border-radius: var(--r); overflow: hidden; }
 
 /* One text style for all buttons: same font, weight and spacing; action buttons share one size. */
 html body :is(a.btn, button.btn, .btn), html body a.btn:is(:link, :visited) {

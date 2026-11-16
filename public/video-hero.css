@@ -103,7 +103,7 @@
   right: var(--page-gutter);
   padding: 4px 8px;
   background: rgba(30,22,16,.45);
-  border-radius: 3px;
+  border-radius: var(--r);
 }
 
 .video-hero-next,
@@ -199,7 +199,7 @@
   box-sizing: border-box;
   min-height: 50px;
   padding: 0 24px;
-  border-radius: 12px;
+  border-radius: var(--r);
   font-family: var(--taknova-font, inherit);
   font-size: .95rem;
   font-weight: 600;
