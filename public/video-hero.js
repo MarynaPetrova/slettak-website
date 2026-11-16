@@ -113,8 +113,8 @@
 
     if (!video.firstElementChild) {
       const files = matchMedia('(max-width: 768px)').matches
-        ? [['hero-norge-mobile.mp4', 'video/mp4']]
-        : [['hero-norge.mp4', 'video/mp4']];
+        ? [['hero-norge-mobile-v2.mp4', 'video/mp4']]
+        : [['hero-norge-v2.mp4', 'video/mp4']];
 
       for (const [file, type] of files) {
         const source = document.createElement('source');
