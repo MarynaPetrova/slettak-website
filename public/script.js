@@ -2,12 +2,23 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.addEventListener('DOMContentLoaded',()=>{
   const locale=document.documentElement.dataset.pageLang||'no';
   const copy={
-    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…',min:'Skriv minst 20 tegn, for eksempel hvilket rom og omtrent hvor stort.',slow:'Det tar lengre tid enn vanlig. Du kan også ringe 968 05 961 eller skrive til taknova.norge@gmail.com.'},
-    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…',min:'Please write at least 20 characters, for example which room and roughly how big.',slow:'This is taking longer than usual. You can also call +47 968 05 961 or email taknova.norge@gmail.com.'}
+    no:{choose:'Velg denne løsningen',desired:'Ønsket løsning',placeholder:'For eksempel matt tak med lyslinjer',sending:'Sender forespørselen…',min:'Skriv minst %d tegn. Ta gjerne med rom, omtrentlige mål og hva du ønsker.',slow:'Det tar lengre tid enn vanlig. Du kan også ringe 968 05 961 eller skrive til taknova.norge@gmail.com.'},
+    en:{choose:'Choose this solution',desired:'Preferred solution',placeholder:'For example, a matte ceiling with light lines',sending:'Sending your enquiry…',min:'Enter at least %d characters. Include the room, approximate dimensions and what you would like.',slow:'This is taking longer than usual. You can also call +47 968 05 961 or email taknova.norge@gmail.com.'}
   }[locale];
   const form=document.getElementById('contactForm');
   const dialog=document.querySelector('.solution-dialog');
   if(!form)return;
+  const calculator=form.querySelector('#pris');
+  if(calculator){
+    const openCalculator=()=>{
+      if(location.hash==='#pris') calculator.open=true;
+    };
+    openCalculator();
+    window.addEventListener('hashchange',openCalculator);
+
+    // Reveal optional inputs if a visitor enters an invalid size and closes the calculator.
+    calculator.addEventListener('invalid',()=>{ calculator.open=true; },true);
+  }
   const selection=form.querySelector('#desired-solution');
   if(dialog){
     const choose=document.createElement('button');
@@ -31,11 +42,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   const msg=form.querySelector('#message'),hint=document.getElementById('project-description-hint');
   if(msg&&hint){
-    const MIN=20,restHint=hint.textContent;let touched=false;
+    const minimum=msg.minLength,restHint=hint.textContent;
+    const minimumMessage=copy.min.replace('%d',String(minimum));
+    let touched=false;
     const check=()=>{
-      const n=msg.value.trim().length,short=n<MIN;
-      msg.setCustomValidity(short?copy.min:'');
-      if(touched)hint.textContent=short?copy.min+' ('+n+'/'+MIN+')':restHint;
+      const n=msg.value.trim().length,short=n<minimum;
+      msg.setCustomValidity(short?minimumMessage:'');
+      if(touched)hint.textContent=short?minimumMessage+' ('+n+'/'+minimum+')':restHint;
       hint.classList.toggle('is-short',touched&&short);
     };
     msg.addEventListener('input',()=>{touched=true;check();});
