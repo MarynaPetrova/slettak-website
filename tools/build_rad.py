@@ -20,7 +20,7 @@ HEADER = src[src.index('<header class="top">'):src.index('</header>') + 9]
 FOOTER = src[src.index('<footer class="site-footer">'):src.index('</footer>') + 9]
 GC = '<script data-goatcounter="https://taknova.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
 SCRIPT = re.search(r'<script src="/script\.js[^"]*"></script>', src).group(0)
-CSS = ('<link rel="stylesheet" href="/style.css?v=r2"><link rel="stylesheet" href="/footer-video.css?v=5">'
+CSS = ('<link rel="stylesheet" href="/style.css?v=r3"><link rel="stylesheet" href="/footer-video.css?v=5">'
        '<link rel="stylesheet" href="/rad.css?v=1">')
 ORG = {"@type": "Organization", "name": "TakNova", "url": SITE + "/",
        "logo": SITE + "/favicon-512.png"}

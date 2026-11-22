@@ -2959,5 +2959,12 @@ html body .lang { font-family: var(--taknova-font, "DM Sans", Arial, sans-serif)
   html body :is(a.btn, button.btn, .btn), html body a.btn:is(:link, :visited) { font-size: .9rem; }
 }
 
-.nav-long{margin-left:.28em}
+
 @media (max-width:700px){.nav-long{display:none}}
+.lang-more{position:relative;display:inline-flex;align-items:center}
+.lang-more summary{list-style:none;cursor:pointer;padding:0 8px;font-weight:700;letter-spacing:.05em;line-height:1;opacity:.75}
+.lang-more summary::-webkit-details-marker{display:none}
+.lang-more[open] summary{opacity:1}
+.lang-more-list{position:absolute;top:calc(100% + 10px);right:-8px;z-index:60;min-width:150px;background:#fff;color:#111b1d;border:1px solid rgba(0,0,0,.1);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:6px;display:flex;flex-direction:column}
+.lang-more-list a{padding:8px 12px;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:500;color:inherit}
+.lang-more-list a:hover{background:#f0eeea}
