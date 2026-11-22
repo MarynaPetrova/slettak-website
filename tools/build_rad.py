@@ -93,7 +93,7 @@ def build_article(a):
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', ans)}}
         for q, ans in a['faq']]}
     art_ld = {"@context": "https://schema.org", "@type": "Article", "headline": a['h1'], "description": a['desc'],
-              "image": SITE + a['image'], "datePublished": a.get('date', TODAY), "dateModified": a.get('date', TODAY),
+              "image": SITE + a['image'], "datePublished": a.get('date', '2026-11-22'), "dateModified": a.get('date', '2026-11-22'),
               "inLanguage": "nb-NO", "mainEntityOfPage": url, "author": ORG, "publisher": ORG}
     src_html = ''
     if a.get('sources'):
