@@ -12,7 +12,8 @@ from rad_articles import ARTICLES, CATEGORIES, GUIDES
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'public')
 SITE = 'https://taknova.com'
-TODAY = '2026-11-22'
+import datetime
+TODAY = datetime.date.today().isoformat()
 
 src = open(os.path.join(ROOT, 'hva-er-strekktak', 'index.html'), encoding='utf-8').read()
 HEADER = src[src.index('<header class="top">'):src.index('</header>') + 9]
