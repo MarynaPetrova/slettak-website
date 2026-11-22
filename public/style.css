@@ -2958,3 +2958,6 @@ html body .lang { font-family: var(--taknova-font, "DM Sans", Arial, sans-serif)
 @media (max-width: 600px) {
   html body :is(a.btn, button.btn, .btn), html body a.btn:is(:link, :visited) { font-size: .9rem; }
 }
+
+.nav-long{margin-left:.28em}
+@media (max-width:700px){.nav-long{display:none}}
