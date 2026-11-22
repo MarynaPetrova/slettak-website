@@ -111,6 +111,14 @@ def build_article(a):
 {cta_box(a)}
 <section class="rrel"><h2>Les også</h2><div class="rgrid">{rel_html}</div><p><a href="/rad/">Alle råd og tips</a></p></section>
 </main>{FOOTER}{SCRIPT}</body></html>'''
+    try:
+        from rad_i18n import UI as _UI, T as _T
+        if a['slug'] in _T:
+            alts = ''.join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{_UI[l]["base"]}{_T[a["slug"]][l]["slug"]}/">' for l in _UI)
+            alts = f'<link rel="alternate" hreflang="nb" href="{url}">' + alts + f'<link rel="alternate" hreflang="x-default" href="{url}">'
+            page = page.replace('</head>', alts + '</head>', 1)
+    except ImportError:
+        pass
     d = os.path.join(ROOT, 'rad', a['slug'])
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(page)

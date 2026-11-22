@@ -26,3 +26,4 @@
 .rchips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}.rchips a{padding:8px 14px;border-radius:12px;background:var(--tint,#f0eeea);text-decoration:none;font-weight:600;font-size:.9rem}
 .rsec{scroll-margin-top:120px}
 @media(max-width:640px){.rform{grid-template-columns:1fr}.lp.rart,.lp.rhub{padding-top:90px}}
+.site-footer .footer-links{flex-wrap:wrap;row-gap:6px}
