@@ -11,22 +11,22 @@ CATEGORIES = {
 
 # Eldre veiledninger som nå får plass i huben
 GUIDES = [
-    dict(url='/hva-er-strekktak/', title='Hva er strekktak?', desc='Slik monteres duken, hva den tåler og hvordan den skiller seg fra gips og takplater.', img='/eksempler/stue-lyslinjer.jpg', cat='strekktak'),
-    dict(url='/strekktak-pris/', title='Hva koster strekktak?', desc='Priser per kvadratmeter, minste oppdrag og hva som kommer i tillegg.', img='/eksempler/D-lyslinje-spotter.jpg', cat='strekktak'),
-    dict(url='/pusse-opp-tak/', title='Pusse opp taket uten sparkling og maling', desc='Når det gamle taket er stygt og du ikke orker støv og tørketid.', img='/eksempler/soverom-lyslinje-skinne.jpg', cat='tak'),
+    dict(url='/hva-er-strekktak/', title='Hva er strekktak?', desc='Slik monteres duken, hva den tåler og hvordan den skiller seg fra gips og takplater.', img='/eksempler/detalj-lyslist-pendler.jpg', cat='strekktak'),
+    dict(url='/strekktak-pris/', title='Hva koster strekktak?', desc='Priser per kvadratmeter, minste oppdrag og hva som kommer i tillegg.', img='/eksempler/C-kjokken-lysramme.jpg', cat='strekktak'),
+    dict(url='/pusse-opp-tak/', title='Pusse opp taket uten sparkling og maling', desc='Når det gamle taket er stygt og du ikke orker støv og tørketid.', img='/eksempler/D-lyslinje-spotter.jpg', cat='tak'),
     dict(url='/senke-taket/', title='Senke taket og skjule rør og ledninger', desc='Slik skjuler du rør, kabler og ujevnheter uten å bygge nytt himlingstak.', img='/eksempler/sort-skyggefuge-vindu.jpg', cat='tak'),
     dict(url='/lys-i-taket/', title='Lys i taket: lyslinjer, LED-lister og spotter', desc='Hvilke typer lys som kan bygges inn i taket, og hva som passer hvor.', img='/eksempler/kjokken-oy-lyslinjer.jpg', cat='lys'),
     dict(url='/strekktak-barnerom/', title='Et tak barna gleder seg til å se på', desc='Lys, farger og et glatt tak på barnerommet.', img='/eksempler/lyslinjer-trekant.jpg', cat='lys'),
-    dict(url='/strekktak-bad/', title='Strekktak på bad', desc='Et tak som tåler fukt og er ferdig på én dag.', img='/glossy.jpg', cat='bad'),
+    dict(url='/strekktak-bad/', title='Strekktak på bad', desc='Et tak som tåler fukt og er ferdig på én dag.', img='/eksempler/detalj-lyslist-pendler.jpg', cat='bad'),
     dict(url='/oppussing-etter-boligkjop/', title='Nytt tak før du flytter inn', desc='Hvorfor det lønner seg å gjøre taket mens rommene er tomme.', img='/eksempler/kjokken-magnetskinne.jpg', cat='bolig'),
     dict(url='/strekktak-bygard-oslo/', title='Nytt tak i bygårdsleilighet', desc='Høye, skjeve og sprukne tak i gamle bygårder.', img='/eksempler/B-lysramme-lysekrone.jpg', cat='tak'),
-    dict(url='/strekktak-kontor/', title='Nytt tak i kontor og butikk', desc='Tak på én dag, uten å stenge i flere uker.', img='/eksempler/A-mansard-lyslinjer.jpg', cat='strekktak'),
+    dict(url='/strekktak-kontor/', title='Nytt tak i kontor og butikk', desc='Tak på én dag, uten å stenge i flere uker.', img='/eksempler/3-lyslinjer.jpg', cat='strekktak'),
 ]
 
 ARTICLES = [
 # ---------------------------------------------------------------- 1
 dict(
-slug='sprekker-i-taket', cat='tak', image='/eksempler/soverom-lyslinje-skinne.jpg',
+slug='sprekker-i-taket', cat='tak', image='/eksempler/1-soverom-kutt.jpg',
 alt='Glatt, hvitt tak uten sprekker i et soverom',
 title='Sprekker i taket: når er det farlig, og hvordan fikser du det? | TakNova',
 desc='Sprekker i taket er som regel kosmetiske, men ikke alltid. Slik ser du forskjellen, slik reparerer du dem selv, og dette gjør du når de kommer tilbake.',
@@ -148,7 +148,7 @@ desc='Svarte prikker og maling som flasser i baderomstaket skyldes nesten alltid
 h1='Mugg og flassende maling i taket på badet: årsak og løsning',
 card='Mugg i taket på badet', teaser='Hvorfor det blir svarte prikker og flassende maling i baderomstaket, og hvordan du får det bort for godt.',
 form_hint='For eksempel: maling flasser i badetaket, ca. 5 m²',
-related=['/strekktak-bad/', '/rad/sprekker-i-taket/', '/hva-er-strekktak/', '/senke-taket/'],
+related=['/rad/sprekker-i-taket/', '/hva-er-strekktak/', '/senke-taket/', '/pusse-opp-tak/'],
 lead='Svarte prikker i hjørnet over dusjen, maling som bobler og flasser, og en lukt som ikke vil gå bort. Det er et av de vanligste problemene i norske bad. Det kommer nesten alltid av det samme: fuktig luft som ikke kommer ut fort nok.',
 short='<ul><li>Mugg og flassende maling i badetaket skyldes nesten alltid for dårlig ventilasjon.</li><li>Sjekk at viften faktisk trekker, at ventilen ikke er tett, og at det kommer luft inn under døra.</li><li>La viften gå etter dusjing, og vask bort mugg med et middel laget for det.</li><li>Nytt tak eller ny maling hjelper lite hvis fukten ikke kommer ut.</li></ul>',
 body='''<h2>Hvorfor blir det mugg i taket?</h2>

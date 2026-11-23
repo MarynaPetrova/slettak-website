@@ -2,14 +2,14 @@
 
 EXTRA = [
 dict(
-slug='flytte-inn-ny-bolig', cat='bolig', image='/eksempler/kjokken-magnetskinne.jpg',
+slug='flytte-inn-ny-bolig', cat='bolig', image='/eksempler/C-kjokken-lysramme.jpg',
 alt='Kjøkken med glatt tak og magnetskinne',
 title='Flytte inn i ny bolig: dette bør du gjøre før møblene kommer | TakNova',
 desc='Skal du flytte og pusse opp? Slik planlegger du rekkefølgen: hva som må gjøres før flyttelasset kommer, hvilke håndverkere du bør bestille først, og hvorfor taket kommer før gulvet.',
 h1='Flytte inn i ny bolig: dette bør du gjøre før møblene kommer',
 card='Før du flytter inn', teaser='Rekkefølgen på oppussingen, hvilke håndverkere du bør bestille først, og hvorfor taket kommer før gulvet.',
 form_hint='For eksempel: overtar leilighet 1. mars, vil ha nytt tak i stue og soverom',
-related=['/oppussing-etter-boligkjop/', '/rad/pusse-opp-for-salg/', '/rad/belysning-stue/', '/lys-i-taket/'],
+related=['/oppussing-etter-boligkjop/', '/rad/pusse-opp-for-salg/', '/rad/belysning-stue/', '/senke-taket/'],
 lead='Mellom overtakelse og flyttedag står boligen tom. Det er den beste tiden du får til å pusse opp. Når sofaen, sengene og flyttekassene først er på plass, blir alt tregere og mer støvete. Her er en enkel rekkefølge som sparer deg for dobbeltarbeid.',
 short='<ul><li>Bestill håndverkere så snart du vet overtakelsesdatoen. Mange har ventetid.</li><li>Jobb ovenfra og ned: elektriker og tak først, så vegger, så gulv, til slutt vask.</li><li>Gjør det som lager støv og krever tomme rom før du flytter inn.</li><li>Les av strømmåleren, test røykvarslerne og vurder ny lås samme dag som du overtar.</li></ul>',
 body="""<h2>Samme dag som du overtar</h2>

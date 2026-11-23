@@ -72,7 +72,7 @@ T = {
         ('Czy sufit napinany pomaga na pleśń?', 'Membrana nie wchłania wilgoci, można ją przetrzeć i nigdy nie trzeba jej malować. Nie zastępuje jednak wentylacji: wilgoć nadal musi uchodzić z pomieszczenia.')]),
 },
 'flytte-inn-ny-bolig': {
- 'image': '/eksempler/kjokken-magnetskinne.jpg',
+ 'image': '/eksempler/C-kjokken-lysramme.jpg',
  'en': dict(slug='moving-into-a-new-home-norway', title='Moving into a new home in Norway: what to do before the furniture arrives | TakNova',
    desc='Moving and planning to renovate? The right order of work, which tradespeople to book first, and why the ceiling comes before the floor.',
    h1='Moving into a new home: what to do before the furniture arrives', card='Before you move in', hint='For example: taking over a flat on 1 March, want new ceilings in living room and bedroom',
